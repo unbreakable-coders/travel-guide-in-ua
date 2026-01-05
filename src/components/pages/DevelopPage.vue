@@ -1,13 +1,12 @@
-<template>
-  <section class="page">
-    <h1 class="page__title">Develop</h1>
-    <p class="page__text">
-      Сторінка для девелоп-нотаток, тестових компонентів і чернеток.
-    </p>
-  </section>
-</template>
+<script setup lang="ts">
+import { ref } from 'vue'
+import UkraineAdminMap from '@/components/map/UkraineAdminMap.vue'
 
-<style scoped>
-.page__title { margin: 0 0 12px; font-size: 28px; }
-.page__text { margin: 0; opacity: 0.85; }
-</style>
+const selectedRegion = ref<string | null>(null)
+</script>
+
+<template>
+  <h1>Develop</h1>
+  <UkraineAdminMap v-model="selectedRegion" />
+  <p v-if="selectedRegion">Selected: <b>{{ selectedRegion }}</b></p>
+</template>
