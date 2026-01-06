@@ -1,5 +1,56 @@
-# Vue 3 + TypeScript + Vite
+# 🚀 Travel Guide in UA
 
-This template should help get you started developing with Vue 3 and TypeScript in Vite. The template uses Vue 3 `<script setup>` SFCs, check out the [script setup docs](https://v3.vuejs.org/api/sfc-script-setup.html#sfc-script-setup) to learn more.
+A web application that helps users explore travel destinations in Ukraine.
 
-Learn more about the recommended Project Setup and IDE Support in the [Vue Docs TypeScript Guide](https://vuejs.org/guide/typescript/overview.html#project-setup).
+---
+
+### 📌 Features
+
+- Modern frontend built with Vite
+- Modular architecture
+- State management with Pinia
+- Client-side routing
+- Scalable documentation structure
+
+---
+
+### 🛠️ Tech Stack
+
+- Vite
+- TypeScript
+- Vue
+- Pinia
+- ESLint
+
+---
+
+### 🚀 Getting Started
+
+To run the project locally, follow the setup guide:
+
+👉 **[Getting Started](docs/getting-started.md)**
+
+---
+
+### 📚 Documentation
+
+All project documentation is available in the `docs/` folder:
+
+- 🏗️ **[Architecture](docs/architecture.md)**  
+  Project structure and design decisions.
+
+- 🧭 **[Routing](docs/routing.md)**  
+  Application routes and navigation flow.
+
+- 🗃️ **[Pinia Stores](docs/pinia-stores.md)**  
+  State management and store organization.
+
+- 🤝 **[Contributing Guide](docs/contributing-guide.md)**  
+  How to contribute, coding rules, and workflows.
+
+---
+
+### 🤝 Contributing
+
+We welcome contributions!  
+Please read the **[Contributing Guide](docs/contributing-guide.md)** before submitting a PR.
