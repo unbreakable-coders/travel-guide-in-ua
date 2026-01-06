@@ -1,0 +1,36 @@
+:root {
+  /* Colors from logo */
+  --color-primary: #1f3a5f; /* deep blue */
+  --color-secondary: #3a8b5c; /* nature green */
+  --color-accent: #e2b04a; /* golden wheat */
+
+  --color-bg: #f7f8fa;
+  --color-surface: #ffffff;
+
+  --color-text-primary: #1f2933;
+  --color-text-secondary: #6b7280;
+  --color-border: #e5e7eb;
+
+  /* Typography */
+  --font-heading: "Manrope", system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+  --font-body: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+
+  /* Type scale */
+  --h1: 56px;
+  --h2: 40px;
+  --h3: 32px;
+  --h4: 24px;
+
+  --body-l: 18px;
+  --body: 16px;
+  --small: 14px;
+
+  --lh-heading: 1.2;
+  --lh-body: 1.6;
+
+  /* Radius / shadow */
+  --r-lg: 16px;
+  --r-md: 12px;
+
+  --shadow: 0 10px 25px rgba(17, 24, 39, 0.08);
+}
