@@ -4,7 +4,6 @@ import { router } from "./router";
 import { vuetify } from "./plugins/vuetify";
 
 import "./styles/fonts.scss";
-import "./styles/tokens.scss";
 import "./style.css";
 
 createApp(App).use(router).use(vuetify).mount("#app");
