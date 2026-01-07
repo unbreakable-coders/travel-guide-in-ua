@@ -11,31 +11,57 @@ export default defineConfig([
   {
     files: ["**/*.{js,mjs,cjs,ts,mts,cts,vue}"],
     plugins: { js },
-    extends: ["js/recommended"],
     languageOptions: { globals: globals.browser },
+    rules: {
+      ...js.configs.recommended.rules,
+    },
   },
-  tseslint.configs.recommended,
-  pluginVue.configs["flat/essential"],
+
+  ...tseslint.configs.recommended,
+
+  ...pluginVue.configs["flat/essential"].map((config) => ({
+    ...config,
+    files: ["**/*.vue"],
+  })),
+
   {
     files: ["**/*.vue"],
-    languageOptions: { parserOptions: { parser: tseslint.parser } },
+    languageOptions: {
+      parserOptions: {
+        parser: tseslint.parser,
+        extraFileExtensions: [".vue"],
+      },
+    },
   },
+
   {
     files: ["**/*.json"],
     plugins: { json },
     language: "json/json",
-    extends: ["json/recommended"],
+    rules: {
+      ...json.configs.recommended.rules,
+    },
   },
+
   {
     files: ["**/*.md"],
     plugins: { markdown },
     language: "markdown/commonmark",
-    extends: ["markdown/recommended"],
+    rules: {
+      ...markdown.configs.recommended.rules,
+    },
   },
+
   {
     files: ["**/*.css"],
     plugins: { css },
     language: "css/css",
-    extends: ["css/recommended"],
+    rules: {
+      ...css.configs.recommended.rules,
+    },
+  },
+
+  {
+    ignores: ["package-lock.json", "tsconfig.node.json", "dist/", "node_modules/", "public/"],
   },
 ]);
