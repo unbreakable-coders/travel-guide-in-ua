@@ -1,9 +1,10 @@
 import { createApp } from "vue";
 import App from "./App.vue";
 import { router } from "./router";
+import { vuetify } from "./plugins/vuetify";
 
-import "./styles/fonts.css";
-import "./styles/tokens.css";
+import "./styles/fonts.scss";
+import "./styles/tokens.scss";
 import "./style.css";
 
-createApp(App).use(router).mount("#app");
+createApp(App).use(router).use(vuetify).mount("#app");
