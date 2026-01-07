@@ -8,11 +8,11 @@ export const vuetify = createVuetify({
       inua: {
         dark: false,
         colors: {
-          primary: "var(--color-primary)",
-          secondary: "var(--color-secondary)",
-          accent: "var(--color-accent)",
-          background: "var(--color-bg)",
-          surface: "var(--color-surface)",
+          primary: "#1f3a5f",
+          secondary: "#3a8b5c",
+          accent: "#e2b04a",
+          background: "#f7f8fa",
+          surface: "#ffffff",
         },
       },
     },
