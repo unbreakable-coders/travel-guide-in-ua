@@ -3,6 +3,8 @@
   import { TabGroup } from "@/shared/ui/TabGroup";
   import type { TabOption } from "@/shared/ui/TabGroup";
   import { CheckboxButton } from "@/shared/form/CheckboxButton";
+  import { CheckboxGroup } from "@/shared/form/CheckboxGroup";
+  import type { CheckboxOption } from "@/shared/form/CheckboxGroup";
 
   const options: TabOption[] = [
     { value: "overview", label: "Overview" },
@@ -18,6 +20,15 @@
   };
 
   const selected = ref<Array<string | number>>(["wifi"]);
+
+  const groupOptions: CheckboxOption[] = [
+    { value: "wifi", label: "Wi-Fi" },
+    { value: "parking", label: "Parking" },
+    { value: "pet", label: "Pet friendly" },
+    { value: "disabled", label: "Disabled", disabled: true },
+  ];
+
+  const groupSelected = ref<Array<string | number>>(["wifi", "parking"]);
 </script>
 
 <template>
@@ -51,6 +62,17 @@
       <div class="row">
         <span class="label">Selected:</span>
         <code class="code">{{ selected }}</code>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2 class="cardTitle">CheckboxGroup</h2>
+
+      <CheckboxGroup v-model="groupSelected" :options="groupOptions" label="Amenities" />
+
+      <div class="row">
+        <span class="label">Selected:</span>
+        <code class="code">{{ groupSelected }}</code>
       </div>
     </div>
   </section>
