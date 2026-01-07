@@ -2,6 +2,7 @@
   import { ref } from "vue";
   import { TabGroup } from "@/shared/ui/TabGroup";
   import type { TabOption } from "@/shared/ui/TabGroup";
+  import { CheckboxButton } from "@/shared/form/CheckboxButton";
 
   const options: TabOption[] = [
     { value: "overview", label: "Overview" },
@@ -15,6 +16,8 @@
   const onUpdate = (value: string | number) => {
     active.value = value;
   };
+
+  const selected = ref<Array<string | number>>(["wifi"]);
 </script>
 
 <template>
@@ -32,6 +35,22 @@
       <div class="row">
         <span class="label">Active:</span>
         <code class="code">{{ active }}</code>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2 class="cardTitle">CheckboxButton</h2>
+
+      <div class="stack">
+        <CheckboxButton v-model="selected" value="wifi" label="Wi-Fi" />
+        <CheckboxButton v-model="selected" value="parking" label="Parking" />
+        <CheckboxButton v-model="selected" value="pet" label="Pet friendly" />
+        <CheckboxButton v-model="selected" value="disabled" label="Disabled" :isDisabled="true" />
+      </div>
+
+      <div class="row">
+        <span class="label">Selected:</span>
+        <code class="code">{{ selected }}</code>
       </div>
     </div>
   </section>
@@ -74,6 +93,11 @@
     margin: 0;
     font-size: 16px;
     font-weight: 700;
+  }
+
+  .stack {
+    display: grid;
+    gap: 10px;
   }
 
   .row {
