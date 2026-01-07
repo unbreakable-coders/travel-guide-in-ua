@@ -23,11 +23,15 @@
     const trimmedValue = target.value.trimStart();
     emit("update:modelValue", trimmedValue);
   };
+
+  const focusInput = () => {
+    inputRef.value?.focus();
+  };
 </script>
 
 <template>
   <div class="formField">
-    <label v-if="props.label" class="formField__label" @click="inputRef?.focus()">
+    <label v-if="props.label" class="formField__label" @click="focusInput">
       {{ props.label }}
     </label>
 
@@ -61,7 +65,7 @@
     padding: 16px 20px;
     border: 1px solid #111;
     border-radius: 18px;
-    cursor: text;
+    cursor: pointer;
     outline: none;
   }
 
