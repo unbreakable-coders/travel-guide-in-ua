@@ -23,14 +23,21 @@
       </div>
 
       <div class="actions">
-        <button class="btn btn--primary">Primary CTA</button>
-        <button class="btn btn--ghost">Ghost</button>
+        <v-btn color="primary">Primary CTA</v-btn>
+        <v-btn variant="outlined">Ghost</v-btn>
       </div>
     </header>
 
     <section class="grid">
       <article class="card">
         <h2 class="h2">Typography</h2>
+
+        <v-card variant="tonal" color="secondary" class="mb-4">
+          <v-card-text>
+            <div class="h4">Vuetify Card</div>
+            <p class="body">Перевірка підключення Vuetify (color + typography).</p>
+          </v-card-text>
+        </v-card>
 
         <div class="stack">
           <div>
@@ -81,7 +88,7 @@
           </div>
         </div>
 
-        <div class="divider" />
+        <v-divider class="my-4" />
 
         <h3 class="h4">Usage examples</h3>
 
@@ -115,8 +122,8 @@
               Маршрут з точками, порадами та локаціями. Ідеально для тесту читабельності.
             </p>
             <div class="placeBottom">
-              <button class="btn btn--primary btn--sm">Add to plan</button>
-              <button class="btn btn--ghost btn--sm">Details</button>
+              <v-btn size="small" color="primary">Add to plan</v-btn>
+              <v-btn size="small" variant="outlined">Details</v-btn>
             </div>
           </div>
         </div>
@@ -127,6 +134,17 @@
             Основний тон — <strong>primary</strong>.
           </p>
         </div>
+      </div>
+    </section>
+
+    <section class="card">
+      <h2 class="h2">Vuetify Integration Test</h2>
+
+      <div class="components">
+        <v-text-field label="Search location" variant="outlined" />
+        <v-select label="Region" :items="['Kyiv', 'Lviv', 'Odesa']" variant="outlined" />
+        <v-switch label="Visited" color="secondary" />
+        <v-alert type="success" variant="tonal"> Vuetify підключений і працює коректно </v-alert>
       </div>
     </section>
   </main>

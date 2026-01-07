@@ -1,15 +1,22 @@
 :root {
-  /* Colors from logo */
-  --color-primary: #1f3a5f; /* deep blue */
-  --color-secondary: #3a8b5c; /* nature green */
-  --color-accent: #e2b04a; /* golden wheat */
+  /* Colors */
+  --color-primary: #1f3a5f;
+  --color-secondary: #3a8b5c;
+  --color-accent: #e2b04a;
 
   --color-bg: #f7f8fa;
   --color-surface: #ffffff;
 
   --color-text-primary: #1f2933;
   --color-text-secondary: #6b7280;
+  --color-text-muted: #9ca3af;
+
   --color-border: #e5e7eb;
+  --color-divider: #eef0f3;
+
+  /* State */
+  --color-hover: rgba(31, 58, 95, 0.08);
+  --color-focus: rgba(31, 58, 95, 0.16);
 
   /* Typography */
   --font-heading: "Manrope", system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
@@ -24,13 +31,19 @@
   --body-l: 18px;
   --body: 16px;
   --small: 14px;
+  --xsmall: 12px;
 
   --lh-heading: 1.2;
   --lh-body: 1.6;
 
-  /* Radius / shadow */
-  --r-lg: 16px;
+  /* Radius */
+  --r-sm: 8px;
   --r-md: 12px;
+  --r-lg: 16px;
+  --r-xl: 24px;
 
+  /* Shadow */
+  --shadow-sm: 0 2px 6px rgba(17, 24, 39, 0.06);
   --shadow: 0 10px 25px rgba(17, 24, 39, 0.08);
+  --shadow-lg: 0 20px 40px rgba(17, 24, 39, 0.12);
 }
