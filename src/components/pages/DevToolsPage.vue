@@ -3,6 +3,7 @@
   import { TabGroup } from "@/shared/ui/TabGroup";
   import type { TabOption } from "@/shared/ui/TabGroup";
   import { CheckboxButton } from "@/shared/form/CheckboxButton";
+  import { FormField, InputType } from "@/shared/form/FormField";
 
   const options: TabOption[] = [
     { value: "overview", label: "Overview" },
@@ -18,6 +19,8 @@
   };
 
   const selected = ref<Array<string | number>>(["wifi"]);
+  const name = ref("");
+  const email = ref("");
 </script>
 
 <template>
@@ -51,6 +54,36 @@
       <div class="row">
         <span class="label">Selected:</span>
         <code class="code">{{ selected }}</code>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2 class="cardTitle">FormField</h2>
+
+      <div class="formFieldDemo">
+        <div class="stack">
+          <FormField
+            v-model="name"
+            :type="InputType.Text"
+            label="Name"
+            placeholder="Type your name"
+          />
+
+          <FormField
+            v-model="email"
+            :type="InputType.Email"
+            label="Email"
+            placeholder="Type your email"
+          />
+
+          <FormField
+            v-model="name"
+            :type="InputType.Text"
+            label="Disabled"
+            placeholder="Disabled field"
+            :isDisabled="true"
+          />
+        </div>
       </div>
     </div>
   </section>
@@ -115,5 +148,9 @@
     border-radius: 8px;
     border: 1px solid var(--color-border, #e5e7eb);
     background: var(--color-bg, #f9fafb);
+  }
+  .formFieldDemo {
+    width: 420px;
+    max-width: 100%;
   }
 </style>
