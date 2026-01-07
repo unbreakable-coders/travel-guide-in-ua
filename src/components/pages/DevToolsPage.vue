@@ -25,6 +25,7 @@
   const name = ref("");
   const email = ref("");
   const password = ref("");
+  const disabledField = ref("");
 
   const groupOptions: CheckboxOption[] = [
     { value: "wifi", label: "Wi-Fi" },
@@ -90,7 +91,7 @@
           />
 
           <FormField
-            v-model="name"
+            v-model="disabledField"
             :type="InputType.Text"
             label="Disabled"
             placeholder="Disabled field"
