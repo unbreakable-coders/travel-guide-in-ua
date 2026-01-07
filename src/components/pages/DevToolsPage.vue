@@ -5,6 +5,9 @@
   import { CheckboxButton } from "@/shared/form/CheckboxButton";
   import { CheckboxGroup } from "@/shared/form/CheckboxGroup";
   import type { CheckboxOption } from "@/shared/form/CheckboxGroup";
+  import { RadioButton } from "@/shared/form/RadioButton";
+  import { RadioGroup } from "@/shared/form/RadioGroup";
+  import type { RadioOption } from "@/shared/form/RadioGroup";
 
   const options: TabOption[] = [
     { value: "overview", label: "Overview" },
@@ -29,6 +32,18 @@
   ];
 
   const groupSelected = ref<Array<string | number>>(["wifi", "parking"]);
+
+  const radioSelected = ref<string | number>("cultural");
+
+  const radioGroupOptions: RadioOption[] = [
+    { value: "cultural", label: "Cultural" },
+    { value: "active", label: "Active" },
+    { value: "gastronomic", label: "Gastronomic" },
+    { value: "historical", label: "Historical" },
+    { value: "natural", label: "Natural" },
+  ];
+
+  const radioGroupSelected = ref<string | number>("cultural");
 </script>
 
 <template>
@@ -73,6 +88,39 @@
       <div class="row">
         <span class="label">Selected:</span>
         <code class="code">{{ groupSelected }}</code>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2 class="cardTitle">RadioButton</h2>
+
+      <div class="stack">
+        <RadioButton v-model="radioSelected" value="cultural" label="Cultural" />
+        <RadioButton v-model="radioSelected" value="active" label="Active" />
+        <RadioButton v-model="radioSelected" value="gastronomic" label="Gastronomic" />
+        <RadioButton v-model="radioSelected" value="historical" label="Historical" />
+        <RadioButton
+          v-model="radioSelected"
+          value="extreme"
+          label="Extreme (requires preparation)"
+          :isDisabled="true"
+        />
+      </div>
+
+      <div class="row">
+        <span class="label">Selected:</span>
+        <code class="code">{{ radioSelected }}</code>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2 class="cardTitle">RadioGroup</h2>
+
+      <RadioGroup v-model="radioGroupSelected" :options="radioGroupOptions" label="Tour types" />
+
+      <div class="row">
+        <span class="label">Selected:</span>
+        <code class="code">{{ radioGroupSelected }}</code>
       </div>
     </div>
   </section>
