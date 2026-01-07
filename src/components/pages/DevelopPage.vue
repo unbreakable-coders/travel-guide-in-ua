@@ -1,13 +1,11 @@
 <script setup lang="ts">
   const colors = [
-    { name: "Primary", var: "--color-primary" },
-    { name: "Secondary", var: "--color-secondary" },
-    { name: "Accent", var: "--color-accent" },
-    { name: "BG", var: "--color-bg" },
-    { name: "Surface", var: "--color-surface" },
-    { name: "Text Primary", var: "--color-text-primary" },
-    { name: "Text Secondary", var: "--color-text-secondary" },
-    { name: "Border", var: "--color-border" },
+    { name: "Primary", var: "--v-theme-primary" },
+    { name: "Secondary", var: "--v-theme-secondary" },
+    { name: "Accent", var: "--v-theme-accent" },
+    { name: "BG", var: "--v-theme-background" },
+    { name: "Surface", var: "--v-theme-surface" },
+    { name: "On Surface", var: "--v-theme-on-surface" },
   ];
 </script>
 
@@ -41,27 +39,27 @@
 
         <div class="stack">
           <div>
-            <div class="label">H1 / Manrope 700</div>
+            <div class="label">H1 / 700</div>
             <div class="h1 demo">Discover Ukraine Deeper</div>
           </div>
 
           <div>
-            <div class="label">H2 / Manrope 600</div>
+            <div class="label">H2 / 600</div>
             <div class="h2 demo">Featured Regions & Routes</div>
           </div>
 
           <div>
-            <div class="label">H3 / Manrope 600</div>
+            <div class="label">H3 / 600</div>
             <div class="h3 demo">Kyiv • Lviv • Odesa</div>
           </div>
 
           <div>
-            <div class="label">Body L / Inter 400</div>
+            <div class="label">Body L / 400</div>
             <p class="bodyL">Легкий атмосферний текст для опису місць, маршрутів і рекомендацій.</p>
           </div>
 
           <div>
-            <div class="label">Body / Inter 400</div>
+            <div class="label">Body / 400</div>
             <p class="body">
               IN-UA — платформа для подорожей Україною: області, міста, каталоги місць,
               персоналізація, обране.
@@ -80,7 +78,7 @@
 
         <div class="swatches">
           <div v-for="c in colors" :key="c.var" class="swatch">
-            <div class="chip" :style="{ background: `var(${c.var})` }" />
+            <div class="chip" :style="{ background: `rgb(var(${c.var}))` }" />
             <div class="swatchText">
               <div class="swatchName">{{ c.name }}</div>
               <div class="swatchVar">{{ c.var }}</div>
@@ -153,8 +151,8 @@
 <style scoped>
   .wrap {
     min-height: 100vh;
-    background: var(--color-bg);
-    color: var(--color-text-primary);
+    background: rgb(var(--v-theme-background));
+    color: rgb(var(--v-theme-on-surface));
     padding: 32px 16px 64px;
   }
 
@@ -169,35 +167,47 @@
   }
 
   .kicker {
-    font: 600 var(--small)/1 var(--font-body);
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 1;
     letter-spacing: 0.08em;
     text-transform: uppercase;
-    color: var(--color-text-secondary);
+    color: rgba(var(--v-theme-on-surface), 0.72);
     margin: 0 0 10px;
   }
 
   .h1 {
-    font: 700 var(--h1)/var(--lh-heading) var(--font-heading);
+    font-weight: 700;
+    font-size: 56px;
+    line-height: 1.2;
     margin: 0;
   }
   .h2 {
-    font: 600 var(--h2)/var(--lh-heading) var(--font-heading);
+    font-weight: 600;
+    font-size: 40px;
+    line-height: 1.2;
     margin: 0 0 14px;
   }
   .h3 {
-    font: 600 var(--h3)/var(--lh-heading) var(--font-heading);
+    font-weight: 600;
+    font-size: 32px;
+    line-height: 1.2;
     margin: 0;
   }
   .h4 {
-    font: 600 var(--h4)/var(--lh-heading) var(--font-heading);
+    font-weight: 600;
+    font-size: 24px;
+    line-height: 1.2;
     margin: 0 0 12px;
   }
 
   .lead {
     max-width: 64ch;
     margin: 12px 0 0;
-    font: 400 var(--body-l)/var(--lh-body) var(--font-body);
-    color: var(--color-text-secondary);
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 1.6;
+    color: rgba(var(--v-theme-on-surface), 0.72);
   }
 
   .actions {
@@ -220,10 +230,10 @@
   }
 
   .card {
-    background: var(--color-surface);
-    border: 1px solid var(--color-border);
-    border-radius: var(--r-lg);
-    box-shadow: var(--shadow);
+    background: rgb(var(--v-theme-surface));
+    border: 1px solid rgba(var(--v-theme-on-surface), 0.12);
+    border-radius: 16px;
+    box-shadow: 0 10px 25px rgba(17, 24, 39, 0.08);
     padding: 20px;
   }
 
@@ -233,8 +243,10 @@
   }
 
   .label {
-    font: 600 var(--small)/1.2 var(--font-body);
-    color: var(--color-text-secondary);
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 1.2;
+    color: rgba(var(--v-theme-on-surface), 0.72);
     margin-bottom: 6px;
   }
 
@@ -243,15 +255,19 @@
   }
 
   .bodyL {
-    font: 400 var(--body-l)/var(--lh-body) var(--font-body);
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 1.6;
     margin: 0;
   }
   .body {
-    font: 400 var(--body)/var(--lh-body) var(--font-body);
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 1.6;
     margin: 0;
   }
   .muted {
-    color: var(--color-text-secondary);
+    color: rgba(var(--v-theme-on-surface), 0.72);
   }
 
   .meta {
@@ -261,48 +277,13 @@
   }
 
   .pill {
-    font: 600 var(--small)/1 var(--font-body);
-    padding: 6px 10px;
-    border: 1px solid var(--color-border);
-    border-radius: 999px;
-    background: rgba(31, 58, 95, 0.06);
-  }
-
-  .btn {
-    border-radius: 999px;
-    border: 1px solid transparent;
-    padding: 10px 14px;
-    font: 600 var(--body)/1 var(--font-body);
-    cursor: pointer;
-    transition:
-      transform 0.12s ease,
-      opacity 0.12s ease,
-      background 0.12s ease,
-      border-color 0.12s ease;
-  }
-
-  .btn:hover {
-    transform: translateY(-1px);
-  }
-  .btn:active {
-    transform: translateY(0);
-    opacity: 0.95;
-  }
-
-  .btn--sm {
-    padding: 9px 12px;
+    font-weight: 600;
     font-size: 14px;
-  }
-
-  .btn--primary {
-    background: var(--color-primary);
-    color: white;
-  }
-
-  .btn--ghost {
-    background: transparent;
-    border-color: var(--color-border);
-    color: var(--color-text-primary);
+    line-height: 1;
+    padding: 6px 10px;
+    border: 1px solid rgba(var(--v-theme-on-surface), 0.12);
+    border-radius: 999px;
+    background: rgba(var(--v-theme-primary), 0.06);
   }
 
   .swatches {
@@ -322,31 +303,29 @@
     gap: 12px;
     align-items: center;
     padding: 10px 12px;
-    border: 1px solid var(--color-border);
-    border-radius: var(--r-md);
-    background: rgba(0, 0, 0, 0.01);
+    border: 1px solid rgba(var(--v-theme-on-surface), 0.12);
+    border-radius: 12px;
+    background: rgba(var(--v-theme-on-surface), 0.02);
   }
 
   .chip {
     width: 44px;
     height: 44px;
     border-radius: 12px;
-    border: 1px solid rgba(0, 0, 0, 0.08);
+    border: 1px solid rgba(var(--v-theme-on-surface), 0.12);
   }
 
   .swatchName {
-    font: 600 14px/1.2 var(--font-body);
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 1.2;
   }
   .swatchVar {
-    font: 400 13px/1.2 var(--font-body);
-    color: var(--color-text-secondary);
+    font-weight: 400;
+    font-size: 13px;
+    line-height: 1.2;
+    color: rgba(var(--v-theme-on-surface), 0.72);
     margin-top: 2px;
-  }
-
-  .divider {
-    height: 1px;
-    background: var(--color-border);
-    margin: 16px 0;
   }
 
   .examples {
@@ -359,24 +338,26 @@
   .badge {
     padding: 6px 10px;
     border-radius: 999px;
-    font: 600 13px/1 var(--font-body);
+    font-weight: 600;
+    font-size: 13px;
+    line-height: 1;
     border: 1px solid transparent;
   }
 
   .badge--primary {
-    background: rgba(31, 58, 95, 0.12);
-    color: var(--color-primary);
-    border-color: rgba(31, 58, 95, 0.18);
+    background: rgba(var(--v-theme-primary), 0.12);
+    color: rgb(var(--v-theme-primary));
+    border-color: rgba(var(--v-theme-primary), 0.18);
   }
   .badge--secondary {
-    background: rgba(58, 139, 92, 0.12);
-    color: var(--color-secondary);
-    border-color: rgba(58, 139, 92, 0.18);
+    background: rgba(var(--v-theme-secondary), 0.12);
+    color: rgb(var(--v-theme-secondary));
+    border-color: rgba(var(--v-theme-secondary), 0.18);
   }
   .badge--accent {
-    background: rgba(226, 176, 74, 0.18);
-    color: #8a5a00;
-    border-color: rgba(226, 176, 74, 0.28);
+    background: rgba(var(--v-theme-accent), 0.18);
+    color: rgb(var(--v-theme-on-surface));
+    border-color: rgba(var(--v-theme-accent), 0.28);
   }
 
   .mapLegend {
@@ -388,27 +369,29 @@
     display: flex;
     align-items: center;
     gap: 10px;
-    font: 400 14px/1.2 var(--font-body);
-    color: var(--color-text-secondary);
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 1.2;
+    color: rgba(var(--v-theme-on-surface), 0.72);
   }
   .dot {
     width: 10px;
     height: 10px;
     border-radius: 999px;
     display: inline-block;
-    border: 1px solid rgba(0, 0, 0, 0.12);
+    border: 1px solid rgba(var(--v-theme-on-surface), 0.12);
   }
   .dot--muted {
-    background: #d7dde6;
+    background: rgba(var(--v-theme-on-surface), 0.18);
   }
   .dot--accent {
-    background: var(--color-accent);
+    background: rgb(var(--v-theme-accent));
   }
   .dot--primary {
-    background: var(--color-primary);
+    background: rgb(var(--v-theme-primary));
   }
   .dot--secondary {
-    background: var(--color-secondary);
+    background: rgb(var(--v-theme-secondary));
   }
 
   .components {
@@ -417,16 +400,20 @@
   }
 
   .placeCard {
-    border: 1px solid var(--color-border);
-    border-radius: var(--r-lg);
+    border: 1px solid rgba(var(--v-theme-on-surface), 0.12);
+    border-radius: 16px;
     overflow: hidden;
     display: grid;
     grid-template-columns: 120px 1fr;
-    background: var(--color-surface);
+    background: rgb(var(--v-theme-surface));
   }
 
   .thumb {
-    background: linear-gradient(135deg, rgba(31, 58, 95, 0.18), rgba(58, 139, 92, 0.18));
+    background: linear-gradient(
+      135deg,
+      rgba(var(--v-theme-primary), 0.18),
+      rgba(var(--v-theme-secondary), 0.18)
+    );
     min-height: 120px;
   }
 
@@ -450,9 +437,9 @@
   }
 
   .info {
-    border-left: 4px solid var(--color-accent);
+    border-left: 4px solid rgb(var(--v-theme-accent));
     padding: 12px 14px;
-    background: rgba(226, 176, 74, 0.1);
-    border-radius: var(--r-md);
+    background: rgba(var(--v-theme-accent), 0.1);
+    border-radius: 12px;
   }
 </style>
