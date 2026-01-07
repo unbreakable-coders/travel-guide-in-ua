@@ -6,6 +6,7 @@
       <nav class="header__nav">
         <router-link class="header__link" to="/">Головна</router-link>
         <router-link class="header__link" to="/develop">Develop</router-link>
+        <router-link class="header__link" to="/devtools">DevTools</router-link>
       </nav>
     </div>
   </header>
