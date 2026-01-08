@@ -11,6 +11,9 @@
   import { RadioGroup } from "@/shared/form/RadioGroup";
   import type { RadioOption } from "@/shared/form/RadioGroup";
   import { TabButton, TabButtonState } from "@/shared/ui/TabButton";
+  import type { SelectOption } from "@/shared/form/SelectField";
+  import SelectField from "@/shared/form/SelectField/SelectField.vue";
+  import SelectLanguage from "@/shared/widgets/SelectLanguage/SelectLanguage.vue";
 
   const options: TabOption[] = [
     { value: "overview", label: "Overview" },
@@ -55,6 +58,14 @@
   const onTabClick = () => {
     console.log("TabButton click");
   };
+
+  const selectedOption = ref<SelectOption["value"]>();
+  const selectFieldOptions: SelectOption[] = [
+    { label: "Option №1", value: "option-1" },
+    { label: "Option №2", value: "option-2" },
+    { label: "Option №3", value: "option-3" },
+    { label: "Option №4", value: "option-4" },
+  ];
 </script>
 
 <template>
@@ -146,6 +157,36 @@
           :isDisabled="true"
         />
       </div>
+    </div>
+
+    <div class="card">
+      <h2 class="cardTitle">SelectField</h2>
+
+      <div class="selectFieldDemo">
+        <SelectField
+          label="SelectField Label"
+          :options="selectFieldOptions"
+          v-model="selectedOption"
+        />
+
+        <SelectField
+          label="SelectField Label"
+          :options="selectFieldOptions"
+          :isDisabled="true"
+          v-model="selectedOption"
+        />
+
+        <div class="row">
+          <span class="label">Selected:</span>
+          <code class="code">{{ selectedOption }}</code>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2 class="cardTitle">Language Selection</h2>
+
+      <SelectLanguage />
     </div>
 
     <div class="card">
