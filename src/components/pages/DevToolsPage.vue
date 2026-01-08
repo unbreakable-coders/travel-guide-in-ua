@@ -18,6 +18,8 @@
   import { LineChartLabelSet } from "@/shared/widgets/LineChart/types";
   import { Rating } from "@/shared/widgets/Rating";
   import AppLogo from "@/shared/widgets/AppLogo/AppLogo.vue";
+  import { BookingCard } from "@/shared/widgets/BookingCard";
+  import type { Booking } from "@/shared/widgets/BookingCard";
 
   /*** TabButton and TabGroup ***/
   const options: TabOption[] = [
@@ -73,6 +75,25 @@
   const monthlyData = [12, 19, 8, 14, 20, 25, 18, 22, 15, 10, 5, 7];
   const weeklyData = [5, 8, 12, 15, 9, 4, 6];
   const seasonalData = [50, 75, 60, 40];
+
+  /*** BookingCard ***/
+  const bookings: Booking[] = [
+    {
+      id: `bk_${Date.now()}`,
+      time: Date.now() + 86400000, // tomorrow
+      title: "Cultural Tour - Kyiv Historical Center",
+    },
+    {
+      id: `bk_${Date.now() + 1}`,
+      time: Date.now() + 172800000, // day after tomorrow
+      title: "Gastronomic Experience - Lviv Old Town",
+    },
+    {
+      id: `bk_${Date.now() + 2}`,
+      time: Date.now() - 86400000, // yesterday
+      title: "Active Adventure - Carpathian Mountains",
+    },
+  ];
 </script>
 
 <template>
@@ -100,22 +121,6 @@
       <div class="row">
         <span class="label">Active:</span>
         <code class="code">{{ active }}</code>
-      </div>
-    </div>
-
-    <div class="card">
-      <h2 class="cardTitle">CheckboxButton</h2>
-
-      <div class="stack">
-        <CheckboxButton v-model="selected" value="wifi" label="Wi-Fi" />
-        <CheckboxButton v-model="selected" value="parking" label="Parking" />
-        <CheckboxButton v-model="selected" value="pet" label="Pet friendly" />
-        <CheckboxButton v-model="selected" value="disabled" label="Disabled" :isDisabled="true" />
-      </div>
-
-      <div class="row">
-        <span class="label">Selected:</span>
-        <code class="code">{{ selected }}</code>
       </div>
     </div>
 
@@ -197,6 +202,22 @@
     </div>
 
     <div class="card">
+      <h2 class="cardTitle">CheckboxButton</h2>
+
+      <div class="stack">
+        <CheckboxButton v-model="selected" value="wifi" label="Wi-Fi" />
+        <CheckboxButton v-model="selected" value="parking" label="Parking" />
+        <CheckboxButton v-model="selected" value="pet" label="Pet friendly" />
+        <CheckboxButton v-model="selected" value="disabled" label="Disabled" :isDisabled="true" />
+      </div>
+
+      <div class="row">
+        <span class="label">Selected:</span>
+        <code class="code">{{ selected }}</code>
+      </div>
+    </div>
+
+    <div class="card">
       <h2 class="cardTitle">CheckboxGroup</h2>
 
       <CheckboxGroup v-model="groupSelected" :options="groupOptions" label="Amenities" />
@@ -253,10 +274,21 @@
     </div>
 
     <div class="card">
+      <h2 class="cardTitle">BookingCard Widget</h2>
+
+      <div class="booking-list">
+        <BookingCard v-for="booking in bookings" :key="booking.id" :booking="booking" />
+      </div>
+    </div>
+
+    <div class="card">
       <h2 class="cardTitle">AppLogo</h2>
 
       <AppLogo />
       <AppLogo :vertical="true" />
+    </div>
+
+    <div class="card">
       <h2 class="cardTitle">Line Chart</h2>
 
       <LineChart
