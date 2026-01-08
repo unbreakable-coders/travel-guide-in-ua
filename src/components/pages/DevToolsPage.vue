@@ -17,6 +17,7 @@
   import LineChart from "@/shared/widgets/LineChart/LineChart.vue";
   import { LineChartLabelSet } from "@/shared/widgets/LineChart/types";
   import { Rating } from "@/shared/widgets/Rating";
+  import AppLogo from "@/shared/widgets/AppLogo/AppLogo.vue";
 
   /*** TabButton and TabGroup ***/
   const options: TabOption[] = [
@@ -252,6 +253,10 @@
     </div>
 
     <div class="card">
+      <h2 class="cardTitle">AppLogo</h2>
+
+      <AppLogo />
+      <AppLogo :vertical="true" />
       <h2 class="cardTitle">Line Chart</h2>
 
       <LineChart
