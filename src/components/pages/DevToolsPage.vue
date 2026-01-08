@@ -11,6 +11,7 @@
   import { RadioGroup } from "@/shared/form/RadioGroup";
   import type { RadioOption } from "@/shared/form/RadioGroup";
   import { TabButton, TabButtonState } from "@/shared/ui/TabButton";
+  import { Rating } from "@/shared/widgets/Rating";
 
   const options: TabOption[] = [
     { value: "overview", label: "Overview" },
@@ -189,6 +190,18 @@
       <div class="row">
         <span class="label">Selected:</span>
         <code class="code">{{ radioGroupSelected }}</code>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2 class="cardTitle">Rating</h2>
+
+      <div class="ratingDemo">
+        <div class="stack">
+          <Rating>4.666</Rating>
+          <Rating>5</Rating>
+          <Rating>2.01</Rating>
+        </div>
       </div>
     </div>
   </section>
