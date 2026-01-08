@@ -11,9 +11,15 @@
   import { RadioGroup } from "@/shared/form/RadioGroup";
   import type { RadioOption } from "@/shared/form/RadioGroup";
   import { TabButton, TabButtonState } from "@/shared/ui/TabButton";
+  import type { SelectOption } from "@/shared/form/SelectField";
+  import SelectField from "@/shared/form/SelectField/SelectField.vue";
+  import SelectLanguage from "@/shared/widgets/SelectLanguage/SelectLanguage.vue";
+  import LineChart from "@/shared/widgets/LineChart/LineChart.vue";
+  import { LineChartLabelSet } from "@/shared/widgets/LineChart/types";
   import { Rating } from "@/shared/widgets/Rating";
   import AppLogo from "@/shared/widgets/AppLogo/AppLogo.vue";
 
+  /*** TabButton and TabGroup ***/
   const options: TabOption[] = [
     { value: "overview", label: "Overview" },
     { value: "features", label: "Features" },
@@ -22,17 +28,10 @@
   ];
 
   const active = ref<string | number>("overview");
+  const onTabClick = () => console.log("TabButton click");
+  const onUpdate = (value: string | number) => (active.value = value);
 
-  const onUpdate = (value: string | number) => {
-    active.value = value;
-  };
-
-  const selected = ref<Array<string | number>>(["wifi"]);
-  const name = ref("");
-  const email = ref("");
-  const password = ref("");
-  const disabledField = ref("");
-
+  /*** CheckboxButton and CheckboxGroup ***/
   const groupOptions: CheckboxOption[] = [
     { value: "wifi", label: "Wi-Fi" },
     { value: "parking", label: "Parking" },
@@ -40,9 +39,18 @@
     { value: "disabled", label: "Disabled", disabled: true },
   ];
 
+  const selected = ref<Array<string | number>>(["wifi"]);
   const groupSelected = ref<Array<string | number>>(["wifi", "parking"]);
 
+  /*** FormField and PasswordField ***/
+  const name = ref("");
+  const email = ref("");
+  const password = ref("");
+  const disabledField = ref("");
+
+  /*** RadioButton and RadioGroup ***/
   const radioSelected = ref<string | number>("cultural");
+  const radioGroupSelected = ref<string | number>("cultural");
 
   const radioGroupOptions: RadioOption[] = [
     { value: "cultural", label: "Cultural" },
@@ -52,11 +60,19 @@
     { value: "natural", label: "Natural" },
   ];
 
-  const radioGroupSelected = ref<string | number>("cultural");
+  /*** SelectField and SelectLanguage ***/
+  const selectedOption = ref<SelectOption["value"]>();
+  const selectFieldOptions: SelectOption[] = [
+    { label: "Option №1", value: "option-1" },
+    { label: "Option №2", value: "option-2" },
+    { label: "Option №3", value: "option-3" },
+    { label: "Option №4", value: "option-4" },
+  ];
 
-  const onTabClick = () => {
-    console.log("TabButton click");
-  };
+  /*** LineChart ***/
+  const monthlyData = [12, 19, 8, 14, 20, 25, 18, 22, 15, 10, 5, 7];
+  const weeklyData = [5, 8, 12, 15, 9, 4, 6];
+  const seasonalData = [50, 75, 60, 40];
 </script>
 
 <template>
@@ -151,6 +167,36 @@
     </div>
 
     <div class="card">
+      <h2 class="cardTitle">SelectField</h2>
+
+      <div class="selectFieldDemo">
+        <SelectField
+          label="SelectField Label"
+          :options="selectFieldOptions"
+          v-model="selectedOption"
+        />
+
+        <SelectField
+          label="SelectField Label"
+          :options="selectFieldOptions"
+          :isDisabled="true"
+          v-model="selectedOption"
+        />
+
+        <div class="row">
+          <span class="label">Selected:</span>
+          <code class="code">{{ selectedOption }}</code>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2 class="cardTitle">Language Selection</h2>
+
+      <SelectLanguage />
+    </div>
+
+    <div class="card">
       <h2 class="cardTitle">CheckboxGroup</h2>
 
       <CheckboxGroup v-model="groupSelected" :options="groupOptions" label="Amenities" />
@@ -211,6 +257,35 @@
 
       <AppLogo />
       <AppLogo :vertical="true" />
+      <h2 class="cardTitle">Line Chart</h2>
+
+      <LineChart
+        title="Monthly Revenue"
+        height="250px"
+        :tension="0"
+        :labelSet="LineChartLabelSet.MONTHS"
+        :data="monthlyData"
+        :grid="{ x: false, y: true }"
+      />
+
+      <LineChart
+        title="Weekly Visitors"
+        color="#FA5C5C"
+        height="300px"
+        :thickness="2"
+        :labelSet="LineChartLabelSet.WEEK_DAYS"
+        :data="weeklyData"
+        :grid="{ x: false, y: false }"
+      />
+
+      <LineChart
+        title="Seasonal Performance"
+        color="#00F7FF"
+        height="300px"
+        :thickness="3"
+        :labelSet="LineChartLabelSet.SEASONS"
+        :data="seasonalData"
+      />
     </div>
   </section>
 </template>
