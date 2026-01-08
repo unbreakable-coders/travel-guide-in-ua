@@ -12,6 +12,7 @@
   import type { RadioOption } from "@/shared/form/RadioGroup";
   import { TabButton, TabButtonState } from "@/shared/ui/TabButton";
   import { Rating } from "@/shared/widgets/Rating";
+  import AppLogo from "@/shared/widgets/AppLogo/AppLogo.vue";
 
   const options: TabOption[] = [
     { value: "overview", label: "Overview" },
@@ -203,6 +204,13 @@
           <Rating>2.01</Rating>
         </div>
       </div>
+    </div>
+
+    <div class="card">
+      <h2 class="cardTitle">AppLogo</h2>
+
+      <AppLogo />
+      <AppLogo :vertical="true" />
     </div>
   </section>
 </template>

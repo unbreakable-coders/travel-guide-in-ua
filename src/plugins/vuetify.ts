@@ -12,6 +12,7 @@ export const vuetify = createVuetify({
           secondary: "#3a8b5c",
           accent: "#e2b04a",
           background: "#f7f8fa",
+          gray: "#bfbfbfff",
           surface: "#ffffff",
         },
       },
