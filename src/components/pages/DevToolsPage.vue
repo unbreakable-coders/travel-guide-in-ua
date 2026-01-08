@@ -104,22 +104,6 @@
     </div>
 
     <div class="card">
-      <h2 class="cardTitle">CheckboxButton</h2>
-
-      <div class="stack">
-        <CheckboxButton v-model="selected" value="wifi" label="Wi-Fi" />
-        <CheckboxButton v-model="selected" value="parking" label="Parking" />
-        <CheckboxButton v-model="selected" value="pet" label="Pet friendly" />
-        <CheckboxButton v-model="selected" value="disabled" label="Disabled" :isDisabled="true" />
-      </div>
-
-      <div class="row">
-        <span class="label">Selected:</span>
-        <code class="code">{{ selected }}</code>
-      </div>
-    </div>
-
-    <div class="card">
       <h2 class="cardTitle">FormField</h2>
 
       <div class="formFieldDemo">
@@ -194,6 +178,22 @@
       <h2 class="cardTitle">Language Selection</h2>
 
       <SelectLanguage />
+    </div>
+
+    <div class="card">
+      <h2 class="cardTitle">CheckboxButton</h2>
+
+      <div class="stack">
+        <CheckboxButton v-model="selected" value="wifi" label="Wi-Fi" />
+        <CheckboxButton v-model="selected" value="parking" label="Parking" />
+        <CheckboxButton v-model="selected" value="pet" label="Pet friendly" />
+        <CheckboxButton v-model="selected" value="disabled" label="Disabled" :isDisabled="true" />
+      </div>
+
+      <div class="row">
+        <span class="label">Selected:</span>
+        <code class="code">{{ selected }}</code>
+      </div>
     </div>
 
     <div class="card">

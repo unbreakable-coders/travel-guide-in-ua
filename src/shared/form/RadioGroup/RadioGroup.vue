@@ -66,19 +66,19 @@
   </div>
 </template>
 
-<style scoped>
+<style lang="scss" scoped>
   .radio-group {
     display: grid;
     gap: 8px;
-  }
 
-  .radio-group__label {
-    font-weight: 600;
-  }
+    &__label {
+      font-weight: 600;
+    }
 
-  .radio-group__list {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 12px;
+    &__list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
   }
 </style>
