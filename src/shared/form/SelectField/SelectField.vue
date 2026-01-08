@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-  import { ref, computed, watchEffect, onMounted, onBeforeUnmount } from "vue";
+  import { ref, computed, onMounted, onBeforeUnmount, watch } from "vue";
   import type { SelectOption } from "./types";
   import ArrowIcon from "@/shared/icons/arrow.svg";
   import SelectedIcon from "@/shared/icons/tick-mark.svg";
@@ -42,11 +42,15 @@
     selectedOption.value = option;
   };
 
-  watchEffect(() => {
-    if (props.modelValue == null && props.options.length) {
-      emit("update:modelValue", props.options[0]?.value || "");
-    }
-  });
+  watch(
+    () => [props.modelValue, props.options],
+    ([modelValue, options]) => {
+      if (modelValue == null && Array.isArray(options) && options.length) {
+        emit("update:modelValue", options[0]?.value ?? "");
+      }
+    },
+    { immediate: true }
+  );
 
   const optionsRef = ref<HTMLElement | null>(null);
   const optionsHeight = computed(() =>
@@ -75,15 +79,16 @@
 </script>
 
 <template>
-  <div class="select-field" :class="{ 'select-field--collapsed': isShown }" ref="selectRef">
+  <div class="select-field" :class="{ 'select-field--opened': isShown }" ref="selectRef">
     <p v-if="props.label" class="select-field__label">{{ props.label }}</p>
 
     <button
       type="button"
       class="select-field__btn"
       :class="{ 'select-field__btn--disabled': props.isDisabled }"
-      @click="toggleOptions"
       :disabled="props.isDisabled"
+      :aria-expanded="isShown"
+      @click="toggleOptions"
     >
       <div class="select-field__btn-content">
         <Component
@@ -134,7 +139,7 @@
   .select-field {
     position: relative;
 
-    &--collapsed {
+    &--opened {
       .select-field__arrow {
         transform: scaleY(-1);
       }
