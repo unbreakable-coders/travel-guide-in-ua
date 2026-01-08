@@ -1,19 +1,19 @@
 <script lang="ts" setup>
   import type { SelectOption } from "@/shared/form/SelectField";
   import SelectField from "@/shared/form/SelectField/SelectField.vue";
-  import { Language, LanguageIcon } from "./types";
+  import { Language, LANGUAGE_ICON } from "./types";
   import { ref } from "vue";
 
   const options: SelectOption[] = [
     {
       label: "English",
       value: Language.English,
-      icon: LanguageIcon[Language.English],
+      icon: LANGUAGE_ICON[Language.English],
     },
     {
       label: "Українська",
       value: Language.Ukrainian,
-      icon: LanguageIcon[Language.Ukrainian],
+      icon: LANGUAGE_ICON[Language.Ukrainian],
     },
   ];
 

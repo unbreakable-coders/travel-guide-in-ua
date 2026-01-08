@@ -6,7 +6,7 @@ export enum Language {
   English = "en",
 }
 
-export const LanguageIcon: Record<Language, string> = {
+export const LANGUAGE_ICON: Record<Language, string> = {
   [Language.Ukrainian]: UkraineFlagIcon,
   [Language.English]: EnglishFlagIcon,
 };
