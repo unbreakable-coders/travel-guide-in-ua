@@ -68,19 +68,19 @@
   </div>
 </template>
 
-<style scoped>
+<style scoped lang="scss">
   .checkbox-group {
     display: grid;
     gap: 8px;
-  }
 
-  .checkbox-group__label {
-    font-weight: 600;
-  }
+    &__label {
+      font-weight: 600;
+    }
 
-  .checkbox-group__list {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 12px;
+    &__list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
   }
 </style>
