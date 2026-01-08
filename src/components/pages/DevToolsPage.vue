@@ -16,6 +16,7 @@
   import SelectLanguage from "@/shared/widgets/SelectLanguage/SelectLanguage.vue";
   import LineChart from "@/shared/widgets/LineChart/LineChart.vue";
   import { LineChartLabelSet } from "@/shared/widgets/LineChart/types";
+  import { Rating } from "@/shared/widgets/Rating";
 
   /*** TabButton and TabGroup ***/
   const options: TabOption[] = [
@@ -235,6 +236,18 @@
       <div class="row">
         <span class="label">Selected:</span>
         <code class="code">{{ radioGroupSelected }}</code>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2 class="cardTitle">Rating</h2>
+
+      <div class="ratingDemo">
+        <div class="stack">
+          <Rating>4.666</Rating>
+          <Rating>5</Rating>
+          <Rating>2.01</Rating>
+        </div>
       </div>
     </div>
 

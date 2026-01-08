@@ -72,10 +72,10 @@
   </div>
 </template>
 
-<style scoped>
+<style scoped lang="scss">
   .tab-group {
     display: inline-flex;
-    gap: 8px;
     align-items: center;
+    gap: 8px;
   }
 </style>
