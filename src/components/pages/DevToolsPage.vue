@@ -6,6 +6,7 @@
   import { FormField, InputType } from "@/shared/form/FormField";
   import { CheckboxGroup } from "@/shared/form/CheckboxGroup";
   import type { CheckboxOption } from "@/shared/form/CheckboxGroup";
+  import PasswordField from "@/shared/form/PasswordField/PasswordField.vue";
   import { RadioButton } from "@/shared/form/RadioButton";
   import { RadioGroup } from "@/shared/form/RadioGroup";
   import type { RadioOption } from "@/shared/form/RadioGroup";
@@ -26,6 +27,7 @@
   const selected = ref<Array<string | number>>(["wifi"]);
   const name = ref("");
   const email = ref("");
+  const password = ref("");
   const disabledField = ref("");
 
   const groupOptions: CheckboxOption[] = [
@@ -111,6 +113,23 @@
             :isDisabled="true"
           />
         </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2 class="cardTitle">PasswordField</h2>
+
+      <div class="passwordFieldDemo">
+        <PasswordField v-model="password" label="Password" placeholder="Type your password" />
+
+        <PasswordField v-model="password" label="Password" placeholder="Type your password" />
+
+        <PasswordField
+          v-model="password"
+          label="Password"
+          placeholder="Disabled field"
+          :isDisabled="true"
+        />
       </div>
     </div>
 
@@ -221,7 +240,8 @@
     background: var(--color-bg, #f9fafb);
   }
 
-  .formFieldDemo {
+  .formFieldDemo,
+  .passwordFieldDemo {
     width: 420px;
     max-width: 100%;
   }
