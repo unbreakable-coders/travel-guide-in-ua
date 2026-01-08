@@ -52,7 +52,7 @@
         @input="handleInput"
       />
 
-      <button class="password-field__toggle" @click="togglePassword">
+      <button type="button" class="password-field__toggle" @click="togglePassword">
         <component :is="showPassword ? EyeOpenIcon : EyeCloseIcon" />
       </button>
     </div>
@@ -80,6 +80,11 @@
         outline: unset;
         cursor: not-allowed;
         opacity: 0.6;
+
+        button,
+        input {
+          cursor: not-allowed;
+        }
       }
     }
 
@@ -94,7 +99,7 @@
       padding: 16px 20px;
       border-top-left-radius: $field-radius;
       border-bottom-left-radius: $field-radius;
-      cursor: pointer;
+      cursor: text;
       outline: none;
 
       &:focus {

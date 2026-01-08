@@ -65,7 +65,7 @@
     padding: 16px 20px;
     border: 1px solid #111;
     border-radius: 18px;
-    cursor: pointer;
+    cursor: text;
     outline: none;
   }
 
