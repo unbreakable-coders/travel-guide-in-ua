@@ -41,77 +41,77 @@
   </label>
 </template>
 
-<style scoped>
+<style lang="scss" scoped>
   .radio {
     display: inline-flex;
     align-items: center;
     cursor: pointer;
     user-select: none;
     gap: 10px;
-  }
 
-  .radio--disabled {
-    cursor: not-allowed;
-    opacity: 0.6;
-  }
+    &--disabled {
+      cursor: not-allowed;
+      opacity: 0.6;
+    }
 
-  .radio__input {
-    position: absolute;
-    opacity: 0;
-    width: 1px;
-    height: 1px;
-    pointer-events: none;
-  }
+    &__input {
+      position: absolute;
+      opacity: 0;
+      width: 1px;
+      height: 1px;
+      pointer-events: none;
+    }
 
-  .radio__ui {
-    position: relative;
-    width: 20px;
-    height: 20px;
-    border-radius: 999px;
-    border: 2px solid rgba(var(--v-theme-on-surface), 0.4);
-    background: transparent;
-    transition:
-      border-color 0.2s ease,
-      background-color 0.2s ease,
-      box-shadow 0.2s ease;
-    flex: 0 0 auto;
-  }
+    &__ui {
+      position: relative;
+      width: 20px;
+      height: 20px;
+      border-radius: 999px;
+      border: 2px solid rgba(var(--v-theme-on-surface), 0.4);
+      background: transparent;
+      transition:
+        border-color 0.2s ease,
+        background-color 0.2s ease,
+        box-shadow 0.2s ease;
+      flex: 0 0 auto;
 
-  .radio__ui::after {
-    content: "";
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%) scale(0);
-    width: 10px;
-    height: 10px;
-    border-radius: 999px;
-    background: rgb(var(--v-theme-surface));
-    transition: transform 0.2s ease;
-  }
+      &::after {
+        content: "";
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%) scale(0);
+        width: 10px;
+        height: 10px;
+        border-radius: 999px;
+        background: rgb(var(--v-theme-surface));
+        transition: transform 0.2s ease;
+      }
+    }
 
-  .radio__input:checked + .radio__ui {
-    border-color: rgb(var(--v-theme-secondary));
-    background: rgb(var(--v-theme-secondary));
-  }
+    &__input:checked + &__ui {
+      border-color: rgb(var(--v-theme-secondary));
+      background: rgb(var(--v-theme-secondary));
 
-  .radio__input:checked + .radio__ui::after {
-    transform: translate(-50%, -50%) scale(1);
-  }
+      &::after {
+        transform: translate(-50%, -50%) scale(1);
+      }
+    }
 
-  .radio:not(.radio--disabled):hover .radio__ui {
-    border-color: rgba(var(--v-theme-on-surface), 0.6);
-  }
+    &:not(.radio--disabled):hover &__ui {
+      border-color: rgba(var(--v-theme-on-surface), 0.6);
+    }
 
-  .radio__input:focus-visible + .radio__ui {
-    box-shadow: 0 0 0 3px rgba(var(--v-theme-primary), 0.25);
-  }
+    &__input:focus-visible + &__ui {
+      box-shadow: 0 0 0 3px rgba(var(--v-theme-primary), 0.25);
+    }
 
-  .radio__label {
-    cursor: inherit;
-    font-weight: 500;
-    font-size: 14px;
-    line-height: 1.2;
-    color: rgba(var(--v-theme-on-surface), 0.88);
+    &__label {
+      cursor: inherit;
+      font-weight: 500;
+      font-size: 14px;
+      line-height: 1.2;
+      color: rgba(var(--v-theme-on-surface), 0.88);
+    }
   }
 </style>
