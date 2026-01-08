@@ -10,6 +10,7 @@
   import { RadioButton } from "@/shared/form/RadioButton";
   import { RadioGroup } from "@/shared/form/RadioGroup";
   import type { RadioOption } from "@/shared/form/RadioGroup";
+  import { TabButton, TabButtonState } from "@/shared/ui/TabButton";
 
   const options: TabOption[] = [
     { value: "overview", label: "Overview" },
@@ -50,6 +51,10 @@
   ];
 
   const radioGroupSelected = ref<string | number>("cultural");
+
+  const onTabClick = () => {
+    console.log("TabButton click");
+  };
 </script>
 
 <template>
@@ -58,6 +63,16 @@
       <h1 class="title">DevTools</h1>
       <p class="subtitle">UI playground</p>
     </header>
+
+    <div class="card">
+      <h2 class="cardTitle">TabButton</h2>
+
+      <div class="stack">
+        <TabButton @click="onTabClick">Static</TabButton>
+        <TabButton :state="TabButtonState.Active" @click="onTabClick">Active</TabButton>
+        <TabButton :state="TabButtonState.Disabled" @click="onTabClick">Disabled</TabButton>
+      </div>
+    </div>
 
     <div class="card">
       <h2 class="cardTitle">TabGroup</h2>

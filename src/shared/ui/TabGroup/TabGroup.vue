@@ -1,7 +1,8 @@
 <script setup lang="ts">
   import { ref, watch } from "vue";
-  import { Button } from "@/shared/ui/Button";
   import type { TabOption } from "./types";
+  import TabButton from "../TabButton/TabButton.vue";
+  import { TabButtonState } from "../TabButton";
 
   interface Props {
     options: TabOption[];
@@ -30,6 +31,13 @@
     }
   };
 
+  const getTabState = (option: TabOption) => {
+    if (option.disabled) return TabButtonState.Disabled;
+    if (option.value === activeValue.value) return TabButtonState.Active;
+
+    return TabButtonState.Static;
+  };
+
   watch(
     () => [props.options, props.defaultOption] as const,
     () => {
@@ -53,16 +61,14 @@
 
 <template>
   <div class="tab-group" role="tablist">
-    <Button
+    <TabButton
       v-for="option in options"
       :key="option.value"
-      variant="tab"
-      :isActive="option.value === activeValue"
-      :disabled="option.disabled"
+      :state="getTabState(option)"
       @click="setActive(option)"
     >
       {{ option.label }}
-    </Button>
+    </TabButton>
   </div>
 </template>
 
