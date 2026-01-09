@@ -69,18 +69,25 @@
 </template>
 
 <style scoped lang="scss">
+  @use "sass:map";
+  @use "@/styles/vars" as *;
+  @use "@/styles/typography" as *;
+
   .checkbox-group {
     display: grid;
-    gap: 8px;
 
     &__label {
-      font-weight: 600;
+      @include label;
+
+      display: block;
+      user-select: none;
+      margin-bottom: map.get($spacing, "md");
     }
 
     &__list {
       display: flex;
       flex-wrap: wrap;
-      gap: 12px;
+      gap: map.get($spacing, "md");
     }
   }
 </style>

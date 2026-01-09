@@ -66,19 +66,26 @@
   </div>
 </template>
 
-<style scoped>
+<style lang="scss">
+  @use "sass:map";
+  @use "@/styles/vars" as *;
+  @use "@/styles/typography" as *;
+
   .radio-group {
     display: grid;
-    gap: 8px;
-  }
 
-  .radio-group__label {
-    font-weight: 600;
-  }
+    &__label {
+      @include label;
 
-  .radio-group__list {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 12px;
+      display: block;
+      user-select: none;
+      margin-bottom: map.get($spacing, "md");
+    }
+
+    &__list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: map.get($spacing, "md");
+    }
   }
 </style>

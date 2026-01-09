@@ -30,15 +30,15 @@
 </script>
 
 <template>
-  <div class="formField">
-    <label v-if="props.label" class="formField__label" @click="focusInput">
+  <div class="form-field">
+    <label v-if="props.label" class="form-field__label" @click="focusInput">
       {{ props.label }}
     </label>
 
     <input
       ref="inputRef"
-      class="formField__input"
-      :class="{ 'formField__input--disabled': props.isDisabled }"
+      class="form-field__input"
+      :class="{ 'form-field__input--disabled': props.isDisabled }"
       :type="props.type"
       :placeholder="props.placeholder"
       :disabled="props.isDisabled"
@@ -48,34 +48,40 @@
   </div>
 </template>
 
-<style scoped>
-  .formField {
-    display: grid;
-    gap: 8px;
-  }
+<style lang="scss">
+  @use "sass:map";
+  @use "@/styles/vars" as *;
+  @use "@/styles/typography" as *;
+  @use "@/styles/functions" as *;
 
-  .formField__label {
-    cursor: pointer;
-    user-select: none;
-  }
+  .form-field {
+    &__label {
+      @include label;
 
-  .formField__input {
-    width: 100%;
-    box-sizing: border-box;
-    padding: 16px 20px;
-    border: 1px solid #111;
-    border-radius: 18px;
-    cursor: text;
-    outline: none;
-  }
+      display: block;
+      cursor: pointer;
+      user-select: none;
+      margin-bottom: map.get($spacing, "md");
+    }
 
-  .formField__input:focus {
-    outline: 1px solid blue;
-  }
+    &__input {
+      width: 100%;
+      padding: map.get($spacing, "sm") map.get($spacing, "md");
+      border: 1px solid var(--color-dark);
+      border-radius: $small-radius;
+      cursor: text;
 
-  .formField__input--disabled {
-    background: #f2f2f2;
-    cursor: not-allowed;
-    color: rgba(0, 0, 0, 0.5);
+      &:focus {
+        outline: 1px solid var(--color-blue);
+        border-color: transparent;
+      }
+
+      &--disabled {
+        border-color: var(--color-dark);
+        color: var(--color-dark);
+        background-color: opacity(map.get($colors, "dark"), 10);
+        cursor: not-allowed;
+      }
+    }
   }
 </style>

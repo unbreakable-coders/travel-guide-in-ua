@@ -73,9 +73,12 @@
 </template>
 
 <style scoped lang="scss">
+  @use "sass:map";
+  @use "@/styles/vars" as *;
+
   .tab-group {
     display: inline-flex;
     align-items: center;
-    gap: 8px;
+    gap: map.get($spacing, "xs");
   }
 </style>

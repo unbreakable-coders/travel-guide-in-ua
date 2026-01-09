@@ -41,77 +41,84 @@
   </label>
 </template>
 
-<style scoped>
+<style lang="scss">
+  @use "sass:map";
+  @use "@/styles/vars" as *;
+  @use "@/styles/typography" as *;
+  @use "@/styles/functions" as *;
+
   .radio {
     display: inline-flex;
     align-items: center;
     cursor: pointer;
     user-select: none;
-    gap: 10px;
-  }
+    gap: map.get($spacing, "sm");
 
-  .radio--disabled {
-    cursor: not-allowed;
-    opacity: 0.6;
-  }
+    &--disabled {
+      cursor: not-allowed;
 
-  .radio__input {
-    position: absolute;
-    opacity: 0;
-    width: 1px;
-    height: 1px;
-    pointer-events: none;
-  }
+      .radio__ui {
+        background-color: opacity(map.get($colors, "dark"), 10);
+      }
+    }
 
-  .radio__ui {
-    position: relative;
-    width: 20px;
-    height: 20px;
-    border-radius: 999px;
-    border: 2px solid rgba(var(--v-theme-on-surface), 0.4);
-    background: transparent;
-    transition:
-      border-color 0.2s ease,
-      background-color 0.2s ease,
-      box-shadow 0.2s ease;
-    flex: 0 0 auto;
-  }
+    &__input {
+      position: absolute;
+      opacity: 0;
+      width: 1px;
+      height: 1px;
+      pointer-events: none;
+    }
 
-  .radio__ui::after {
-    content: "";
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%) scale(0);
-    width: 10px;
-    height: 10px;
-    border-radius: 999px;
-    background: rgb(var(--v-theme-surface));
-    transition: transform 0.2s ease;
-  }
+    &__ui {
+      position: relative;
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      border: 2px solid opacity(map.get($colors, "dark"), 40);
+      background: transparent;
+      transition:
+        border-color $base-transition ease,
+        background-color $base-transition ease,
+        box-shadow $base-transition ease;
+      flex: 0 0 auto;
 
-  .radio__input:checked + .radio__ui {
-    border-color: rgb(var(--v-theme-secondary));
-    background: rgb(var(--v-theme-secondary));
-  }
+      &::after {
+        content: "";
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%) scale(0);
+        width: 10px;
+        height: 10px;
+        border-radius: 999px;
+        background: var(--color-surface);
+        transition: transform $base-transition ease;
+      }
+    }
 
-  .radio__input:checked + .radio__ui::after {
-    transform: translate(-50%, -50%) scale(1);
-  }
+    &__input:checked + &__ui {
+      border-color: var(--color-blue);
+      background-color: var(--color-blue);
 
-  .radio:not(.radio--disabled):hover .radio__ui {
-    border-color: rgba(var(--v-theme-on-surface), 0.6);
-  }
+      &::after {
+        transform: translate(-50%, -50%) scale(1);
+      }
+    }
 
-  .radio__input:focus-visible + .radio__ui {
-    box-shadow: 0 0 0 3px rgba(var(--v-theme-primary), 0.25);
-  }
+    &:not(.radio--disabled):hover &__ui {
+      border-color: opacity(map.get($colors, "dark"), 20);
+    }
 
-  .radio__label {
-    cursor: inherit;
-    font-weight: 500;
-    font-size: 14px;
-    line-height: 1.2;
-    color: rgba(var(--v-theme-on-surface), 0.88);
+    &__input:focus-visible + &__ui {
+      box-shadow: 0 0 0 3px rgba(var(--color-primary), 0.25);
+    }
+
+    &__label {
+      cursor: inherit;
+      font-weight: 500;
+      font-size: 14px;
+      line-height: 1.2;
+    }
   }
 </style>

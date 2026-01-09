@@ -21,25 +21,25 @@
 </template>
 
 <style scoped lang="scss">
+  @use "sass:map";
+  @use "@/styles/vars" as *;
+
   .rating {
     display: inline-flex;
     align-items: center;
-    gap: 6px;
+    gap: map.get($spacing, "xs");
     line-height: 1;
 
     &__icon {
-      width: 16px;
-      height: 16px;
+      width: 18px;
+      height: 18px;
       color: #ffdb6d;
       display: block;
       flex-shrink: 0;
     }
 
     &__value {
-      font-size: 16px;
       font-weight: 600;
-      color: #2c3e50;
-      transform: translateY(-2px);
     }
   }
 </style>

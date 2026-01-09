@@ -60,26 +60,30 @@
 </template>
 
 <style lang="scss">
-  $field-radius: 18px;
+  @use "sass:map";
+  @use "@/styles/vars" as *;
+  @use "@/styles/typography" as *;
+  @use "@/styles/functions" as *;
 
   .password-field {
-    display: grid;
-    gap: 8px;
-
     &__input-wrapper {
       display: flex;
-      border-radius: $field-radius;
-      border: 1px solid #111;
+      width: 100%;
+      padding: map.get($spacing, "sm") map.get($spacing, "md");
+      border: 1px solid var(--color-dark);
+      border-radius: $small-radius;
 
       &:focus-within {
-        outline: 1px solid blue;
+        outline: 1px solid var(--color-blue);
+        border-color: transparent;
       }
 
       &:has(input:disabled) {
-        background: #f2f2f2;
-        outline: unset;
+        border-color: var(--color-dark);
+        color: var(--color-dark);
+        background-color: opacity(map.get($colors, "dark"), 10);
         cursor: not-allowed;
-        opacity: 0.6;
+        outline: unset;
 
         button,
         input {
@@ -89,22 +93,17 @@
     }
 
     &__label {
+      @include label;
+
+      display: block;
       cursor: pointer;
       user-select: none;
+      margin-bottom: map.get($spacing, "md");
     }
 
     &__input {
       width: 100%;
-      box-sizing: border-box;
-      padding: 16px 20px;
-      border-top-left-radius: $field-radius;
-      border-bottom-left-radius: $field-radius;
       cursor: text;
-      outline: none;
-
-      &:focus {
-        border: unset;
-      }
     }
 
     &__toggle {
@@ -114,18 +113,8 @@
 
       background-color: unset;
       border-radius: unset;
-      border-top-right-radius: $field-radius;
-      border-bottom-right-radius: $field-radius;
-
-      &:hover {
-        border-color: transparent;
-        outline: unset;
-      }
-
-      &:focus-visible,
-      &:focus {
-        outline: unset;
-      }
+      border-top-right-radius: $small-radius;
+      border-bottom-right-radius: $small-radius;
 
       svg {
         width: 24px;

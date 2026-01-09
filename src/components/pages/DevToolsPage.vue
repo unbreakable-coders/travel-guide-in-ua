@@ -20,6 +20,7 @@
   import AppLogo from "@/shared/widgets/AppLogo/AppLogo.vue";
   import { BookingCard } from "@/shared/widgets/BookingCard";
   import type { Booking } from "@/shared/widgets/BookingCard";
+  import AppCard from "@/shared/ui/AppCard/AppCard.vue";
 
   /*** TabButton and TabGroup ***/
   const options: TabOption[] = [
@@ -97,67 +98,63 @@
 </script>
 
 <template>
-  <section class="page">
-    <header class="head">
-      <h1 class="title">DevTools</h1>
-      <p class="subtitle">UI playground</p>
+  <div class="page">
+    <header class="page__header">
+      <h1 class="page__page__header-title">DevTools</h1>
+      <p class="page__page__header-subtitle">UI playground</p>
     </header>
 
-    <div class="card">
-      <h2 class="cardTitle">TabButton</h2>
+    <section class="page__section page__section--two">
+      <AppCard class="page__card">
+        <h2 class="page__card-title">TabButton</h2>
 
-      <div class="stack">
         <TabButton @click="onTabClick">Static</TabButton>
         <TabButton :state="TabButtonState.Active" @click="onTabClick">Active</TabButton>
         <TabButton :state="TabButtonState.Disabled" @click="onTabClick">Disabled</TabButton>
-      </div>
-    </div>
+      </AppCard>
 
-    <div class="card">
-      <h2 class="cardTitle">TabGroup</h2>
+      <AppCard class="page__card">
+        <h2 class="page__card-title">TabGroup</h2>
 
-      <TabGroup :options="options" :defaultOption="options[0]" @update="onUpdate" />
+        <TabGroup :options="options" :defaultOption="options[0]" @update="onUpdate" />
 
-      <div class="row">
-        <span class="label">Active:</span>
-        <code class="code">{{ active }}</code>
-      </div>
-    </div>
-
-    <div class="card">
-      <h2 class="cardTitle">FormField</h2>
-
-      <div class="formFieldDemo">
-        <div class="stack">
-          <FormField
-            v-model="name"
-            :type="InputType.Text"
-            label="Name"
-            placeholder="Type your name"
-          />
-
-          <FormField
-            v-model="email"
-            :type="InputType.Email"
-            label="Email"
-            placeholder="Type your email"
-          />
-
-          <FormField
-            v-model="disabledField"
-            :type="InputType.Text"
-            label="Disabled"
-            placeholder="Disabled field"
-            :isDisabled="true"
-          />
+        <div class="page__card-row">
+          <span class="page__card-label">Active:</span>
+          <code class="page__card-code">{{ active }}</code>
         </div>
-      </div>
-    </div>
+      </AppCard>
+    </section>
 
-    <div class="card">
-      <h2 class="cardTitle">PasswordField</h2>
+    <section class="page__section page__section--two">
+      <AppCard class="page__card page__card--vertical">
+        <h2 class="page__card-title">FormField</h2>
 
-      <div class="passwordFieldDemo">
+        <FormField
+          v-model="name"
+          :type="InputType.Text"
+          label="Name"
+          placeholder="Type your name"
+        />
+
+        <FormField
+          v-model="email"
+          :type="InputType.Email"
+          label="Email"
+          placeholder="Type your email"
+        />
+
+        <FormField
+          v-model="disabledField"
+          :type="InputType.Text"
+          label="Disabled"
+          placeholder="Disabled field"
+          :isDisabled="true"
+        />
+      </AppCard>
+
+      <AppCard class="page__card page__card--vertical">
+        <h2 class="page__card-title">PasswordField</h2>
+
         <PasswordField v-model="password" label="Password" placeholder="Type your password" />
 
         <PasswordField v-model="password" label="Password" placeholder="Type your password" />
@@ -168,13 +165,13 @@
           placeholder="Disabled field"
           :isDisabled="true"
         />
-      </div>
-    </div>
+      </AppCard>
+    </section>
 
-    <div class="card">
-      <h2 class="cardTitle">SelectField</h2>
+    <section class="page__section page__section--two">
+      <AppCard class="page__card page__card--vertical">
+        <h2 class="page__card-title">SelectField</h2>
 
-      <div class="selectFieldDemo">
         <SelectField
           label="SelectField Label"
           :options="selectFieldOptions"
@@ -188,50 +185,50 @@
           v-model="selectedOption"
         />
 
-        <div class="row">
-          <span class="label">Selected:</span>
-          <code class="code">{{ selectedOption }}</code>
+        <div class="page__card-row">
+          <span class="page__card-label">Selected:</span>
+          <code class="page__card-code">{{ selectedOption }}</code>
         </div>
-      </div>
-    </div>
+      </AppCard>
 
-    <div class="card">
-      <h2 class="cardTitle">Language Selection</h2>
+      <AppCard class="page__card page__card--vertical">
+        <h2 class="page__card-title">Language Selection</h2>
 
-      <SelectLanguage />
-    </div>
+        <SelectLanguage />
+      </AppCard>
+    </section>
 
-    <div class="card">
-      <h2 class="cardTitle">CheckboxButton</h2>
+    <section class="page__section page__section--two">
+      <AppCard class="page__card page__card--vertical">
+        <h2 class="page__card-title">CheckboxButton</h2>
 
-      <div class="stack">
         <CheckboxButton v-model="selected" value="wifi" label="Wi-Fi" />
         <CheckboxButton v-model="selected" value="parking" label="Parking" />
         <CheckboxButton v-model="selected" value="pet" label="Pet friendly" />
         <CheckboxButton v-model="selected" value="disabled" label="Disabled" :isDisabled="true" />
-      </div>
 
-      <div class="row">
-        <span class="label">Selected:</span>
-        <code class="code">{{ selected }}</code>
-      </div>
-    </div>
+        <div class="page__card-row">
+          <span class="page__card-label">Selected:</span>
+          <code class="page__card-code">{{ selected }}</code>
+        </div>
+      </AppCard>
 
-    <div class="card">
-      <h2 class="cardTitle">CheckboxGroup</h2>
+      <AppCard class="page__card">
+        <h2 class="page__card-title">CheckboxGroup</h2>
 
-      <CheckboxGroup v-model="groupSelected" :options="groupOptions" label="Amenities" />
+        <CheckboxGroup v-model="groupSelected" :options="groupOptions" label="Amenities" />
 
-      <div class="row">
-        <span class="label">Selected:</span>
-        <code class="code">{{ groupSelected }}</code>
-      </div>
-    </div>
+        <div class="page__card-row">
+          <span class="page__card-label">Selected:</span>
+          <code class="page__card-code">{{ groupSelected }}</code>
+        </div>
+      </AppCard>
+    </section>
 
-    <div class="card">
-      <h2 class="cardTitle">RadioButton</h2>
+    <section class="page__section page__section--two">
+      <AppCard class="page__card page__card--vertical">
+        <h2 class="page__card-title">RadioButton</h2>
 
-      <div class="stack">
         <RadioButton v-model="radioSelected" value="cultural" label="Cultural" />
         <RadioButton v-model="radioSelected" value="active" label="Active" />
         <RadioButton v-model="radioSelected" value="gastronomic" label="Gastronomic" />
@@ -242,33 +239,21 @@
           label="Extreme (requires preparation)"
           :isDisabled="true"
         />
-      </div>
 
-      <div class="row">
-        <span class="label">Selected:</span>
-        <code class="code">{{ radioSelected }}</code>
-      </div>
-    </div>
+        <div class="page__card-row">
+          <span class="page__card-label">Selected:</span>
+          <code class="page__card-code">{{ radioSelected }}</code>
+        </div>
+      </AppCard>
 
-    <div class="card">
-      <h2 class="cardTitle">RadioGroup</h2>
+      <AppCard class="page__card">
+        <h2 class="page__card-title">RadioGroup</h2>
 
-      <RadioGroup v-model="radioGroupSelected" :options="radioGroupOptions" label="Tour types" />
+        <RadioGroup v-model="radioGroupSelected" :options="radioGroupOptions" label="Tour types" />
 
-      <div class="row">
-        <span class="label">Selected:</span>
-        <code class="code">{{ radioGroupSelected }}</code>
-      </div>
-    </div>
-
-    <div class="card">
-      <h2 class="cardTitle">Rating</h2>
-
-      <div class="ratingDemo">
-        <div class="stack">
-          <Rating>4.666</Rating>
-          <Rating>5</Rating>
-          <Rating>2.01</Rating>
+        <div class="page__card-row">
+          <span class="page__card-label">Selected:</span>
+          <code class="page__card-code">{{ radioGroupSelected }}</code>
         </div>
       </div>
     </div>
@@ -320,72 +305,113 @@
       />
     </div>
   </section>
+      </AppCard>
+    </section>
+
+    <section class="page__section page__section--two">
+      <AppCard class="page__card page__card--vertical">
+        <h2 class="page__card-title">Rating</h2>
+
+        <Rating>4.666</Rating>
+        <Rating>5</Rating>
+        <Rating>2.01</Rating>
+      </AppCard>
+
+      <AppCard class="page__card page__card--vertical">
+        <h2 class="page__card-title">AppLogo</h2>
+
+        <AppLogo />
+        <AppLogo :vertical="true" />
+      </AppCard>
+    </section>
+
+    <section class="page__section page__section--three">
+      <AppCard class="page__card">
+        <LineChart
+          title="Monthly Revenue"
+          :tension="0"
+          :labelSet="LineChartLabelSet.MONTHS"
+          :data="monthlyData"
+          :grid="{ x: false, y: true }"
+        />
+      </AppCard>
+
+      <AppCard class="page__card">
+        <LineChart
+          title="Weekly Visitors"
+          color="#FA5C5C"
+          :thickness="2"
+          :labelSet="LineChartLabelSet.WEEK_DAYS"
+          :data="weeklyData"
+          :grid="{ x: false, y: false }"
+        />
+      </AppCard>
+
+      <AppCard>
+        <LineChart
+          title="Seasonal Performance"
+          color="#00F7FF"
+          :thickness="3"
+          :labelSet="LineChartLabelSet.SEASONS"
+          :data="seasonalData"
+        />
+      </AppCard>
+    </section>
+  </div>
 </template>
 
-<style scoped>
+<style lang="scss" scoped>
+  @use "sass:map";
+  @use "@/styles/vars" as *;
+  @use "@/styles/mixins" as *;
+
   .page {
-    padding: 24px;
-    display: grid;
-    gap: 16px;
-  }
-
-  .head {
-    display: grid;
-    gap: 4px;
-  }
-
-  .title {
-    margin: 0;
-    font-size: 24px;
-    font-weight: 700;
-  }
-
-  .subtitle {
-    margin: 0;
-    opacity: 0.7;
-  }
-
-  .card {
-    border: 1px solid var(--color-border, #e5e7eb);
-    background: var(--color-surface, #fff);
-    border-radius: 16px;
-    padding: 16px;
-    display: grid;
-    gap: 12px;
-    max-width: 720px;
-  }
-
-  .cardTitle {
-    margin: 0;
-    font-size: 16px;
-    font-weight: 700;
-  }
-
-  .stack {
-    display: grid;
-    gap: 10px;
-  }
-
-  .row {
     display: flex;
-    align-items: center;
-    gap: 8px;
-  }
+    flex-direction: column;
+    gap: map.get($spacing, "md");
 
-  .label {
-    opacity: 0.7;
-  }
+    &__section {
+      @include grid(1);
 
-  .code {
-    padding: 2px 8px;
-    border-radius: 8px;
-    border: 1px solid var(--color-border, #e5e7eb);
-    background: var(--color-bg, #f9fafb);
-  }
+      @include screen-xl {
+        &--two {
+          @include grid(2);
+        }
 
-  .formFieldDemo,
-  .passwordFieldDemo {
-    width: 420px;
-    max-width: 100%;
+        &--three {
+          @include grid(3);
+        }
+      }
+    }
+
+    &__card {
+      &--vertical {
+        .page__card-title {
+          margin-bottom: calc(map.get($spacing, "xl") - map.get($spacing, "lg"));
+        }
+
+        display: flex;
+        flex-direction: column;
+        gap: map.get($spacing, "lg");
+      }
+    }
+
+    &__card-title {
+      margin-bottom: map.get($spacing, "xl");
+    }
+
+    &__card-row {
+      margin-top: map.get($spacing, "md");
+    }
+
+    &__card-label {
+      margin-right: map.get($spacing, "md");
+    }
+
+    &__card-code {
+      background-color: var(--color-gray);
+      padding: map.get($spacing, "2xs") map.get($spacing, "sm");
+      border-radius: $small-radius;
+    }
   }
 </style>
