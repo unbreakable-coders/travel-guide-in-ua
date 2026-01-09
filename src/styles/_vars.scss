@@ -1,1 +1,35 @@
 $base-transition: 300ms;
+$max-body-width: 1400px;
+$base-radius: 12px;
+$small-radius: 6px;
+
+$colors: (
+  "primary": #1f3a5f,
+  "secondary": #3a8b5c,
+  "accent": #e2b04a,
+  "blue": #1055c9,
+  "dark": #64626a,
+  "background": #f7f8fa,
+  "gray": #efefef,
+  "surface": #ffffff,
+);
+
+$spacing: (
+  "2xs": 0.25rem,
+  "xs": 0.5rem,
+  "sm": 0.75rem,
+  "md": 1rem,
+  "lg": 1.5rem,
+  "xl": 2rem,
+  "2xl": 3rem,
+  "3xl": 4rem,
+  "4xl": 6rem,
+);
+
+$breakpoints: (
+  "xs": 480px,
+  "sm": 640px,
+  "md": 768px,
+  "lg": 1024px,
+  "xl": 1280px,
+);

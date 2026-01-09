@@ -41,17 +41,25 @@
   </label>
 </template>
 
-<style lang="scss" scoped>
+<style lang="scss">
+  @use "sass:map";
+  @use "@/styles/vars" as *;
+  @use "@/styles/typography" as *;
+  @use "@/styles/functions" as *;
+
   .radio {
     display: inline-flex;
     align-items: center;
     cursor: pointer;
     user-select: none;
-    gap: 10px;
+    gap: map.get($spacing, "sm");
 
     &--disabled {
       cursor: not-allowed;
-      opacity: 0.6;
+
+      .radio__ui {
+        background-color: opacity(map.get($colors, "dark"), 10);
+      }
     }
 
     &__input {
@@ -66,13 +74,13 @@
       position: relative;
       width: 20px;
       height: 20px;
-      border-radius: 999px;
-      border: 2px solid rgba(var(--v-theme-on-surface), 0.4);
+      border-radius: 50%;
+      border: 2px solid opacity(map.get($colors, "dark"), 40);
       background: transparent;
       transition:
-        border-color 0.2s ease,
-        background-color 0.2s ease,
-        box-shadow 0.2s ease;
+        border-color $base-transition ease,
+        background-color $base-transition ease,
+        box-shadow $base-transition ease;
       flex: 0 0 auto;
 
       &::after {
@@ -84,14 +92,14 @@
         width: 10px;
         height: 10px;
         border-radius: 999px;
-        background: rgb(var(--v-theme-surface));
-        transition: transform 0.2s ease;
+        background: var(--color-surface);
+        transition: transform $base-transition ease;
       }
     }
 
     &__input:checked + &__ui {
-      border-color: rgb(var(--v-theme-secondary));
-      background: rgb(var(--v-theme-secondary));
+      border-color: var(--color-blue);
+      background-color: var(--color-blue);
 
       &::after {
         transform: translate(-50%, -50%) scale(1);
@@ -99,11 +107,11 @@
     }
 
     &:not(.radio--disabled):hover &__ui {
-      border-color: rgba(var(--v-theme-on-surface), 0.6);
+      border-color: opacity(map.get($colors, "dark"), 20);
     }
 
     &__input:focus-visible + &__ui {
-      box-shadow: 0 0 0 3px rgba(var(--v-theme-primary), 0.25);
+      box-shadow: 0 0 0 3px rgba(var(--color-primary), 0.25);
     }
 
     &__label {
@@ -111,7 +119,6 @@
       font-weight: 500;
       font-size: 14px;
       line-height: 1.2;
-      color: rgba(var(--v-theme-on-surface), 0.88);
     }
   }
 </style>

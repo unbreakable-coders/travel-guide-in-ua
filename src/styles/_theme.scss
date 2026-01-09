@@ -1,0 +1,27 @@
+@use "sass:map";
+@use "./vars" as *;
+
+:root {
+  --color-primary: #{map.get($colors, "primary")};
+  --color-secondary: #{map.get($colors, "secondary")};
+  --color-accent: #{map.get($colors, "accent")};
+  --color-blue: #{map.get($colors, "blue")};
+  --color-gray: #{map.get($colors, "gray")};
+  --color-dark: #{map.get($colors, "dark")};
+
+  --color-bg: #{map.get($colors, "background")};
+  --color-surface: #{map.get($colors, "surface")};
+}
+
+// Для темної теми просто змінюємо значення змінних, і браузер автоматично все застосує
+[data-them="dark"] {
+  --color-primary: #{map.get($colors, "primary")};
+  --color-secondary: #{map.get($colors, "secondary")};
+  --color-accent: #{map.get($colors, "accent")};
+  --color-blue: #{map.get($colors, "blue")};
+  --color-gray: #{map.get($colors, "gray")};
+  --color-dark: #{map.get($colors, "dark")};
+
+  --color-bg: #{map.get($colors, "background")}; // треба потім поміняти на темніший колір
+  --color-surface: #{map.get($colors, "surface")}; // треба потім поміняти на темніший колір
+}
