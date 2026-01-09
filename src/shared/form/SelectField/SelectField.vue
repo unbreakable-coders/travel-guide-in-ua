@@ -80,7 +80,7 @@
 
 <template>
   <div class="select-field" :class="{ 'select-field--opened': isShown }" ref="selectRef">
-    <p v-if="props.label" class="select-field__label">{{ props.label }}</p>
+    <p v-if="props.label" class="select-field__label" @click="toggleOptions">{{ props.label }}</p>
 
     <button
       type="button"
@@ -134,7 +134,10 @@
 </template>
 
 <style lang="scss" scoped>
+  @use "sass:map";
   @use "@/styles/vars" as *;
+  @use "@/styles/typography" as *;
+  @use "@/styles/functions" as *;
 
   .select-field {
     position: relative;
@@ -143,44 +146,63 @@
       .select-field__arrow {
         transform: scaleY(-1);
       }
+
+      .select-field__btn {
+        outline: 1px solid var(--color-blue);
+        border-color: transparent;
+      }
+
+      .select-field__options {
+        outline: 1px solid var(--color-blue);
+        border-color: transparent;
+      }
+    }
+
+    &__label {
+      @include label;
+
+      display: block;
+      cursor: pointer;
+      user-select: none;
+      margin-bottom: map.get($spacing, "md");
     }
 
     &__btn {
       display: flex;
       align-items: center;
       justify-content: space-between;
-      gap: 16px;
+      gap: map.get($spacing, "md");
       width: 100%;
+      cursor: pointer;
+
+      padding: map.get($spacing, "sm") map.get($spacing, "md");
+      border-radius: $small-radius;
+      border: 1px solid var(--color-dark);
 
       &--disabled {
-        background: #f2f2f2;
-        color: rgba(0, 0, 0, 0.5);
+        border-color: var(--color-dark);
+        color: var(--color-dark);
+        background-color: opacity(map.get($colors, "dark"), 10);
         cursor: not-allowed;
-
-        &:focus,
-        &:hover {
-          border-color: transparent;
-        }
       }
     }
 
     &__btn-content {
       display: flex;
       align-items: center;
-      gap: 16px;
+      gap: map.get($spacing, "md");
     }
 
     &__options {
       position: absolute;
-      top: calc(100% + 8px);
+      top: calc(100% + map.get($spacing, "sm"));
       width: 100%;
       z-index: 2;
 
       overflow: hidden;
-      border-radius: 8px;
+      border-radius: $small-radius;
       text-align: start;
-      background-color: #f7f8fa;
-      outline: 4px auto -webkit-focus-ring-color;
+      background-color: var(--color-surface);
       transition: height $base-transition ease;
     }
 
@@ -189,19 +211,19 @@
       align-items: center;
       justify-content: space-between;
 
-      padding: 0.6rem 1.2rem;
+      padding: map.get($spacing, "sm") map.get($spacing, "md");
       cursor: pointer;
       transition: background-color $base-transition ease;
 
       &:hover {
-        background-color: #ececec;
+        background-color: var(--color-gray);
       }
     }
 
     &__option-content {
       display: flex;
-      gap: 16px;
       align-items: center;
+      gap: map.get($spacing, "md");
     }
 
     &__option-icon,

@@ -9,5 +9,6 @@
   <p v-if="selectedRegion">
     Selected: <b>{{ selectedRegion }}</b>
   </p>
+
   <UkraineAdminMap v-model="selectedRegion" />
 </template>

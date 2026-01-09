@@ -36,6 +36,9 @@ To run the project locally, follow the setup guide:
 
 All project documentation is available in the `docs/` folder:
 
+- 🎨 **[Sass](docs/sass.md)**  
+  Project markup and default styles
+
 - 🏗️ **[Architecture](docs/architecture.md)**  
   Project structure and design decisions.
 

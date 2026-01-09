@@ -13,7 +13,6 @@
   }>();
 
   const currentState = computed(() => props.state ?? TabButtonState.Static);
-
   const isDisabled = computed(() => currentState.value === TabButtonState.Disabled);
 
   const handleClick = () => {
@@ -25,10 +24,10 @@
 
 <template>
   <button
-    class="tabButton"
+    class="tab-button"
     :class="{
-      'tabButton--active': currentState === TabButtonState.Active,
-      'tabButton--disabled': currentState === TabButtonState.Disabled,
+      'tab-button--active': currentState === TabButtonState.Active,
+      'tab-button--disabled': currentState === TabButtonState.Disabled,
     }"
     type="button"
     :disabled="isDisabled"
@@ -39,40 +38,40 @@
 </template>
 
 <style scoped lang="scss">
-  .tabButton {
+  @use "sass:map";
+  @use "@/styles/vars" as *;
+  @use "@/styles/functions" as *;
+
+  .tab-button {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    padding: 10px 16px;
-    border-radius: 16px;
-    border: 1px solid #111;
-    background: var(--color-surface, #fff);
+
+    padding: map.get($spacing, "sm") map.get($spacing, "md");
+    border-radius: $small-radius;
+    border: 1px solid var(--color-dark);
+
     cursor: pointer;
     user-select: none;
     outline: none;
 
-    &:not(&--active):not(&--disabled):hover {
-      background-color: var(--color-bg, #f9fafb);
-    }
+    transition: all $base-transition ease;
 
     &--active {
-      border-color: var(--color-primary, #2563eb);
-      background-color: #eff6ff;
-      color: #1d4ed8;
+      border-color: var(--color-blue);
+      color: var(--color-blue);
+      background-color: opacity(map.get($colors, "blue"), 10);
 
       &:active {
-        border-color: #3b82f6;
+        border-color: opacity(map.get($colors, "blue"), 40);
       }
     }
 
     &--disabled {
-      background-color: var(--color-border, #f2f2f2);
-      color: rgba(0, 0, 0, 0.4);
+      border-color: var(--color-dark);
+      color: var(--color-dark);
+      background-color: opacity(map.get($colors, "dark"), 10);
       cursor: not-allowed;
-    }
-
-    &:focus-visible {
-      box-shadow: 0 0 0 1px var(--color-primary, #2563eb);
     }
   }
 </style>

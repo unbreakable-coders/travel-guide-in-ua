@@ -48,16 +48,24 @@
 </template>
 
 <style scoped lang="scss">
+  @use "sass:map";
+  @use "@/styles/vars" as *;
+  @use "@/styles/typography" as *;
+  @use "@/styles/functions" as *;
+
   .checkbox {
     display: inline-flex;
     align-items: center;
-    gap: 10px;
+    gap: map.get($spacing, "sm");
     cursor: pointer;
     user-select: none;
 
     &--disabled {
       cursor: not-allowed;
-      opacity: 0.6;
+
+      .checkbox__ui {
+        background-color: opacity(map.get($colors, "dark"), 10);
+      }
     }
 
     &__input {
@@ -74,11 +82,11 @@
       width: 44px;
       height: 24px;
       border-radius: 999px;
-      background: rgba(var(--v-theme-on-surface), 0.28);
+      background: opacity(map.get($colors, "dark"), 40);
       transition:
-        background 0.2s ease,
-        box-shadow 0.2s ease,
-        filter 0.2s ease;
+        background $base-transition ease,
+        box-shadow $base-transition ease,
+        filter $base-transition ease;
 
       &::after {
         content: "";
@@ -88,14 +96,14 @@
         width: 20px;
         height: 20px;
         border-radius: 999px;
-        background: rgb(var(--v-theme-surface));
+        background: var(--color-surface);
         box-shadow: 0 6px 14px rgba(17, 24, 39, 0.18);
-        transition: transform 0.2s ease;
+        transition: transform $base-transition ease;
       }
     }
 
     &__input:checked + &__ui {
-      background: rgb(var(--v-theme-secondary));
+      background: var(--color-blue);
 
       &::after {
         transform: translateX(20px);
@@ -115,7 +123,6 @@
       font-weight: 500;
       font-size: 14px;
       line-height: 1.2;
-      color: rgba(var(--v-theme-on-surface), 0.88);
     }
   }
 </style>

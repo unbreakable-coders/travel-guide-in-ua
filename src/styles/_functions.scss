@@ -1,0 +1,7 @@
+@use "sass:color";
+
+@function opacity($color, $percentage) {
+  $alpha: $percentage / 100;
+
+  @return color.change($color, $alpha: $alpha);
+}

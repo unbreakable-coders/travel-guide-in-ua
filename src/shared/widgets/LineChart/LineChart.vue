@@ -127,21 +127,20 @@
 </template>
 
 <style lang="scss">
+  @use "sass:map";
   @use "@/styles/vars" as *;
 
   .line-chart {
     text-align: start;
-    border: 1px solid var(--color-border, #e5e7eb);
-    background: var(--color-surface, #fff);
-    border-radius: 16px;
-    padding: 16px;
+    border: 1px solid var(--color-border);
+    background: var(--color-surface);
 
     &__chart {
       min-height: 200px;
     }
 
     &__title {
-      margin-bottom: 16px;
+      margin-bottom: map.get($spacing, "md");
     }
   }
 </style>
