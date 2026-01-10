@@ -22,7 +22,7 @@
 
 <template>
   <div class="select-lng">
-    <SelectField label="Select Language" :options="options" v-model="selectedLanguage" />
+    <SelectField :options="options" v-model="selectedLanguage" />
   </div>
 </template>
 

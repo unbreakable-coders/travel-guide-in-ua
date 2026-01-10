@@ -10,6 +10,7 @@
     CategoryScale,
     Title,
     Tooltip,
+    Filler,
   } from "chart.js";
   import { LINE_CHART_LABELS, type LineChartLabelSet } from "./types";
 
@@ -20,29 +21,9 @@
     LinearScale,
     CategoryScale,
     Title,
-    Tooltip
+    Tooltip,
+    Filler
   );
-
-  Chart.register({
-    id: "lineShadow",
-    beforeDatasetDraw(chart, args, options) {
-      const { ctx } = chart;
-      const datasetIndex = args.index;
-      const meta = chart.getDatasetMeta(datasetIndex);
-
-      if (!meta || !meta.dataset) return;
-
-      ctx.save();
-      ctx.shadowColor = options.color || "rgba(0,0,0,0.2)";
-      ctx.shadowBlur = options.blur || 10;
-      ctx.shadowOffsetX = options.offsetX || 0;
-      ctx.shadowOffsetY = options.offsetY || 5;
-
-      (meta.dataset as LineElement).draw(ctx);
-
-      ctx.restore();
-    },
-  });
 
   interface Props {
     title: string;
@@ -75,6 +56,11 @@
     const ctx = canvasRef.value.getContext("2d");
     if (!ctx) return;
 
+    const gradient = ctx.createLinearGradient(0, 0, 0, canvasRef.value.height);
+
+    gradient.addColorStop(0, `${props.color}33`);
+    gradient.addColorStop(1, `${props.color}05`);
+
     const config: ChartConfiguration<"line"> = {
       type: "line",
       data: {
@@ -86,34 +72,17 @@
             borderColor: props.color,
             borderWidth: props.thickness,
             tension: props.tension,
-            fill: "start",
+            backgroundColor: gradient,
+            fill: "origin",
           },
         ],
-      },
-      options: {
-        responsive: true,
-        maintainAspectRatio: false,
-        plugins: {
-          lineShadow: {
-            color: props.color + "88",
-            blur: 20,
-            offsetX: 5,
-            offsetY: 5,
-          },
-        } as never,
-        scales: {
-          x: { grid: { display: props.grid.x } },
-          y: { grid: { display: props.grid.y } },
-        },
       },
     };
 
     chart = new Chart(ctx, config);
   });
 
-  onBeforeUnmount(() => {
-    chart?.destroy();
-  });
+  onBeforeUnmount(() => chart?.destroy());
 </script>
 
 <template>
@@ -132,7 +101,6 @@
 
   .line-chart {
     text-align: start;
-    border: 1px solid var(--color-border);
     background: var(--color-surface);
 
     &__chart {
