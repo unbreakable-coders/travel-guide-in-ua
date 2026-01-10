@@ -10,7 +10,7 @@
 
   .card {
     background-color: var(--color-surface);
-    outline: 2px solid var(--color-gray);
+    outline: 1px solid var(--color-border);
     padding: map.get($spacing, "md");
     border-radius: $base-radius;
   }
