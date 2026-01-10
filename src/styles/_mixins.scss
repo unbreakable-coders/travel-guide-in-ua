@@ -36,3 +36,9 @@
   grid-template-columns: repeat($cols, 1fr);
   gap: map.get($spacing, "md");
 }
+
+@mixin container {
+  max-width: $max-body-width;
+  margin-inline: auto;
+  padding: map.get($spacing, "md");
+}

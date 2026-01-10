@@ -6,6 +6,7 @@
     { name: "Secondary", var: "--color-secondary" },
     { name: "Accent", var: "--color-accent" },
     { name: "Blue", var: "--color-blue" },
+    { name: "Black", var: "--color-text" },
     { name: "Dark", var: "--color-dark" },
     { name: "Gray", var: "--color-gray" },
     { name: "Background", var: "--color-bg" },
@@ -64,6 +65,7 @@
   @use "@/styles/functions" as *;
 
   .develop-page {
+    @include container;
     @include grid(1);
 
     @include screen-lg {

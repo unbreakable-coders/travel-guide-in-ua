@@ -299,6 +299,8 @@
     flex-direction: column;
     gap: map.get($spacing, "md");
 
+    @include container;
+
     &__section {
       @include grid(1);
 

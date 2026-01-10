@@ -57,6 +57,11 @@
 
     transition: all $base-transition ease;
 
+    &:hover:not(&--active):not(&--disabled) {
+      border-color: var(--color-text-hover);
+      color: var(--color-text-hover);
+    }
+
     &--active {
       border-color: var(--color-blue);
       color: var(--color-blue);
