@@ -32,15 +32,15 @@
   </span>
 </template>
 
-<style scoped>
+<style lang="scss" scoped>
+  @use "sass:map";
+  @use "@/styles/vars" as *;
+
   .pillow {
     display: inline-flex;
     align-items: center;
-    padding: 4px 12px;
-    border-radius: 16px;
-    font-size: 14px;
-    font-weight: 500;
-    line-height: 1.4;
+    padding: map.get($spacing, "2xs") map.get($spacing, "md");
     white-space: nowrap;
+    border-radius: 999px;
   }
 </style>

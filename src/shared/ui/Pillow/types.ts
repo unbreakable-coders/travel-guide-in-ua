@@ -7,5 +7,5 @@ export enum PillowColor {
 export const PillowColorMap: Record<PillowColor, string> = {
   [PillowColor.Success]: "#22c55e",
   [PillowColor.Danger]: "#ef4444",
-  [PillowColor.Warning]: "#f97316",
+  [PillowColor.Warning]: "#E5BA41",
 };

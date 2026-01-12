@@ -122,6 +122,25 @@ $typography: (
 
     "font-family": $font-roboto,
   ),
+  "span": (
+    "font-size-mobile": 0.85rem,
+    "font-size-tablet": 0.9rem,
+    "font-size-desktop": 0.9rem,
+
+    "line-height-mobile": 1.4,
+    "line-height-tablet": 1.45,
+    "line-height-desktop": 1.45,
+
+    "letter-spacing-mobile": 0,
+    "letter-spacing-tablet": 0,
+    "letter-spacing-desktop": 0,
+
+    "font-weight-mobile": 400,
+    "font-weight-tablet": 400,
+    "font-weight-desktop": 400,
+
+    "font-family": $font-roboto,
+  ),
   "body": (
     "font-size-mobile": 0.875rem,
     "font-size-tablet": 1rem,
