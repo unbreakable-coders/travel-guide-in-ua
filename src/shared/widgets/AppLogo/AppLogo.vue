@@ -1,6 +1,5 @@
 <script setup lang="ts">
   import LogoIcon from "@/shared/icons/logo.svg";
-  import { RouterLink } from "vue-router";
 
   type Props = {
     vertical?: boolean;
@@ -10,14 +9,14 @@
 </script>
 
 <template>
-  <RouterLink :to="{ name: 'home' }" class="brand" :class="{ 'brand--vertical': vertical }">
+  <router-link :to="{ name: 'home' }" class="brand" :class="{ 'brand--vertical': vertical }">
     <component :is="LogoIcon" class="brand__icon" aria-hidden="true" />
 
     <div class="brand__text">
       <h4 class="brand__title">Travel Guide In Ua</h4>
       <p class="brand__slogan">Discover Ukraine Deeper</p>
     </div>
-  </RouterLink>
+  </router-link>
 </template>
 
 <style lang="scss" scoped>
@@ -39,7 +38,7 @@
     }
 
     &__icon {
-      width: 50px;
+      width: 40px;
     }
 
     &__title {

@@ -1,5 +1,6 @@
 @use "sass:map";
 @use "./vars" as *;
+@use "./functions" as *;
 
 :root {
   --color-primary: #{map.get($colors, "primary")};
@@ -11,6 +12,11 @@
 
   --color-bg: #{map.get($colors, "background")};
   --color-surface: #{map.get($colors, "surface")};
+  --color-text: #{map.get($colors, "black")};
+  --color-text-hover: #{opacity(map.get($colors, "black"), 60)};
+  --color-border: #{map.get($colors, "gray")};
+
+  --color-nav-link-active: #{opacity(map.get($colors, "black"), 5)};
 }
 
 // Для темної теми просто змінюємо значення змінних, і браузер автоматично все застосує
@@ -24,4 +30,14 @@
 
   --color-bg: #{map.get($colors, "background")}; // треба потім поміняти на темніший колір
   --color-surface: #{map.get($colors, "surface")}; // треба потім поміняти на темніший колір
+  --color-text: #{map.get($colors, "black")}; // треба потім поміняти на світліший колір
+  --color-text-hover: #{opacity(map.get($colors, "black"), 50)};
+  --color-border: #{map.get($colors, "gray")};
+
+  --color-nav-link-active: #{opacity(map.get($colors, "black"), 5)};
+}
+
+body,
+a {
+  color: var(--color-text);
 }

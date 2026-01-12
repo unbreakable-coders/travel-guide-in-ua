@@ -83,6 +83,26 @@ $typography: (
 
     "font-family": $font-inter,
   ),
+  "h5": (
+    "font-size-mobile": 0.9rem,
+    "font-size-tablet": 0.95rem,
+    "font-size-desktop": 1rem,
+
+    "line-height-mobile": 1.3,
+    "line-height-tablet": 1.3,
+    "line-height-desktop": 1.3,
+
+    "letter-spacing-mobile": 0,
+    "letter-spacing-tablet": 0,
+    "letter-spacing-desktop": 0,
+
+    "font-weight-mobile": 600,
+    "font-weight-tablet": 600,
+    "font-weight-desktop": 600,
+
+    "font-family": $font-inter,
+  ),
+
   "p": (
     "font-size-mobile": 0.875rem,
     "font-size-tablet": 1rem,
@@ -123,22 +143,22 @@ $typography: (
   ),
   "button": (
     "font-size-mobile": 0.875rem,
-    "font-size-tablet": 0.875rem,
+    "font-size-tablet": 1rem,
     "font-size-desktop": 1rem,
 
-    "line-height-mobile": 1,
-    "line-height-tablet": 1,
-    "line-height-desktop": 1,
+    "line-height-mobile": 1.4,
+    "line-height-tablet": 1.45,
+    "line-height-desktop": 1.45,
 
-    "letter-spacing-mobile": 0.02em,
-    "letter-spacing-tablet": 0.02em,
-    "letter-spacing-desktop": 0.02em,
+    "letter-spacing-mobile": 0,
+    "letter-spacing-tablet": 0,
+    "letter-spacing-desktop": 0,
 
-    "font-weight-mobile": 500,
-    "font-weight-tablet": 500,
-    "font-weight-desktop": 600,
+    "font-weight-mobile": 400,
+    "font-weight-tablet": 400,
+    "font-weight-desktop": 400,
 
-    "font-family": $font-inter,
+    "font-family": $font-roboto,
   ),
   "a": (
     "font-size-mobile": 0.875rem,

@@ -97,7 +97,9 @@
           class="select-field__btn-icon"
         />
 
-        {{ selectedOption?.label }}
+        <span>
+          {{ selectedOption?.label }}
+        </span>
       </div>
 
       <Component :is="ArrowIcon" class="select-field__arrow" />

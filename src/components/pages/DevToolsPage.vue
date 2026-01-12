@@ -21,6 +21,8 @@
   import AppCard from "@/shared/ui/AppCard/AppCard.vue";
   import { PlaceFeedback } from "@/shared/widgets/PlaceFeedback";
   import type { Feedback } from "@/types/feedback";
+  import { BookingCard } from "@/shared/widgets/BookingCard";
+  import type { Booking } from "@/types/booking";
 
   /*** TabButton and TabGroup ***/
   const options: TabOption[] = [
@@ -119,6 +121,25 @@
   const monthlyData = [12, 19, 8, 14, 20, 25, 18, 22, 15, 10, 5, 7];
   const weeklyData = [5, 8, 12, 15, 9, 4, 6];
   const seasonalData = [50, 75, 60, 40];
+
+  /*** BookingCard ***/
+  const bookings: Booking[] = [
+    {
+      id: `bk_${Date.now()}`,
+      time: Date.now() + 86400000,
+      title: "Cultural Tour - Kyiv Historical Center",
+    },
+    {
+      id: `bk_${Date.now() + 1}`,
+      time: Date.now() + 172800000,
+      title: "Gastronomic Experience - Lviv Old Town",
+    },
+    {
+      id: `bk_${Date.now() + 2}`,
+      time: Date.now() - 86400000,
+      title: "Active Adventure - Carpathian Mountains",
+    },
+  ];
 </script>
 
 <template>
@@ -302,8 +323,17 @@
     <section class="page__section page__section--two">
       <AppCard class="page__card">
         <h2 class="page__card-title">PlaceFeedback</h2>
+      
         <div class="place-feedback-list">
           <PlaceFeedback v-for="feedback in feedbacks" :key="feedback.id" :feedback="feedback" />
+        </div>
+      </AppCard>
+      
+      <AppCard class="page__card page__card--vertical">
+        <h2 class="page__card-title">BookingCard Widget</h2>
+
+        <div class="booking-card-list">
+          <BookingCard v-for="booking in bookings" :key="booking.id" :booking="booking" />
         </div>
       </AppCard>
     </section>
@@ -352,6 +382,8 @@
     display: flex;
     flex-direction: column;
     gap: map.get($spacing, "md");
+
+    @include container;
 
     &__section {
       @include grid(1);
