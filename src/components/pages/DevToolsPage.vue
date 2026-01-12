@@ -25,6 +25,8 @@
   import type { Booking } from "@/types/booking";
   import Pillow from "@/shared/ui/Pillow/Pillow.vue";
   import { PillowColor } from "@/shared/ui/Pillow/types";
+  import { PlaceCard } from "@/shared/widgets/PlaceCard";
+  import type { Place } from "@/types/place";
 
   /*** TabButton and TabGroup ***/
   const options: TabOption[] = [
@@ -142,6 +144,17 @@
       title: "Active Adventure - Carpathian Mountains",
     },
   ];
+
+  /*** PlaceCard ***/
+  const demoPlace: Place = {
+    id: 1,
+    title: "Kyiv Pechersk Lavra",
+    city: "Kyiv",
+    rating: 4.7,
+    poster:
+      "https://d20ivx1nandpls.cloudfront.net/audiogids/7/full/Tours_in_Ukraine_in_Kiev_-_Kiev_Pechersk_Lavra%2C_bell_tower.webp",
+    badges: ["hot", "recommended", "top"],
+  };
 </script>
 
 <template>
@@ -178,6 +191,15 @@
           </div>
         </div>
       </AppCard>
+
+      <AppCard class="page__card page__card--vertical">
+        <h2 class="page__card-title">PlaceCard</h2>
+
+        <div class="place-card-demo">
+          <PlaceCard :place="demoPlace" />
+        </div>
+      </AppCard>
+
       <AppCard class="page__card">
         <h2 class="page__card-title">TabButton</h2>
 
@@ -463,6 +485,7 @@
       gap: map.get($spacing, "md");
     }
   }
+
   .pillow-demo {
     display: flex;
     flex-direction: column;
@@ -480,5 +503,9 @@
       font-weight: 500;
       color: var(--color-text-secondary);
     }
+  }
+
+  .place-card-demo {
+    max-width: 520px;
   }
 </style>
