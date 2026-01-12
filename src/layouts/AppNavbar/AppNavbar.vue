@@ -1,13 +1,18 @@
 <script lang="ts" setup>
   import AppLogo from "@/shared/widgets/AppLogo/AppLogo.vue";
   import AppMenu from "../AppMenu/AppMenu.vue";
-  import { ref } from "vue";
+  import { computed, ref } from "vue";
+  import { useI18n } from "vue-i18n";
 
-  const links = [
-    { label: "Home", pageName: "home" },
-    { label: "Develop", pageName: "develop" },
-    { label: "Devtools", pageName: "devtools" },
-  ];
+  const { t } = useI18n();
+
+  const links = computed(() => [
+    { label: t("navbar.links.home"), pageName: "home" },
+    { label: t("navbar.links.develop"), pageName: "develop" },
+    { label: t("navbar.links.devtools"), pageName: "devtools" },
+  ]);
+
+  console.log("Rerendering...");
 
   const isMenuShown = ref(false);
 
@@ -27,7 +32,7 @@
           <router-link
             :to="{ name: link.pageName }"
             class="nav__link"
-            active-class="nav__link--active"
+            exact-active-class="nav__link--active"
           >
             {{ link.label }}
           </router-link>
