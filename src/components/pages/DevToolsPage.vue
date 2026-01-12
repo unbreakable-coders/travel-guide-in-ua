@@ -19,6 +19,8 @@
   import { Rating } from "@/shared/widgets/Rating";
   import AppLogo from "@/shared/widgets/AppLogo/AppLogo.vue";
   import AppCard from "@/shared/ui/AppCard/AppCard.vue";
+  import { PlaceFeedback } from "@/shared/widgets/PlaceFeedback";
+  import type { Feedback } from "@/types/feedback";
   import { BookingCard } from "@/shared/widgets/BookingCard";
   import type { Booking } from "@/types/booking";
 
@@ -70,6 +72,49 @@
     { label: "Option №2", value: "option-2" },
     { label: "Option №3", value: "option-3" },
     { label: "Option №4", value: "option-4" },
+  ];
+
+  /*** PlaceFeedback ***/
+  const feedbacks: Feedback[] = [
+    {
+      id: 1,
+      text: "Amazing cultural experience! The guide was very knowledgeable and the tour was well-organized. Highly recommend for anyone interested in Ukrainian history.",
+      rating: 4.8,
+      user: {
+        id: 101,
+        name: "Anna Schmidt",
+        country: "Germany",
+        city: "Berlin",
+        avatar:
+          "https://images.unsplash.com/photo-1580489944761-15a19d654956?w=200&h=200&fit=crop&crop=face",
+      },
+    },
+    {
+      id: 2,
+      text: "Great tour, but could be a bit shorter. The information was very detailed, which is good for history buffs, but might be too much for casual visitors.",
+      rating: 3.5,
+      user: {
+        id: 102,
+        name: "John Carter",
+        country: "USA",
+        city: "New York",
+        avatar:
+          "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=200&h=200&fit=crop&crop=face",
+      },
+    },
+    {
+      id: 3,
+      text: "Perfect for food lovers! Tried traditional dishes and learned about local culinary traditions. The guide was passionate and engaging.",
+      rating: 5.0,
+      user: {
+        id: 103,
+        name: "Maria Rodriguez",
+        country: "Spain",
+        city: "Madrid",
+        avatar:
+          "https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=200&h=200&fit=crop&crop=face",
+      },
+    },
   ];
 
   /*** LineChart ***/
@@ -276,6 +321,14 @@
     </section>
 
     <section class="page__section page__section--two">
+      <AppCard class="page__card">
+        <h2 class="page__card-title">PlaceFeedback</h2>
+      
+        <div class="place-feedback-list">
+          <PlaceFeedback v-for="feedback in feedbacks" :key="feedback.id" :feedback="feedback" />
+        </div>
+      </AppCard>
+      
       <AppCard class="page__card page__card--vertical">
         <h2 class="page__card-title">BookingCard Widget</h2>
 
@@ -374,6 +427,12 @@
       background-color: var(--color-gray);
       padding: map.get($spacing, "2xs") map.get($spacing, "sm");
       border-radius: $small-radius;
+    }
+
+    .place-feedback-list {
+      display: flex;
+      flex-direction: column;
+      gap: map.get($spacing, "md");
     }
   }
 </style>
