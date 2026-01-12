@@ -1,8 +1,11 @@
 <script lang="ts" setup>
   import type { SelectOption } from "@/shared/form/SelectField";
   import SelectField from "@/shared/form/SelectField/SelectField.vue";
-  import { Language, LANGUAGE_ICON } from "./types";
-  import { ref } from "vue";
+  import { LANGUAGE_ICON } from "./types";
+  import { Language } from "@/shared/i18n/types";
+  import { useLanguage } from "@/shared/i18n/useLanguage";
+
+  const { language } = useLanguage();
 
   const options: SelectOption[] = [
     {
@@ -16,13 +19,11 @@
       icon: LANGUAGE_ICON[Language.Ukrainian],
     },
   ];
-
-  const selectedLanguage = ref(Language.English);
 </script>
 
 <template>
   <div class="select-lng">
-    <SelectField :options="options" v-model="selectedLanguage" />
+    <SelectField :options="options" v-model="language" />
   </div>
 </template>
 

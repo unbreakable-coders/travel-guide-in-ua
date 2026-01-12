@@ -323,12 +323,12 @@
     <section class="page__section page__section--two">
       <AppCard class="page__card">
         <h2 class="page__card-title">PlaceFeedback</h2>
-      
+
         <div class="place-feedback-list">
           <PlaceFeedback v-for="feedback in feedbacks" :key="feedback.id" :feedback="feedback" />
         </div>
       </AppCard>
-      
+
       <AppCard class="page__card page__card--vertical">
         <h2 class="page__card-title">BookingCard Widget</h2>
 
