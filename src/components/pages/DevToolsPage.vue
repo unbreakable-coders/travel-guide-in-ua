@@ -23,6 +23,8 @@
   import type { Feedback } from "@/types/feedback";
   import { BookingCard } from "@/shared/widgets/BookingCard";
   import type { Booking } from "@/types/booking";
+  import Pillow from "@/shared/ui/Pillow/Pillow.vue";
+  import { PillowColor } from "@/shared/ui/Pillow/types";
 
   /*** TabButton and TabGroup ***/
   const options: TabOption[] = [
@@ -150,6 +152,32 @@
     </header>
 
     <section class="page__section page__section--two">
+      <AppCard class="page__card page__card--vertical">
+        <h2 class="page__card-title">Pillow Component</h2>
+
+        <div class="pillow-demo">
+          <div class="pillow-demo__row">
+            <span class="pillow-demo__label">Success:</span>
+            <Pillow :color="PillowColor.Success">Active</Pillow>
+            <Pillow :color="PillowColor.Success">Confirmed</Pillow>
+            <Pillow :color="PillowColor.Success">Completed</Pillow>
+          </div>
+
+          <div class="pillow-demo__row">
+            <span class="pillow-demo__label">Danger:</span>
+            <Pillow :color="PillowColor.Danger">Error</Pillow>
+            <Pillow :color="PillowColor.Danger">Blocked</Pillow>
+            <Pillow :color="PillowColor.Danger">Cancelled</Pillow>
+          </div>
+
+          <div class="pillow-demo__row">
+            <span class="pillow-demo__label">Warning:</span>
+            <Pillow :color="PillowColor.Warning">Pending</Pillow>
+            <Pillow :color="PillowColor.Warning">Attention</Pillow>
+            <Pillow :color="PillowColor.Warning">Review</Pillow>
+          </div>
+        </div>
+      </AppCard>
       <AppCard class="page__card">
         <h2 class="page__card-title">TabButton</h2>
 
@@ -323,12 +351,12 @@
     <section class="page__section page__section--two">
       <AppCard class="page__card">
         <h2 class="page__card-title">PlaceFeedback</h2>
-      
+
         <div class="place-feedback-list">
           <PlaceFeedback v-for="feedback in feedbacks" :key="feedback.id" :feedback="feedback" />
         </div>
       </AppCard>
-      
+
       <AppCard class="page__card page__card--vertical">
         <h2 class="page__card-title">BookingCard Widget</h2>
 
@@ -433,6 +461,24 @@
       display: flex;
       flex-direction: column;
       gap: map.get($spacing, "md");
+    }
+  }
+  .pillow-demo {
+    display: flex;
+    flex-direction: column;
+    gap: map.get($spacing, "lg");
+
+    &__row {
+      display: flex;
+      align-items: center;
+      gap: map.get($spacing, "sm");
+      flex-wrap: wrap;
+    }
+
+    &__label {
+      min-width: 80px;
+      font-weight: 500;
+      color: var(--color-text-secondary);
     }
   }
 </style>
