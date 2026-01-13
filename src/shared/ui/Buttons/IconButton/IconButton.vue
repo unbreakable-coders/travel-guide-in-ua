@@ -2,15 +2,18 @@
   import type { Component } from "vue";
   import { ButtonType } from "../types";
 
+  type IconSource = Component | string;
+
   interface Props {
-    type: ButtonType;
-    icon: Component;
+    type?: ButtonType;
+    icon: IconSource;
     ariaLabel: string;
     disabled?: boolean;
   }
 
   const props = withDefaults(defineProps<Props>(), {
     disabled: false,
+    type: ButtonType.Button,
   });
 
   const emit = defineEmits<{

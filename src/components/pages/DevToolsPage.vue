@@ -31,8 +31,8 @@
   import { AppFeedback } from "@/shared/widgets/AppFeedback";
   import { PlaceCard } from "@/shared/widgets/PlaceCard";
   import type { Place } from "@/types/place";
+  import { PlaceSwiper } from "@/shared/widgets/PlaceSwiper";
 
-  /*** TabButton and TabGroup ***/
   const options: TabOption[] = [
     { value: "overview", label: "Overview" },
     { value: "features", label: "Features" },
@@ -44,12 +44,10 @@
   const onTabClick = () => console.log("TabButton click");
   const onUpdate = (value: string | number) => (active.value = value);
 
-  /*** BaseButton and IconButton ***/
   const onClick = (event: MouseEvent) => {
     console.log("Button clicked", event);
   };
 
-  /*** CheckboxButton and CheckboxGroup ***/
   const groupOptions: CheckboxOption[] = [
     { value: "wifi", label: "Wi-Fi" },
     { value: "parking", label: "Parking" },
@@ -60,13 +58,11 @@
   const selected = ref<Array<string | number>>(["wifi"]);
   const groupSelected = ref<Array<string | number>>(["wifi", "parking"]);
 
-  /*** FormField and PasswordField ***/
   const name = ref("");
   const email = ref("");
   const password = ref("");
   const disabledField = ref("");
 
-  /*** RadioButton and RadioGroup ***/
   const radioSelected = ref<string | number>("cultural");
   const radioGroupSelected = ref<string | number>("cultural");
 
@@ -78,7 +74,6 @@
     { value: "natural", label: "Natural" },
   ];
 
-  /*** SelectField and SelectLanguage ***/
   const selectedOption = ref<SelectOption["value"]>();
   const selectFieldOptions: SelectOption[] = [
     { label: "Option №1", value: "option-1" },
@@ -87,7 +82,6 @@
     { label: "Option №4", value: "option-4" },
   ];
 
-  /*** PlaceFeedback ***/
   const feedbacks: Feedback[] = [
     {
       id: 1,
@@ -130,7 +124,6 @@
     },
   ];
 
-  /*** AppFeedback ***/
   const appFeedbacks: Feedback[] = [
     {
       id: 1,
@@ -173,12 +166,10 @@
     },
   ];
 
-  /*** LineChart ***/
   const monthlyData = [12, 19, 8, 14, 20, 25, 18, 22, 15, 10, 5, 7];
   const weeklyData = [5, 8, 12, 15, 9, 4, 6];
   const seasonalData = [50, 75, 60, 40];
 
-  /*** BookingCard ***/
   const bookings: Booking[] = [
     {
       id: `bk_${Date.now()}`,
@@ -197,7 +188,6 @@
     },
   ];
 
-  /*** PlaceCard ***/
   const demoPlace: Place = {
     id: 1,
     title: "Kyiv Pechersk Lavra",
@@ -207,6 +197,72 @@
       "https://d20ivx1nandpls.cloudfront.net/audiogids/7/full/Tours_in_Ukraine_in_Kiev_-_Kiev_Pechersk_Lavra%2C_bell_tower.webp",
     badges: ["hot", "recommended", "top"],
   };
+
+  const demoPlaces: Place[] = [
+    {
+      id: 1,
+      title: "Kyiv Pechersk Lavra",
+      city: "Kyiv",
+      rating: 4.7,
+      poster:
+        "https://d20ivx1nandpls.cloudfront.net/audiogids/7/full/Tours_in_Ukraine_in_Kiev_-_Kiev_Pechersk_Lavra%2C_bell_tower.webp",
+      badges: ["hot", "recommended", "top"],
+    },
+    {
+      id: 2,
+      title: "Lviv Old Town",
+      city: "Lviv",
+      rating: 4.9,
+      poster:
+        "https://images.unsplash.com/photo-1564501049412-61c2a3083791?w=1200&auto=format&fit=crop",
+      badges: ["recommended"],
+    },
+    {
+      id: 3,
+      title: "Carpathian Mountains",
+      city: "Carpathians",
+      rating: 4.8,
+      poster:
+        "https://images.unsplash.com/photo-1501785888041-af3ef285b470?w=1200&auto=format&fit=crop",
+      badges: ["top"],
+    },
+    {
+      id: 4,
+      title: "Kamianets-Podilskyi Castle",
+      city: "Kamianets-Podilskyi",
+      rating: 4.7,
+      poster:
+        "https://images.unsplash.com/photo-1528909514045-2fa4ac7a08ba?w=1200&auto=format&fit=crop",
+      badges: ["recommended", "top"],
+    },
+    {
+      id: 5,
+      title: "Kamianets-Podilskyi Castle",
+      city: "Kamianets-Podilskyi",
+      rating: 4.7,
+      poster:
+        "https://images.unsplash.com/photo-1528909514045-2fa4ac7a08ba?w=1200&auto=format&fit=crop",
+      badges: ["recommended", "top"],
+    },
+    {
+      id: 6,
+      title: "Kamianets-Podilskyi Castle",
+      city: "Kamianets-Podilskyi",
+      rating: 4.7,
+      poster:
+        "https://images.unsplash.com/photo-1528909514045-2fa4ac7a08ba?w=1200&auto=format&fit=crop",
+      badges: ["recommended", "top"],
+    },
+    {
+      id: 7,
+      title: "Lviv Old Town",
+      city: "Lviv",
+      rating: 4.9,
+      poster:
+        "https://images.unsplash.com/photo-1564501049412-61c2a3083791?w=1200&auto=format&fit=crop",
+      badges: ["hot", "recommended"],
+    },
+  ];
 </script>
 
 <template>
@@ -215,6 +271,13 @@
       <h1 class="page__page__header-title">DevTools</h1>
       <p class="page__page__header-subtitle">UI playground</p>
     </header>
+
+    <section class="page__section page__section--full">
+      <AppCard class="page__card page__card--vertical">
+        <h2 class="page__card-title">PlaceSwiper</h2>
+        <PlaceSwiper :places="demoPlaces" label="Recommended places" />
+      </AppCard>
+    </section>
 
     <section class="page__section page__section--two">
       <AppCard class="page__card page__card--vertical">
@@ -528,9 +591,16 @@
           @include grid(3);
         }
       }
+
+      &--full {
+        @include grid(1);
+        min-width: 0;
+      }
     }
 
     &__card {
+      min-width: 0;
+
       &--vertical {
         .page__card-title {
           margin-bottom: calc(map.get($spacing, "xl") - map.get($spacing, "lg"));
