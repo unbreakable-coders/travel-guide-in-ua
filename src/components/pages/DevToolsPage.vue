@@ -29,6 +29,7 @@
   import { IconButton, IconButtonType } from "@/shared/ui/IconButton";
   import ArrowLeftIcon from "@/shared/icons/ArrowLeftIcon.vue";
   import ArrowRightIcon from "@/shared/icons/ArrowRightIcon.vue";
+  import { AppFeedback } from "@/shared/widgets/AppFeedback";
   import { PlaceCard } from "@/shared/widgets/PlaceCard";
   import type { Place } from "@/types/place";
 
@@ -121,6 +122,49 @@
       rating: 5.0,
       user: {
         id: 103,
+        name: "Maria Rodriguez",
+        country: "Spain",
+        city: "Madrid",
+        avatar:
+          "https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=200&h=200&fit=crop&crop=face",
+      },
+    },
+  ];
+
+  /*** AppFeedback ***/
+  const appFeedbacks: Feedback[] = [
+    {
+      id: 1,
+      rating: 5.0,
+      text: "This travel app is absolutely brilliant! It helped me discover hidden gems in Kyiv that I would have never found on my own. The offline maps feature saved me multiple times when I had no internet connection.",
+      user: {
+        id: 201,
+        name: "Anna Schmidt",
+        country: "Germany",
+        city: "Berlin",
+        avatar:
+          "https://images.unsplash.com/photo-1580489944761-15a19d654956?w=200&h=200&fit=crop&crop=face",
+      },
+    },
+    {
+      id: 2,
+      rating: 4.0,
+      text: "Great app for exploring Ukrainian culture! I loved the curated walking tours in Lviv - they were perfectly paced and informative. The only suggestion would be to add more audio guides.",
+      user: {
+        id: 202,
+        name: "John Carter",
+        country: "USA",
+        city: "New York",
+        avatar:
+          "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=200&h=200&fit=crop&crop=face",
+      },
+    },
+    {
+      id: 3,
+      rating: 3.0,
+      text: "Good app with useful information, but I found some places were incorrectly marked on the map. The concept is great though, and I appreciate the focus on authentic local experiences.",
+      user: {
+        id: 203,
         name: "Maria Rodriguez",
         country: "Spain",
         city: "Madrid",
@@ -392,16 +436,25 @@
       <AppCard class="page__card">
         <h2 class="page__card-title">PlaceFeedback</h2>
 
-        <div class="place-feedback-list">
+        <div class="place-feedback-list page__card--vertical">
           <PlaceFeedback v-for="feedback in feedbacks" :key="feedback.id" :feedback="feedback" />
         </div>
       </AppCard>
 
-      <AppCard class="page__card page__card--vertical">
-        <h2 class="page__card-title">BookingCard Widget</h2>
+      <AppCard class="page__card">
+        <h2 class="page__card-title">BookingCard</h2>
 
         <div class="booking-card-list">
           <BookingCard v-for="booking in bookings" :key="booking.id" :booking="booking" />
+        </div>
+      </AppCard>
+    </section>
+
+    <section class="page__section page__section--three">
+      <AppCard class="page__card">
+        <h2 class="page__card-title">AppFeedback</h2>
+        <div class="app-feedback-list page__card--vertical">
+          <AppFeedback v-for="feedback in appFeedbacks" :key="feedback.id" :feedback="feedback" />
         </div>
       </AppCard>
     </section>
@@ -495,12 +548,6 @@
       background-color: var(--color-gray);
       padding: map.get($spacing, "2xs") map.get($spacing, "sm");
       border-radius: $small-radius;
-    }
-
-    .place-feedback-list {
-      display: flex;
-      flex-direction: column;
-      gap: map.get($spacing, "md");
     }
   }
 

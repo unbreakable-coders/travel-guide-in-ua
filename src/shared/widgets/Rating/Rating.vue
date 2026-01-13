@@ -33,7 +33,7 @@
     &__icon {
       width: 18px;
       height: 18px;
-      color: #ffdb6d;
+      color: var(--color-stars);
       display: block;
       flex-shrink: 0;
     }
