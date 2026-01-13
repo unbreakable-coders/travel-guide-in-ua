@@ -25,6 +25,9 @@
   import type { Booking } from "@/types/booking";
   import Pillow from "@/shared/ui/Pillow/Pillow.vue";
   import { PillowColor } from "@/shared/ui/Pillow/types";
+  import { BaseButton, IconButton, ButtonType } from "@/shared/ui/Buttons";
+  import ArrowLeftIcon from "@/shared/icons/ArrowLeftIcon.vue";
+  import ArrowRightIcon from "@/shared/icons/ArrowRightIcon.vue";
   import { AppFeedback } from "@/shared/widgets/AppFeedback";
   import { PlaceCard } from "@/shared/widgets/PlaceCard";
   import type { Place } from "@/types/place";
@@ -40,6 +43,11 @@
   const active = ref<string | number>("overview");
   const onTabClick = () => console.log("TabButton click");
   const onUpdate = (value: string | number) => (active.value = value);
+
+  /*** BaseButton and IconButton ***/
+  const onClick = (event: MouseEvent) => {
+    console.log("Button clicked", event);
+  };
 
   /*** CheckboxButton and CheckboxGroup ***/
   const groupOptions: CheckboxOption[] = [
@@ -261,6 +269,26 @@
           <span class="page__card-label">Active:</span>
           <code class="page__card-code">{{ active }}</code>
         </div>
+      </AppCard>
+
+      <AppCard class="page__card page__card--vertical">
+        <h2 class="page__card-title">BaseButton and IconButton</h2>
+
+        <BaseButton :type="ButtonType.Button" @click="onClick"> Default button </BaseButton>
+
+        <IconButton
+          :type="ButtonType.Button"
+          :icon="ArrowLeftIcon"
+          ariaLabel="Previous"
+          @click="onClick"
+        />
+
+        <IconButton
+          :type="ButtonType.Button"
+          :icon="ArrowRightIcon"
+          ariaLabel="Next"
+          @click="onClick"
+        />
       </AppCard>
     </section>
 
