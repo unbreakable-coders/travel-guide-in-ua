@@ -12,6 +12,8 @@
 
   --color-bg: #{map.get($colors, "background")};
   --color-surface: #{map.get($colors, "surface")};
+  --color-stars: #{map.get($colors, "stars")};
+
   --color-text: #{map.get($colors, "black")};
   --color-text-hover: #{opacity(map.get($colors, "black"), 60)};
   --color-border: #{map.get($colors, "gray")};

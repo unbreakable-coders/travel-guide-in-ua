@@ -1,5 +1,8 @@
 <script setup lang="ts">
   import LogoIcon from "@/shared/icons/logo.svg";
+  import { useI18n } from "vue-i18n";
+
+  const { t } = useI18n();
 
   type Props = {
     vertical?: boolean;
@@ -13,8 +16,8 @@
     <component :is="LogoIcon" class="brand__icon" aria-hidden="true" />
 
     <div class="brand__text">
-      <h4 class="brand__title">Travel Guide In Ua</h4>
-      <p class="brand__slogan">Discover Ukraine Deeper</p>
+      <h4 class="brand__title">{{ t("logo.title") }}</h4>
+      <p class="brand__slogan">{{ t("logo.slogan") }}</p>
     </div>
   </router-link>
 </template>
