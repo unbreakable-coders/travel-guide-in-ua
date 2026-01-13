@@ -25,8 +25,7 @@
   import type { Booking } from "@/types/booking";
   import Pillow from "@/shared/ui/Pillow/Pillow.vue";
   import { PillowColor } from "@/shared/ui/Pillow/types";
-  import { BaseButton, ButtonType } from "@/shared/ui/BaseButton";
-  import { IconButton, IconButtonType } from "@/shared/ui/IconButton";
+  import { BaseButton, IconButton, ButtonType } from "@/shared/ui/Buttons";
   import ArrowLeftIcon from "@/shared/icons/ArrowLeftIcon.vue";
   import ArrowRightIcon from "@/shared/icons/ArrowRightIcon.vue";
 
@@ -43,8 +42,8 @@
   const onUpdate = (value: string | number) => (active.value = value);
 
   /*** BaseButton and IconButton ***/
-  const onClick = () => {
-    console.log("Button clicked");
+  const onClick = (event: MouseEvent) => {
+    console.log("Button clicked", event);
   };
 
   /*** CheckboxButton and CheckboxGroup ***/
@@ -211,8 +210,19 @@
 
         <BaseButton :type="ButtonType.Button" @click="onClick"> Default button </BaseButton>
 
-        <IconButton :type="IconButtonType.Button" :icon="ArrowLeftIcon" @click="onClick" />
-        <IconButton :type="IconButtonType.Button" :icon="ArrowRightIcon" @click="onClick" />
+        <IconButton
+          :type="ButtonType.Button"
+          :icon="ArrowLeftIcon"
+          ariaLabel="Previous"
+          @click="onClick"
+        />
+
+        <IconButton
+          :type="ButtonType.Button"
+          :icon="ArrowRightIcon"
+          ariaLabel="Next"
+          @click="onClick"
+        />
       </AppCard>
     </section>
 

@@ -1,19 +1,26 @@
 <template>
-  <button class="base-button" :type="props.type" @click="handleClick">
+  <button class="base-button" :type="props.type" :disabled="props.disabled" @click="handleClick">
     <slot />
   </button>
 </template>
 
 <script setup lang="ts">
-  import { ButtonType } from "./types";
+  import { ButtonType } from "../types";
 
-  interface BaseButtonProps {
+  interface Props {
     type: ButtonType;
+    disabled?: boolean;
   }
 
-  const props = defineProps<BaseButtonProps>();
-  const emit = defineEmits<{ (e: "click"): void }>();
-  const handleClick = () => emit("click");
+  const props = withDefaults(defineProps<Props>(), {
+    disabled: false,
+  });
+
+  const emit = defineEmits<{
+    (e: "click", event: MouseEvent): void;
+  }>();
+
+  const handleClick = (event: MouseEvent) => emit("click", event);
 </script>
 
 <style lang="scss" scoped>
@@ -36,11 +43,11 @@
     cursor: pointer;
     transition: all $base-transition ease;
 
-    &:hover {
+    &:hover:not(:disabled) {
       background-color: opacity(map.get($colors, "primary"), 85);
     }
 
-    &:active {
+    &:active:not(:disabled) {
       background-color: opacity(map.get($colors, "primary"), 70);
     }
 

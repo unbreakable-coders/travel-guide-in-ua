@@ -1,22 +1,33 @@
 <script setup lang="ts">
   import type { Component } from "vue";
-  import { IconButtonType } from "./types";
+  import { ButtonType } from "../types";
 
   interface Props {
-    type: IconButtonType;
+    type: ButtonType;
     icon: Component;
+    ariaLabel: string;
+    disabled?: boolean;
   }
 
-  const props = defineProps<Props>();
+  const props = withDefaults(defineProps<Props>(), {
+    disabled: false,
+  });
 
   const emit = defineEmits<{
-    (e: "click"): void;
+    (e: "click", event: MouseEvent): void;
   }>();
-  const handleClick = () => emit("click");
+
+  const handleClick = (event: MouseEvent) => emit("click", event);
 </script>
 
 <template>
-  <button class="icon-button" :type="props.type" @click="handleClick">
+  <button
+    class="icon-button"
+    :type="props.type"
+    :disabled="props.disabled"
+    :aria-label="props.ariaLabel"
+    @click="handleClick"
+  >
     <component :is="props.icon" />
   </button>
 </template>
@@ -31,15 +42,12 @@
     display: inline-flex;
     align-items: center;
     justify-content: center;
-
     width: 40px;
     height: 40px;
-
     border-radius: $base-radius;
     border: 2px solid map.get($colors, "primary");
     background-color: transparent;
     color: map.get($colors, "primary");
-
     cursor: pointer;
     transition: all $base-transition ease;
 
@@ -63,11 +71,5 @@
       border-color: opacity(map.get($colors, "primary"), 40);
       color: opacity(map.get($colors, "primary"), 40);
     }
-  }
-
-  /* For future wrapping */
-  .icon-button-wrapper {
-    display: flex;
-    gap: map.get($spacing, "sm");
   }
 </style>
