@@ -14,9 +14,9 @@
   defineProps<Props>();
 
   const BADGE_CONFIG: Record<string, { label: string; color: PillowColor }> = {
-    hot: { label: "Hot 🔥", color: PillowColor.Danger },
-    recommended: { label: "Recommended ⭐", color: PillowColor.Success },
-    top: { label: "Top 💎", color: PillowColor.Warning },
+    hot: { label: "Hot", color: PillowColor.Danger },
+    recommended: { label: "Recommended", color: PillowColor.Success },
+    top: { label: "Top", color: PillowColor.Warning },
   };
 
   const normalizeBadge = (badge: string) => badge.trim().toLowerCase();
@@ -70,6 +70,7 @@
     background: #fff;
     display: flex;
     flex-direction: column;
+    border: 1px solid var(--color-gray);
   }
 
   .placeCard__poster {

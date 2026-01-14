@@ -22,7 +22,7 @@
 }
 
 // Для темної теми просто змінюємо значення змінних, і браузер автоматично все застосує
-[data-them="dark"] {
+[data-theme="dark"] {
   --color-primary: #{map.get($colors, "primary")};
   --color-secondary: #{map.get($colors, "secondary")};
   --color-accent: #{map.get($colors, "accent")};

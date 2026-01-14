@@ -1,24 +1,16 @@
 <!-- eslint-disable vue/multi-word-component-names -->
 <script setup lang="ts">
-  import { computed } from "vue";
-  import { PillowColor, PillowColorMap } from "./types";
+  import { PillowColor } from "./types";
 
   interface Props {
     color: PillowColor;
   }
 
-  const props = defineProps<Props>();
-
-  const backgroundColor = computed(() => PillowColorMap[props.color]);
+  defineProps<Props>();
 </script>
 
 <template>
-  <span
-    class="pillow"
-    :style="{
-      backgroundColor,
-    }"
-  >
+  <span class="pillow" style="">
     <slot />
   </span>
 </template>
@@ -34,12 +26,14 @@
     padding: map.get($spacing, "2xs") map.get($spacing, "md");
     white-space: nowrap;
 
-    background-color: #eee;
-    color: #fff;
+    background-color: var(--color-primary);
+    color: var(--color-bg);
 
     border-radius: 999px;
 
     font-weight: 500;
     line-height: 1;
+
+    position: relative;
   }
 </style>

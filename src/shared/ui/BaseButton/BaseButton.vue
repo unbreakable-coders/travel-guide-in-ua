@@ -1,11 +1,5 @@
-<template>
-  <button class="base-button" :type="props.type" :disabled="props.disabled" @click="handleClick">
-    <slot />
-  </button>
-</template>
-
 <script setup lang="ts">
-  import { ButtonType } from "../types";
+  import type { ButtonType } from "@/types/button";
 
   interface Props {
     type: ButtonType;
@@ -22,6 +16,12 @@
 
   const handleClick = (event: MouseEvent) => emit("click", event);
 </script>
+
+<template>
+  <button class="base-button" :type="props.type" :disabled="props.disabled" @click="handleClick">
+    <slot />
+  </button>
+</template>
 
 <style lang="scss" scoped>
   @use "sass:map";

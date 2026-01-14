@@ -25,13 +25,14 @@
   import type { Booking } from "@/types/booking";
   import Pillow from "@/shared/ui/Pillow/Pillow.vue";
   import { PillowColor } from "@/shared/ui/Pillow/types";
-  import { BaseButton, IconButton, ButtonType } from "@/shared/ui/Buttons";
-  import ArrowLeftIcon from "@/shared/icons/ArrowLeftIcon.vue";
-  import ArrowRightIcon from "@/shared/icons/ArrowRightIcon.vue";
   import { AppFeedback } from "@/shared/widgets/AppFeedback";
   import { PlaceCard } from "@/shared/widgets/PlaceCard";
   import type { Place } from "@/types/place";
   import { PlaceSwiper } from "@/shared/widgets/PlaceSwiper";
+  import { ButtonType } from "@/types/button";
+  import { BaseButton } from "@/shared/ui/BaseButton";
+  import { IconButton } from "@/shared/ui/IconButton";
+  import ArrowIcon from "@/shared/icons/arrow.svg";
 
   const options: TabOption[] = [
     { value: "overview", label: "Overview" },
@@ -341,15 +342,8 @@
 
         <IconButton
           :type="ButtonType.Button"
-          :icon="ArrowLeftIcon"
+          :icon="ArrowIcon"
           ariaLabel="Previous"
-          @click="onClick"
-        />
-
-        <IconButton
-          :type="ButtonType.Button"
-          :icon="ArrowRightIcon"
-          ariaLabel="Next"
           @click="onClick"
         />
       </AppCard>

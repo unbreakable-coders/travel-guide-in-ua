@@ -7,10 +7,9 @@
   import "swiper/swiper-bundle.css";
 
   import ArrowIcon from "@/shared/icons/arrow.svg";
-
-  import { IconButton } from "@/shared/ui/Buttons/IconButton";
-  import { ButtonType } from "@/shared/ui/Buttons/types";
+  import { IconButton } from "@/shared/ui/IconButton";
   import { PlaceCard } from "@/shared/widgets/PlaceCard";
+  import { ButtonType } from "@/types/button";
 
   interface Props {
     places: Place[];
@@ -46,7 +45,6 @@
     0: { slidesPerView: 1.2 },
     768: { slidesPerView: 3 },
     1024: { slidesPerView: 4 },
-    1440: { slidesPerView: 5 },
   } as const;
 </script>
 
@@ -82,6 +80,8 @@
       :watch-overflow="true"
       :observer="true"
       :observe-parents="true"
+      :speed="800"
+      :loop="true"
       @swiper="onSwiper"
     >
       <SwiperSlide v-for="place in normalizedPlaces" :key="place.id" class="place-swiper__slide">
@@ -92,25 +92,22 @@
 </template>
 
 <style scoped lang="scss">
+  @use "sass:map";
+  @use "@/styles/vars" as *;
+
   .place-swiper {
     &__header {
       display: flex;
       align-items: center;
       justify-content: space-between;
-      gap: 12px;
-      margin-bottom: 12px;
-    }
-
-    &__label {
-      margin: 0;
-      font-weight: 600;
-      line-height: 1.2;
+      gap: map.get($spacing, "md");
+      margin-bottom: map.get($spacing, "md");
     }
 
     &__controls {
       display: flex;
       align-items: center;
-      gap: 8px;
+      gap: map.get($spacing, "sm");
       flex-shrink: 0;
     }
 

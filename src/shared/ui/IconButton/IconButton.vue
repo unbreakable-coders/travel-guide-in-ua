@@ -1,6 +1,6 @@
 <script setup lang="ts">
+  import { ButtonType } from "@/types/button";
   import type { Component } from "vue";
-  import { ButtonType } from "../types";
 
   type IconSource = Component | string;
 
@@ -48,24 +48,24 @@
     width: 40px;
     height: 40px;
     border-radius: $base-radius;
-    border: 2px solid map.get($colors, "primary");
+    border: 1px solid var(--color-primary);
     background-color: transparent;
     color: map.get($colors, "primary");
     cursor: pointer;
     transition: all $base-transition ease;
 
     svg {
-      width: 1.25rem;
-      height: 1.25rem;
+      width: 0.75rem;
+      height: 0.75rem;
       display: block;
     }
 
     &:hover:not(:disabled) {
-      background-color: opacity(map.get($colors, "primary"), 10);
+      background-color: opacity(map.get($colors, "primary"), 5);
     }
 
     &:active:not(:disabled) {
-      background-color: opacity(map.get($colors, "primary"), 20);
+      background-color: opacity(map.get($colors, "primary"), 10);
     }
 
     &:disabled {
