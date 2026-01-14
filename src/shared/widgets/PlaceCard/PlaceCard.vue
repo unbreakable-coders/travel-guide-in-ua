@@ -61,85 +61,92 @@
   @use "sass:map";
   @use "@/styles/vars" as *;
 
-  .placeCard {
+  .place-card {
     width: 100%;
     max-width: 100%;
     min-width: 0;
     overflow: hidden;
+
     border-radius: 16px;
     background: #fff;
+
     display: flex;
     flex-direction: column;
-  }
 
-  .placeCard__poster {
-    position: relative;
-    width: 100%;
-    aspect-ratio: 4 / 3;
-    flex: 0 0 auto;
-    overflow: hidden;
-    background: transparent;
-  }
+    &__poster {
+      position: relative;
+      width: 100%;
+      aspect-ratio: 4 / 3;
+      flex: 0 0 auto;
+      overflow: hidden;
+      background: transparent;
+    }
 
-  .placeCard__img {
-    position: absolute;
-    inset: 0;
-    width: 100%;
-    height: 100%;
-    display: block;
-    object-fit: cover;
-    object-position: center;
-  }
+    &__img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      display: block;
+      object-fit: cover;
+      object-position: center;
+    }
 
-  .placeCard__badges {
-    position: absolute;
-    top: map.get($spacing, "md");
-    left: map.get($spacing, "md");
-    display: flex;
-    flex-wrap: wrap;
-    gap: map.get($spacing, "2xs");
-    max-width: calc(100% - map.get($spacing, "md") * 2);
-  }
+    &__badges {
+      position: absolute;
+      top: map.get($spacing, "md");
+      left: map.get($spacing, "md");
 
-  .placeCard__body {
-    flex: 1 1 auto;
-    min-width: 0;
-    min-height: 84px;
-    display: flex;
-    align-items: flex-end;
-    justify-content: space-between;
-    padding: map.get($spacing, "md");
-    border-top: 1px solid rgba(0, 0, 0, 0.06);
-  }
+      display: flex;
+      flex-wrap: wrap;
+      gap: map.get($spacing, "2xs");
 
-  .placeCard__info {
-    min-width: 0;
-  }
+      max-width: calc(100% - map.get($spacing, "md") * 2);
+    }
 
-  .placeCard__title {
-    margin: 0 0 map.get($spacing, "2xs") 0;
-    font-size: 1rem;
-    line-height: 1.25;
-    font-weight: 600;
-    display: -webkit-box;
-    -webkit-box-orient: vertical;
-    -webkit-line-clamp: 2;
-    line-clamp: 2;
-    overflow: hidden;
-  }
+    &__body {
+      flex: 1 1 auto;
+      min-width: 0;
+      min-height: 84px;
 
-  .placeCard__city {
-    margin: 0;
-    opacity: 0.7;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-  }
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
 
-  .placeCard__rating {
-    margin-left: map.get($spacing, "md");
-    white-space: nowrap;
-    flex-shrink: 0;
-    text-align: right;
+      padding: map.get($spacing, "md");
+      border-top: 1px solid rgba(0, 0, 0, 0.06);
+    }
+
+    &__info {
+      min-width: 0;
+    }
+
+    &__title {
+      margin: 0 0 map.get($spacing, "2xs") 0;
+      font-size: 1rem;
+      line-height: 1.25;
+      font-weight: 600;
+
+      display: -webkit-box;
+      -webkit-box-orient: vertical;
+      -webkit-line-clamp: 2;
+      line-clamp: 2;
+      overflow: hidden;
+    }
+
+    &__city {
+      margin: 0;
+      opacity: 0.7;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+
+    &__rating {
+      margin-left: map.get($spacing, "md");
+      white-space: nowrap;
+      flex-shrink: 0;
+      text-align: right;
+    }
   }
 </style>
