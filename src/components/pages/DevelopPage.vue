@@ -1,5 +1,6 @@
 <script setup lang="ts">
   import AppCard from "@/shared/ui/AppCard/AppCard.vue";
+  import { CalendarField } from "@/shared/form/CalendarField";
 
   const colors = [
     { name: "Primary", var: "--color-primary" },
@@ -11,6 +12,25 @@
     { name: "Gray", var: "--color-gray" },
     { name: "Background", var: "--color-bg" },
     { name: "Surface", var: "--color-surface" },
+  ];
+
+  const calendarData = [
+    {
+      month: "September",
+      days: [
+        { day: 10, availableTime: ["12:30", "13:30", "14:30"] },
+        { day: 17, availableTime: ["13:30", "15:30"] },
+        { day: 26, availableTime: ["16:30", "17:30"] },
+      ],
+    },
+    {
+      month: "October",
+      days: [
+        { day: 3, availableTime: ["11:00", "12:00"] },
+        { day: 8, availableTime: ["14:00", "15:00"] },
+        { day: 21, availableTime: ["10:00", "11:30"] },
+      ],
+    },
   ];
 </script>
 
@@ -54,6 +74,12 @@
         <span class="develop-page__badge-item develop-page__badge-item--secondary">Visited</span>
         <span class="develop-page__badge-item develop-page__badge-item--accent">Recommended</span>
       </div>
+    </AppCard>
+
+    <AppCard>
+      <h2 class="develop-page__title">CalendarField:</h2>
+
+      <CalendarField :calendar="calendarData" />
     </AppCard>
   </div>
 </template>

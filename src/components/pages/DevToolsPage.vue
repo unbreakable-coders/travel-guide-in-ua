@@ -33,6 +33,7 @@
   import { BaseButton } from "@/shared/ui/BaseButton";
   import { IconButton } from "@/shared/ui/IconButton";
   import ArrowIcon from "@/shared/icons/arrow.svg";
+  import { TextAreaField } from "@/shared/form/TextAreaField";
 
   const options: TabOption[] = [
     { value: "overview", label: "Overview" },
@@ -63,6 +64,7 @@
   const email = ref("");
   const password = ref("");
   const disabledField = ref("");
+  const description = ref("");
 
   const radioSelected = ref<string | number>("cultural");
   const radioGroupSelected = ref<string | number>("cultural");
@@ -393,6 +395,30 @@
     </section>
 
     <section class="page__section page__section--two">
+      <AppCard class="page__card page__card--vertical">
+        <h2 class="page__card-title">TextAreaField</h2>
+
+        <TextAreaField
+          v-model="description"
+          label="Description"
+          placeholder="Type something..."
+          height="180px"
+        />
+
+        <TextAreaField
+          v-model="description"
+          label="Disabled"
+          placeholder="Disabled textarea"
+          :isDisabled="true"
+          height="180px"
+        />
+
+        <div class="page__card-row">
+          <span class="page__card-label">Value:</span>
+          <code class="page__card-code">{{ description }}</code>
+        </div>
+      </AppCard>
+
       <AppCard class="page__card page__card--vertical">
         <h2 class="page__card-title">SelectField</h2>
 
