@@ -1,7 +1,10 @@
 <script setup lang="ts">
   import { computed, ref, watch } from "vue";
-  import Pillow from "@/shared/ui/Pillow/Pillow.vue";
-  import { PillowColor } from "@/shared/ui/Pillow/types";
+
+  import CalendarHeader from "@/shared/form/CalendarField/CalendarHeader.vue";
+  import CalendarWeekdays from "@/shared/form/CalendarField/CalendarWeekdays.vue";
+  import CalendarGrid from "@/shared/form/CalendarField/CalendarGrid.vue";
+  import CalendarTime from "@/shared/form/CalendarField/CalendarTime.vue";
 
   interface Props {
     calendar: {
@@ -82,15 +85,22 @@
       59,
       999
     ).getTime();
+
     return lastDayTs < todayStart();
   };
 
   const firstAllowedMonthIndex = computed(() => {
     const idx = props.calendar.findIndex((m) => !isMonthFullyPast(getMonthIndex(m.month)));
+
     return idx === -1 ? 0 : idx;
   });
 
   const activeMonthIdx = ref(firstAllowedMonthIndex.value);
+
+  type SelectedDay = { monthIdx: number; day: number } | null;
+
+  const selectedDay = ref<SelectedDay>(null);
+  const selectedTime = ref<string | null>(null);
 
   watch(
     () => props.calendar,
@@ -103,20 +113,16 @@
   );
 
   const activeMonth = computed(() => props.calendar[activeMonthIdx.value] ?? null);
-
-  type SelectedDay = { monthIdx: number; day: number } | null;
-
-  const selectedDay = ref<SelectedDay>(null);
-  const selectedTime = ref<string | null>(null);
-
   const monthIndex = computed(() => getMonthIndex(activeMonth.value?.month ?? ""));
 
   const availableDaysMap = computed(() => {
     const map = new Map<number, string[]>();
     const days = activeMonth.value?.days ?? [];
+
     for (const d of days) {
       map.set(d.day, d.availableTime);
     }
+
     return map;
   });
 
@@ -126,12 +132,14 @@
   const calendarCells = computed(() => {
     const blanks = Array.from({ length: firstWeekday.value }, () => null as number | null);
     const days = Array.from({ length: daysInMonth.value }, (_, i) => i + 1);
+
     return [...blanks, ...days];
   });
 
   const canGoPrev = computed(() => {
     const prevIdx = activeMonthIdx.value - 1;
     if (prevIdx < 0) return false;
+
     const prevMonthIndex = getMonthIndex(props.calendar[prevIdx]?.month ?? "");
     return !isMonthFullyPast(prevMonthIndex);
   });
@@ -140,6 +148,7 @@
 
   const goPrev = () => {
     if (!canGoPrev.value) return;
+
     activeMonthIdx.value -= 1;
     selectedDay.value = null;
     selectedTime.value = null;
@@ -147,6 +156,7 @@
 
   const goNext = () => {
     if (!canGoNext.value) return;
+
     activeMonthIdx.value += 1;
     selectedDay.value = null;
     selectedTime.value = null;
@@ -162,7 +172,7 @@
   const isSelectedDay = (day: number) =>
     selectedDay.value?.monthIdx === activeMonthIdx.value && selectedDay.value?.day === day;
 
-  const onDayClick = (day: number) => {
+  const onDaySelect = (day: number) => {
     if (!activeMonth.value) return;
     if (!isClickableDay(day)) return;
 
@@ -175,10 +185,11 @@
   const availableTime = computed(() => {
     if (!selectedDay.value) return [];
     if (selectedDay.value.monthIdx !== activeMonthIdx.value) return [];
+
     return availableDaysMap.value.get(selectedDay.value.day) ?? [];
   });
 
-  const onTimeClick = (time: string) => {
+  const onTimeSelect = (time: string) => {
     if (!activeMonth.value) return;
     if (!selectedDay.value) return;
 
@@ -189,147 +200,36 @@
 
 <template>
   <div class="calendar-field">
-    <div class="calendar-field__header">
-      <button class="calendar-field__nav" type="button" :disabled="!canGoPrev" @click="goPrev">
-        ‹
-      </button>
+    <CalendarHeader
+      :month="activeMonth?.month ?? ''"
+      :canGoPrev="canGoPrev"
+      :canGoNext="canGoNext"
+      @prev="goPrev"
+      @next="goNext"
+    />
 
-      <div class="calendar-field__month">
-        {{ activeMonth?.month ?? "" }}
-      </div>
+    <CalendarWeekdays :days="WEEK_DAYS" />
 
-      <button class="calendar-field__nav" type="button" :disabled="!canGoNext" @click="goNext">
-        ›
-      </button>
-    </div>
+    <CalendarGrid
+      :cells="calendarCells"
+      :isClickableDay="isClickableDay"
+      :isSelectedDay="isSelectedDay"
+      @select-day="onDaySelect"
+    />
 
-    <div class="calendar-field__weekdays">
-      <div v-for="d in WEEK_DAYS" :key="d" class="calendar-field__weekday">
-        {{ d }}
-      </div>
-    </div>
-
-    <div class="calendar-field__grid">
-      <button
-        v-for="(cell, idx) in calendarCells"
-        :key="`${cell ?? 'x'}-${idx}`"
-        class="calendar-field__day"
-        type="button"
-        :class="{
-          'calendar-field__day--blank': cell === null,
-          'calendar-field__day--disabled': cell !== null && !isClickableDay(cell),
-          'calendar-field__day--active': cell !== null && isSelectedDay(cell),
-        }"
-        :disabled="cell === null || (cell !== null && !isClickableDay(cell))"
-        @click="cell !== null && onDayClick(cell)"
-      >
-        <span v-if="cell !== null">{{ cell }}</span>
-      </button>
-    </div>
-
-    <div v-if="selectedDay && availableTime.length" class="calendar-field__times">
-      <button
-        v-for="t in availableTime"
-        :key="t"
-        class="calendar-field__time"
-        type="button"
-        @click="onTimeClick(t)"
-      >
-        <Pillow :color="selectedTime === t ? PillowColor.Success : PillowColor.Warning">
-          {{ t }}
-        </Pillow>
-      </button>
-    </div>
+    <CalendarTime
+      v-if="selectedDay && availableTime.length"
+      :times="availableTime"
+      :activeTime="selectedTime"
+      @select-time="onTimeSelect"
+    />
   </div>
 </template>
 
-<style scoped>
+<style lang="scss" scoped>
   .calendar-field {
     width: 100%;
     display: grid;
     gap: 16px;
-  }
-
-  .calendar-field__header {
-    display: grid;
-    grid-template-columns: 44px 1fr 44px;
-    align-items: center;
-  }
-
-  .calendar-field__month {
-    text-align: center;
-    font-weight: 600;
-  }
-
-  .calendar-field__nav {
-    width: 44px;
-    height: 36px;
-    border: 1px solid var(--color-border, #d0d5dd);
-    border-radius: 10px;
-    background: var(--color-surface, #ffffff);
-    cursor: pointer;
-  }
-
-  .calendar-field__nav:disabled {
-    background: var(--color-disabled-bg, #f2f4f7);
-    color: var(--color-disabled-text, #98a2b3);
-    cursor: not-allowed;
-  }
-
-  .calendar-field__weekdays {
-    display: grid;
-    grid-template-columns: repeat(7, minmax(0, 1fr));
-    gap: 8px;
-  }
-
-  .calendar-field__weekday {
-    text-align: center;
-    font-weight: 600;
-    color: var(--color-primary, #2f80ed);
-  }
-
-  .calendar-field__grid {
-    display: grid;
-    grid-template-columns: repeat(7, minmax(0, 1fr));
-    gap: 10px;
-  }
-
-  .calendar-field__day {
-    height: 44px;
-    border: none;
-    background: transparent;
-    border-radius: 999px;
-    cursor: pointer;
-    display: grid;
-    place-items: center;
-    font-weight: 600;
-  }
-
-  .calendar-field__day--blank {
-    cursor: default;
-  }
-
-  .calendar-field__day--disabled {
-    background: var(--color-disabled-bg, #f2f4f7);
-    color: var(--color-disabled-text, #98a2b3);
-    cursor: not-allowed;
-  }
-
-  .calendar-field__day--active {
-    background: var(--color-primary, #2f80ed);
-    color: #fff;
-  }
-
-  .calendar-field__times {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 12px;
-  }
-
-  .calendar-field__time {
-    border: none;
-    background: transparent;
-    padding: 0;
-    cursor: pointer;
   }
 </style>

@@ -22,6 +22,7 @@
   const handleInput = (event: Event) => {
     const target = event.target as HTMLTextAreaElement;
     const trimmedValue = target.value.trimStart();
+
     emit("update:modelValue", trimmedValue);
   };
 
@@ -51,42 +52,42 @@
   </div>
 </template>
 
-<style scoped>
+<style lang="scss" scoped>
   .text-area-field {
     display: grid;
     gap: 8px;
-  }
 
-  .text-area-field__label {
-    font-size: 14px;
-    line-height: 20px;
-    cursor: pointer;
-    user-select: none;
-  }
+    &__label {
+      font-size: 14px;
+      line-height: 20px;
+      cursor: pointer;
+      user-select: none;
+    }
 
-  .text-area-field__textarea {
-    width: 100%;
-    resize: none;
-    padding: 12px;
-    border: 1px solid var(--color-border, #d0d5dd);
-    border-radius: 12px;
-    background: var(--color-surface, #ffffff);
-    color: var(--color-text, #101828);
-    font-size: 14px;
-    line-height: 20px;
-    cursor: text;
-    outline: none;
-    box-sizing: border-box;
-  }
+    &__textarea {
+      width: 100%;
+      resize: none;
+      padding: 12px;
+      border: 1px solid var(--color-border, #d0d5dd);
+      border-radius: 12px;
+      background: var(--color-surface, #ffffff);
+      color: var(--color-text, #101828);
+      font-size: 14px;
+      line-height: 20px;
+      cursor: text;
+      outline: none;
+      box-sizing: border-box;
 
-  .text-area-field__textarea:focus {
-    border-color: var(--color-primary, #2f80ed);
-    box-shadow: 0 0 0 3px rgba(47, 128, 237, 0.2);
-  }
+      &:focus {
+        border-color: var(--color-primary, #2f80ed);
+        box-shadow: 0 0 0 3px rgba(47, 128, 237, 0.2);
+      }
 
-  .text-area-field__textarea--disabled {
-    background: var(--color-disabled-bg, #f2f4f7);
-    color: var(--color-disabled-text, #98a2b3);
-    cursor: not-allowed;
+      &--disabled {
+        background: var(--color-disabled-bg, #f2f4f7);
+        color: var(--color-disabled-text, #98a2b3);
+        cursor: not-allowed;
+      }
+    }
   }
 </style>
