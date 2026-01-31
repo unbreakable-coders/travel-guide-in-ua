@@ -1,0 +1,59 @@
+.pillow {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 2px map.get($spacing, 'sm');
+  white-space: nowrap;
+  border-radius: 999px;
+
+  font-weight: 700;
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+
+  border: none;
+  transition: all $base-transition ease;
+
+  // Defaults
+  background-color: var(--brand);
+  color: #ffffff;
+
+  &--primary,
+  &--active {
+    background-color: var(--brand);
+    color: #ffffff;
+  }
+
+  &--success {
+    background-color: var(--success);
+    color: #ffffff;
+  }
+
+  &--danger {
+    background-color: var(--danger);
+    color: #ffffff;
+  }
+
+  &--warning {
+    background-color: var(--warning);
+    color: var(--text-main); // Dark text for light yellow background
+  }
+
+  &--info {
+    background-color: var(--input-focus);
+    color: #ffffff;
+  }
+
+  &--dark {
+    background-color: var(--text-main);
+    color: var(--bg-surface);
+  }
+
+  &--disabled {
+    background-color: var(--state-disabled);
+    color: var(--text-disabled);
+    text-transform: none;
+    font-weight: 400;
+  }
+}

@@ -1,0 +1,42 @@
+# ---------- Builder ----------
+# Force amd64 architecture for AWS Fargate compatibility
+FROM --platform=linux/amd64 node:24-alpine AS builder
+WORKDIR /app
+
+# 1. Install all dependencies (including devDeps for the build)
+COPY package.json package-lock.json ./
+RUN npm ci
+
+# 2. Copy root workspace configs
+COPY tsconfig.base.json ./
+COPY nx.json ./
+COPY svgr.config.js ./
+COPY eslint.config.mjs ./    
+COPY jest.preset.js ./         
+COPY jest.config.ts ./        
+
+# 3. Copy ALL libraries and apps (Nx needs these to resolve @org/ paths)
+COPY libs ./libs
+COPY apps ./apps
+
+# 4. Build the web app
+RUN npx nx build @org/web --prod
+
+# ---------- Production runner ----------
+FROM --platform=linux/amd64 node:24-alpine AS runner
+WORKDIR /app
+ENV NODE_ENV=production
+
+# 1. Install production dependencies
+COPY package.json package-lock.json ./
+
+RUN npm ci --omit=dev && npm install semver
+
+# 2. Copy the optimized build from the builder stage
+COPY --from=builder /app/dist/web ./dist/web
+
+# 3. Network configuration
+EXPOSE 8080
+
+# 4. Start command
+CMD ["npx", "next", "start", "dist/web", "-p", "8080"]

@@ -1,0 +1,9 @@
+export { default as Ukraine } from './Ukraine';
+export { default as UnitedKingdom } from './UnitedKingdom';
+export { default as Arrow } from './Arrow';
+export { default as EyeClose } from './EyeClose';
+export { default as EyeOpen } from './EyeOpen';
+export { default as Logo } from './Logo';
+export { default as Star } from './Star';
+export { default as TickMark } from './TickMark';
+export { default as Trash } from './Trash';

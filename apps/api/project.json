@@ -1,0 +1,79 @@
+{
+  "name": "@org/api",
+  "projectType": "application",
+  "tags": ["scope:@org/api"],
+  "targets": {
+    "build": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "webpack-cli build",
+        "args": ["--node-env=production"],
+        "cwd": "apps/api"
+      },
+      "configurations": {
+        "development": {
+          "args": ["--node-env=development"]
+        },
+        "production": {
+          "args": ["--node-env=production"]
+        }
+      }
+    },
+
+    "serve": {
+      "executor": "@nx/js:node",
+      "continuous": true,
+      "defaultConfiguration": "development",
+      "dependsOn": ["build"],
+      "options": {
+        "buildTarget": "@org/api:build",
+        "inspect": false,
+        "port": 9229,
+        "runBuildTargetDependencies": false
+      },
+      "configurations": {
+        "development": {
+          "buildTarget": "@org/api:build:development"
+        },
+        "production": {
+          "buildTarget": "@org/api:build:production"
+        }
+      }
+    },
+
+    "prune-lockfile": {
+      "executor": "@nx/js:prune-lockfile",
+      "cache": true,
+      "dependsOn": ["build"],
+      "outputs": [
+        "{workspaceRoot}/apps/api/dist/package.json",
+        "{workspaceRoot}/apps/api/dist/package-lock.json"
+      ],
+      "options": {
+        "buildTarget": "@org/api:build"
+      }
+    },
+
+    "copy-workspace-modules": {
+      "executor": "@nx/js:copy-workspace-modules",
+      "cache": true,
+      "dependsOn": ["build"],
+      "outputs": ["{workspaceRoot}/apps/api/dist/workspace_modules"],
+      "options": {
+        "buildTarget": "@org/api:build"
+      }
+    },
+
+    "prune": {
+      "executor": "nx:noop",
+      "dependsOn": ["prune-lockfile", "copy-workspace-modules"]
+    },
+
+    "test": {
+      "executor": "nx:noop",
+      "options": {
+        "passWithNoTests": true
+      }
+    }
+  }
+}

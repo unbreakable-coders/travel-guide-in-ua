@@ -1,0 +1,48 @@
+.tab-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: map.get($spacing, 'sm') map.get($spacing, 'md');
+  border-radius: $small-radius;
+  border: 1px solid var(--border);
+
+  cursor: pointer;
+  user-select: none;
+  outline: none;
+  background-color: transparent;
+  color: var(--text-muted);
+  font-family: inherit;
+  font-weight: 500;
+
+  transition: all $base-transition ease;
+
+  &:hover:not(&--active):not(&--disabled) {
+    border-color: var(--input-hover);
+    background-color: var(--bg-alt);
+    color: var(--text-main);
+  }
+
+  &--active {
+    border-color: var(--brand);
+    color: var(--brand);
+    background-color: var(--bg-alt);
+    font-weight: 600;
+
+    &:active:not(&--disabled) {
+      border-color: var(--brand-hover);
+    }
+  }
+
+  &--disabled {
+    border-color: var(--state-disabled);
+    color: var(--text-disabled);
+    background-color: var(--bg-alt);
+    cursor: not-allowed;
+
+    &:hover {
+      background-color: var(--bg-alt);
+      border-color: var(--state-disabled);
+    }
+  }
+}

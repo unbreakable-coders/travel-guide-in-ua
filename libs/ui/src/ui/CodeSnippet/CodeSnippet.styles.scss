@@ -1,0 +1,72 @@
+.code-snippet {
+  border-radius: $base-radius;
+  overflow: hidden;
+  border: 1px solid var(--border);
+  background-color: var(--terminal-body);
+  transition: background-color $base-transition, border-color $base-transition;
+
+  &__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: map.get($spacing, 'xs') map.get($spacing, 'md');
+    background-color: var(--terminal-header);
+    border-bottom: 1px solid var(--border);
+  }
+
+  &__filename {
+    color: var(--text-muted);
+    font-size: 0.75rem;
+    font-family: 'Fira Code', monospace;
+    font-weight: 500;
+  }
+
+  &__copy-btn {
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    color: var(--text-muted);
+    display: flex;
+    align-items: center;
+    gap: map.get($spacing, 'xs');
+    font-size: 0.75rem;
+    transition: color $base-transition, opacity $base-transition;
+
+    &--success {
+      color: var(--success);
+    }
+
+    &:hover:not(&--success) {
+      color: var(--brand);
+    }
+  }
+
+  &__content {
+    padding: map.get($spacing, 'md');
+    overflow-x: auto;
+
+    pre {
+      margin: 0;
+      background: transparent !important;
+      font-family: 'Fira Code', monospace;
+      font-size: 0.875rem;
+      line-height: 1.5;
+      color: var(--text-main);
+    }
+
+    .token-line {
+      display: flex;
+    }
+  }
+
+  &__line-number {
+    display: inline-block;
+    width: 2rem;
+    padding-right: 1rem;
+    margin-right: 1rem;
+    text-align: right;
+    color: var(--text-disabled);
+    user-select: none;
+    border-right: 1px solid var(--border);
+  }
+}

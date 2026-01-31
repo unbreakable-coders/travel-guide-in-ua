@@ -1,0 +1,27 @@
+{
+  "name": "@org/db",
+  "tags": ["scope:@org/db"],
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "root": "libs/db",
+  "projectType": "library",
+  "targets": {
+    "generate": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "prisma generate --config={projectRoot}/prisma.config.ts"
+      }
+    },
+    "migrate": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "prisma migrate dev --config={projectRoot}/prisma.config.ts"
+      }
+    },
+    "studio": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "prisma studio --config={projectRoot}/prisma.config.ts"
+      }
+    }
+  }
+}

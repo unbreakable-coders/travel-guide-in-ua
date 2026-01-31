@@ -1,0 +1,11 @@
+FROM node:24-alpine as dev
+WORKDIR /app
+
+COPY package.json package-lock.json ./
+
+RUN npm install
+COPY . .
+
+RUN npx nx run db:generate
+
+CMD npx nx serve api --port=${API_PORT}

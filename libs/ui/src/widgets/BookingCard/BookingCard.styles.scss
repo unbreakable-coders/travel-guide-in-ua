@@ -1,0 +1,79 @@
+.booking-card {
+  position: relative;
+  background-color: var(--bg-surface);
+  border: 1px solid var(--border);
+  border-radius: $small-radius;
+  padding: map.get($spacing, 'lg');
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+  transition: border-color $base-transition ease,
+    box-shadow $base-transition ease;
+  margin-bottom: map.get($spacing, 'md');
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+
+  &:hover {
+    border-color: var(--input-hover);
+  }
+
+  &__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: map.get($spacing, 'md');
+  }
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    gap: map.get($spacing, 'xs');
+  }
+
+  &__title {
+    color: var(--text-main);
+    margin: 0;
+    font-weight: 700;
+  }
+
+  &__time {
+    color: var(--text-muted);
+    font-variant-numeric: tabular-nums;
+    font-size: 0.875rem;
+  }
+
+  &__delete-button {
+    width: 40px;
+    height: 40px;
+    background-color: transparent;
+    border: none;
+    border-radius: 50%;
+    padding: 0;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color $base-transition ease;
+    flex-shrink: 0;
+
+    &:hover {
+      background-color: var(--bg-alt);
+
+      .booking-card__delete-icon {
+        color: var(--danger);
+        transform: scale(1.1);
+      }
+    }
+
+    &:active {
+      background-color: var(--state-disabled);
+    }
+  }
+
+  &__delete-icon {
+    width: 20px;
+    height: 20px;
+    transition: transform $base-transition ease, color $base-transition ease;
+    color: var(--text-muted);
+  }
+}

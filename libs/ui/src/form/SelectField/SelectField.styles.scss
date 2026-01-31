@@ -1,0 +1,130 @@
+.select-field {
+  position: relative;
+
+  &--opened {
+    .select-field__arrow {
+      transform: scaleY(-1);
+    }
+
+    .select-field__btn {
+      border-color: var(--input-focus);
+      box-shadow: 0 0 0 1px var(--brand-soft);
+    }
+
+    .select-field__options {
+      border-color: var(--input-focus);
+    }
+  }
+
+  &__label {
+    @include label;
+    display: block;
+    cursor: pointer;
+    user-select: none;
+    margin-bottom: map.get($spacing, 'md');
+    color: var(--text-main);
+  }
+
+  &__btn {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: map.get($spacing, 'md');
+    width: 100%;
+    cursor: pointer;
+    background-color: var(--bg-surface);
+    border-radius: $small-radius;
+    border: 1px solid var(--border);
+    color: var(--text-main);
+    padding: map.get($spacing, 'xs') map.get($spacing, 'sm');
+    transition: border-color $base-transition, box-shadow $base-transition,
+      background-color $base-transition;
+
+    @include screen-md {
+      padding: map.get($spacing, 'sm') map.get($spacing, 'md');
+    }
+
+    &:hover:not(&--disabled) {
+      border-color: var(--input-hover);
+    }
+
+    &--disabled {
+      border-color: var(--state-disabled);
+      color: var(--text-disabled);
+      background-color: var(--bg-alt);
+      cursor: not-allowed;
+    }
+  }
+
+  &__btn-content {
+    display: flex;
+    align-items: center;
+    gap: map.get($spacing, 'md');
+  }
+
+  &__options {
+    position: absolute;
+    top: calc(100% + map.get($spacing, 'sm'));
+    width: 100%;
+    z-index: 2;
+    overflow: hidden;
+    border-radius: $small-radius;
+    border: 1px solid var(--border);
+    background-color: var(--bg-surface);
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+    display: none;
+    padding: 4px 5px;
+
+    &--shown {
+      display: block;
+    }
+  }
+
+  &__option-list {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  &__option-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: map.get($spacing, 'sm') map.get($spacing, 'md');
+    cursor: pointer;
+    color: var(--text-main);
+    border-radius: $small-radius;
+    transition: background-color $base-transition ease,
+      color $base-transition ease;
+    margin-block: 1px;
+
+    &:hover {
+      background-color: var(--bg-alt);
+    }
+
+    &--selected {
+      background-color: var(--bg-alt);
+      font-weight: 600;
+    }
+  }
+
+  &__option-content {
+    display: flex;
+    align-items: center;
+    gap: map.get($spacing, 'md');
+  }
+
+  &__option-icon,
+  &__btn-icon {
+    width: 25px;
+    height: 25px;
+    color: var(--text-muted);
+  }
+
+  &__arrow,
+  &__selected-icon {
+    width: 12px;
+    color: var(--text-muted);
+    transition: transform $base-transition;
+  }
+}

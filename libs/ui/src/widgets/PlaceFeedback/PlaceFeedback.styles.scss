@@ -1,0 +1,71 @@
+.place-feedback {
+  background-color: var(--bg-surface);
+  border-radius: $base-radius;
+  padding: map.get($spacing, 'lg');
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.04);
+  border: 1px solid var(--border);
+  transition: background-color $base-transition, border-color $base-transition;
+
+  &__header {
+    display: flex;
+    gap: map.get($spacing, 'md');
+    margin-bottom: map.get($spacing, 'md');
+  }
+
+  &__avatar-wrapper {
+    flex-shrink: 0;
+    width: 48px;
+    height: 48px;
+    position: relative;
+    background-color: var(--bg-alt);
+    border-radius: 50%;
+  }
+
+  &__avatar {
+    border-radius: 50%;
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+  }
+
+  &__user-info {
+    flex: 1;
+    min-width: 0;
+  }
+
+  &__user-main {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: map.get($spacing, 'sm');
+    margin-bottom: 2px;
+  }
+
+  &__user-name {
+    font-size: 1.125rem;
+    color: var(--text-main);
+    margin: 0;
+    font-weight: 700;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  &__user-location {
+    font-size: 0.875rem;
+    color: var(--text-muted);
+    margin: 0;
+    font-weight: 500;
+  }
+
+  &__text {
+    color: var(--text-main);
+    line-height: 1.6;
+    margin: 0;
+    font-size: 0.95rem;
+  }
+
+  &__rating {
+    flex-shrink: 0;
+  }
+}

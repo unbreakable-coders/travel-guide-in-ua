@@ -1,0 +1,49 @@
+.form-field {
+  display: flex;
+  flex-direction: column;
+
+  &__label {
+    @include label;
+
+    display: block;
+    cursor: pointer;
+    user-select: none;
+    margin-bottom: map.get($spacing, 'md');
+    color: var(--text-main);
+  }
+
+  &__input {
+    background-color: var(--bg-surface);
+    color: var(--text-main);
+    border: 1px solid var(--border);
+    border-radius: $small-radius;
+    padding: map.get($spacing, 'xs') map.get($spacing, 'sm');
+    cursor: text;
+    transition: border-color $base-transition, box-shadow $base-transition;
+
+    @include screen-md {
+      padding: map.get($spacing, 'sm') map.get($spacing, 'md');
+    }
+
+    &::placeholder {
+      color: var(--text-muted);
+    }
+
+    &:hover:not(&--disabled) {
+      border-color: var(--input-hover);
+    }
+
+    &:focus {
+      outline: none;
+      border-color: var(--input-focus);
+      box-shadow: 0 0 0 1px var(--brand-soft);
+    }
+
+    &--disabled {
+      border-color: var(--state-disabled);
+      color: var(--text-disabled);
+      background-color: var(--bg-alt);
+      cursor: not-allowed;
+    }
+  }
+}

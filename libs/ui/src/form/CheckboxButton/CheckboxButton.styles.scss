@@ -1,0 +1,78 @@
+.checkbox {
+  display: inline-flex;
+  align-items: center;
+  gap: map.get($spacing, 'sm');
+  cursor: pointer;
+  user-select: none;
+
+  &--disabled {
+    cursor: not-allowed;
+
+    .checkbox__ui {
+      background-color: var(--bg-alt);
+      border-color: var(--state-disabled);
+    }
+
+    .checkbox__label {
+      color: var(--text-disabled);
+    }
+  }
+
+  &__input {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    opacity: 0;
+    pointer-events: none;
+  }
+
+  &__ui {
+    position: relative;
+    flex: 0 0 auto;
+    width: 20px;
+    height: 20px;
+    border-radius: 4px;
+    border: 2px solid var(--border);
+    background-color: var(--bg-surface);
+    transition: background-color $base-transition, border-color $base-transition,
+      box-shadow $base-transition;
+
+    &::after {
+      content: '';
+      position: absolute;
+      left: 50%;
+      top: 45%;
+      width: 4px;
+      height: 8px;
+      border: solid #ffffff;
+      border-width: 0 2px 2px 0;
+      transform: translate(-50%, -50%) rotate(45deg) scale(0);
+      transition: transform $base-transition cubic-bezier(0.12, 0.4, 0.29, 1.46);
+    }
+  }
+
+  &__input:checked + &__ui {
+    background-color: var(--brand);
+    border-color: var(--brand);
+
+    &::after {
+      transform: translate(-50%, -50%) rotate(45deg) scale(1);
+    }
+  }
+
+  &:not(.checkbox--disabled):hover &__ui {
+    border-color: var(--brand);
+  }
+
+  &__input:focus-visible + &__ui {
+    box-shadow: 0 0 0 2px var(--brand-soft);
+  }
+
+  &__label {
+    cursor: inherit;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 1.2;
+    color: var(--text-main);
+  }
+}

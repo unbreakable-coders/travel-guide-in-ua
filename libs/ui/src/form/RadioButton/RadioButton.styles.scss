@@ -1,0 +1,82 @@
+.radio {
+  display: inline-flex;
+  align-items: center;
+  cursor: pointer;
+  user-select: none;
+  gap: map.get($spacing, 'sm');
+
+  &--disabled {
+    cursor: not-allowed;
+
+    .radio__ui {
+      background-color: var(--bg-alt);
+      border-color: var(--state-disabled);
+
+      &::after {
+        background-color: var(--text-disabled);
+      }
+    }
+
+    .radio__label {
+      color: var(--text-disabled);
+    }
+  }
+
+  &__input {
+    position: absolute;
+    opacity: 0;
+    width: 1px;
+    height: 1px;
+    pointer-events: none;
+  }
+
+  &__ui {
+    position: relative;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    border: 2px solid var(--border);
+    background-color: var(--bg-surface);
+    transition: border-color $base-transition, background-color $base-transition,
+      box-shadow $base-transition;
+    flex: 0 0 auto;
+
+    &::after {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%) scale(0);
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background-color: #ffffff;
+      transition: transform $base-transition cubic-bezier(0.12, 0.4, 0.29, 1.46);
+    }
+  }
+
+  &__input:checked + &__ui {
+    border-color: var(--brand);
+    background-color: var(--brand);
+
+    &::after {
+      transform: translate(-50%, -50%) scale(1);
+    }
+  }
+
+  &:not(.radio--disabled):hover &__ui {
+    border-color: var(--brand);
+  }
+
+  &__input:focus-visible + &__ui {
+    box-shadow: 0 0 0 2px var(--brand-soft);
+  }
+
+  &__label {
+    cursor: inherit;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 1.2;
+    color: var(--text-main);
+  }
+}

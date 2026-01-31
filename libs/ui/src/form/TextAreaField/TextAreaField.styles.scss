@@ -1,0 +1,47 @@
+.text-area-field {
+  display: grid;
+  gap: map.get($spacing, 'sm');
+
+  &__label {
+    font-size: 14px;
+    line-height: 20px;
+    cursor: pointer;
+    user-select: none;
+    font-weight: 500;
+    color: var(--text-main);
+  }
+
+  &__textarea {
+    width: 100%;
+    resize: none;
+    padding: map.get($spacing, 'xs') map.get($spacing, 'sm');
+    border: 1px solid var(--border);
+    border-radius: $small-radius;
+    background-color: var(--bg-surface);
+    color: var(--text-main);
+    outline: none;
+    box-sizing: border-box;
+    transition: border-color $base-transition, box-shadow $base-transition;
+    cursor: text;
+
+    &::placeholder {
+      color: var(--text-muted);
+    }
+
+    &:hover:not(:disabled):not(.text-area-field__textarea--disabled) {
+      border-color: var(--input-hover);
+    }
+
+    &:focus {
+      border-color: var(--input-focus);
+      box-shadow: 0 0 0 1px var(--brand-soft);
+    }
+
+    &--disabled {
+      background-color: var(--bg-alt);
+      color: var(--text-disabled);
+      border-color: var(--state-disabled);
+      cursor: not-allowed;
+    }
+  }
+}

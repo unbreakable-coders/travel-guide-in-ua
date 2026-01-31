@@ -1,0 +1,16 @@
+.checkbox-group {
+  display: grid;
+
+  &__label {
+    @include label;
+    display: block;
+    user-select: none;
+    margin-bottom: map.get($spacing, 'md');
+  }
+
+  &__list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: map.get($spacing, 'md');
+  }
+}

@@ -1,0 +1,66 @@
+.app-feedback {
+  display: flex;
+  flex-direction: column;
+
+  background-color: var(--bg-surface);
+  border-radius: $base-radius;
+  padding: map.get($spacing, 'md');
+  border: 1px solid var(--border);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.05);
+
+  &__stars {
+    display: flex;
+    gap: 4px;
+    margin-bottom: map.get($spacing, 'sm');
+  }
+
+  &__star {
+    width: 18px;
+    height: 18px;
+    color: var(--color-stars);
+
+    path {
+      fill: map.get($colors, 'yellow-400');
+    }
+  }
+
+  &__text {
+    color: var(--text-muted);
+    margin: 0 0 map.get($spacing, 'md') 0;
+    line-height: 1.5;
+    flex-grow: 1;
+    font-size: 0.9375rem;
+  }
+
+  &__user {
+    display: flex;
+    align-items: center;
+    gap: map.get($spacing, 'sm');
+  }
+
+  &__avatar-wrapper {
+    position: relative;
+    width: 48px;
+    height: 48px;
+    flex-shrink: 0;
+  }
+
+  &__avatar {
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid var(--border);
+  }
+
+  &__user-name {
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--text-main);
+    margin: 0;
+  }
+
+  &__user-location {
+    font-size: 0.8125rem;
+    color: var(--text-disabled);
+    margin: 0;
+  }
+}

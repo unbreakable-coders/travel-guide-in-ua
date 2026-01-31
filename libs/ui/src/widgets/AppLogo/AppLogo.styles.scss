@@ -1,0 +1,44 @@
+.brand {
+  display: flex;
+  align-items: center;
+  text-align: start;
+  gap: map.get($spacing, 'md');
+  color: inherit;
+  text-transform: uppercase;
+  text-decoration: none;
+
+  &--vertical {
+    flex-direction: column;
+    text-align: center;
+    gap: map.get($spacing, 'xs');
+  }
+
+  &__icon {
+    width: 40px;
+    height: auto;
+    flex-shrink: 0;
+    color: var(--brand);
+  }
+
+  &__title {
+    color: var(--brand);
+    margin: 0;
+    font-size: 1.1rem;
+    font-weight: 800;
+    letter-spacing: 0.5px;
+  }
+
+  &__slogan {
+    color: var(--text-muted);
+    font-size: 12px;
+    margin: 0;
+    text-transform: none;
+    font-weight: 500;
+  }
+
+  &__text {
+    display: flex;
+    flex-direction: column;
+    line-height: 1.2;
+  }
+}

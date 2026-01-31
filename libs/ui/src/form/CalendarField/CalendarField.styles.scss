@@ -1,0 +1,174 @@
+.calendar-field {
+  width: 100%;
+  display: grid;
+  gap: map.get($spacing, 'md');
+  background-color: var(--bg-surface);
+  padding: map.get($spacing, 'md');
+  border-radius: $base-radius;
+  border: 1px solid var(--border);
+}
+
+.calendar-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  &__month {
+    font-weight: 600;
+    text-transform: capitalize;
+    color: var(--text-main);
+    line-height: 36px;
+  }
+
+  &__nav {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    border-radius: $small-radius;
+    border: 1px solid var(--border);
+    background-color: var(--bg-surface);
+    color: var(--text-main);
+    transition: $base-transition;
+    cursor: pointer;
+
+    svg {
+      width: 16px;
+      height: 16px;
+      transition: $base-transition;
+    }
+
+    &--prev svg {
+      transform: rotate(90deg);
+    }
+    &--next svg {
+      transform: rotate(-90deg);
+    }
+
+    &:hover:not(:disabled) {
+      background-color: var(--bg-alt);
+      border-color: var(--input-hover);
+      color: var(--brand);
+    }
+
+    &:disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+      background-color: var(--state-disabled);
+    }
+  }
+}
+
+.calendar-weekdays {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: map.get($spacing, 'sm');
+
+  &__item {
+    text-align: center;
+    color: var(--brand);
+    font-weight: 700;
+    font-size: 0.75rem;
+    text-transform: uppercase;
+  }
+}
+
+.calendar-grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: map.get($spacing, 'sm');
+  min-height: calc(6 * 38px + 5 * map.get($spacing, 'sm'));
+  align-content: start;
+
+  &__day {
+    aspect-ratio: 1 / 1;
+    width: 100%;
+    max-width: 38px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: none;
+    background: transparent;
+    border-radius: 50%;
+    font-weight: 600;
+    cursor: pointer;
+    transition: $base-transition;
+    color: var(--text-main);
+
+    &:hover:not(&--disabled):not(&--active):not(&--blank) {
+      background-color: var(--bg-alt);
+      color: var(--brand);
+    }
+
+    &--active.calendar-grid__day {
+      background-color: var(--brand);
+      color: #ffffff;
+
+      &:hover {
+        background-color: color-mix(in srgb, var(--brand), black 10%);
+      }
+    }
+
+    &--disabled {
+      color: var(--text-disabled);
+      cursor: not-allowed;
+      opacity: 0.5;
+    }
+
+    &--blank {
+      cursor: default;
+    }
+  }
+}
+
+.calendar-time {
+  display: flex;
+  flex-wrap: wrap;
+  gap: map.get($spacing, 'xs');
+  border-top: 1px solid var(--border);
+  padding-top: map.get($spacing, 'md');
+  margin-top: map.get($spacing, 'sm');
+
+  &__button {
+    flex: 1 1 calc(25% - map.get($spacing, 'xs'));
+    min-width: 60px;
+    text-align: center;
+    padding: map.get($spacing, 'xs') 0;
+    border-radius: $small-radius;
+    border: 1px solid var(--border);
+    background-color: var(--bg-surface);
+    color: var(--text-main);
+    font-size: 0.8rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all $base-transition ease;
+
+    &:hover:not(&--active):not(:disabled) {
+      background-color: var(--bg-alt);
+      border-color: var(--input-hover);
+      color: var(--brand);
+    }
+
+    &--active {
+      background-color: var(--brand);
+      color: #ffffff;
+      border-color: var(--brand);
+      font-weight: 700;
+
+      &:hover {
+        background-color: color-mix(in srgb, var(--brand), black 10%);
+        border-color: color-mix(in srgb, var(--brand), black 10%);
+      }
+    }
+
+    &:disabled {
+      background-color: var(--bg-alt);
+      color: var(--text-disabled);
+      border-color: var(--state-disabled);
+      cursor: not-allowed;
+      opacity: 0.6;
+    }
+  }
+}

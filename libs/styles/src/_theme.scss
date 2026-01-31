@@ -1,0 +1,284 @@
+@use 'sass:map';
+@use './vars' as *;
+@use './functions' as *;
+
+//  -----------------------------
+//      CALENDAR COLOR VARS
+//  -----------------------------
+// --sx-color-primary: #6750a4;
+// --sx-color-on-primary: #fff;
+// --sx-color-primary-container: #eaddff;
+// --sx-color-on-primary-container: #21005e;
+// --sx-color-secondary: #625b71;
+// --sx-color-on-secondary: #fff;
+// --sx-color-secondary-container: #e8def8;
+// --sx-color-on-secondary-container: #1e192b;
+// --sx-color-tertiary: #7d5260;
+// --sx-color-on-tertiary: #fff;
+// --sx-color-tertiary-container: #ffd8e4;
+// --sx-color-on-tertiary-container: #370b1e;
+// --sx-color-surface: #fef7ff;
+// --sx-color-surface-dim: #ded8e1;
+// --sx-color-surface-bright: #fef7ff;
+// --sx-color-on-surface: #1c1b1f;
+// --sx-color-surface-container: #f3edf7;
+// --sx-color-surface-container-low: #f7f2fa;
+// --sx-color-surface-container-high: #ece6f0;
+// --sx-color-background: #fff;
+// --sx-color-on-background: #1c1b1f;
+// --sx-color-outline: #79747e;
+// --sx-color-outline-variant: #c4c7c5;
+// --sx-color-shadow: #000;
+// --sx-color-surface-tint: #6750a4;
+// --sx-color-neutral: var(--sx-color-outline);
+// --sx-color-neutral-variant: var(--sx-color-outline-variant);
+//  ---------------------------------------------------------------------------
+//      Тут треба ці значення календара підібрати для білої та темної теми
+//  ---------------------------------------------------------------------------
+//  -------------------------------------------------------------
+//      Сергій порадся з Олічкою і пограйся з темами)))))
+//  -------------------------------------------------------------
+
+:root {
+  /* Brand / Active Colors */
+  --brand: #{map.get($colors, 'blue-600')};
+  --brand-hover: #{map.get($colors, 'blue-700')};
+  --brand-soft: #{map.get($colors, 'blue-500')};
+
+  /* Semantic Colors */
+  --success: #{map.get($colors, 'green-500')};
+  --success-hover: #{map.get($colors, 'green-600')};
+  --warning: #{map.get($colors, 'yellow-500')};
+  --danger: #{map.get($colors, 'red-500')};
+  --danger-hover: #{map.get($colors, 'red-600')};
+
+  /* Surfaces & Backgrounds */
+  --bg-main: #{map.get($colors, 'ide-50')};
+  --bg-surface: #{map.get($colors, 'ide-50')};
+  --bg-alt: #{map.get($colors, 'ide-75')};
+
+  /* Text Colors */
+  --text-main: #{map.get($colors, 'slate-900')};
+  --text-muted: #{map.get($colors, 'slate-600')};
+  --text-disabled: #{map.get($colors, 'slate-400')};
+
+  /* Interactive / Inputs */
+  --border: #{map.get($colors, 'slate-200')};
+  --input-focus: #{map.get($colors, 'blue-500')};
+  --input-hover: #{map.get($colors, 'slate-300')};
+  --state-disabled: #{map.get($colors, 'slate-200')};
+
+  /* Terminal */
+  --terminal-header: #{map.get($colors, 'terminal-header-light')};
+  --terminal-body: #{map.get($colors, 'terminal-bg-light')};
+
+  /* Container Specific */
+  --bg-app-container: #{map.get($colors, 'slate-50')};
+  --border-app-container: #{map.get($colors, 'slate-200')};
+}
+
+[data-theme='dark'] {
+  /* Brand / Active Colors */
+  --brand: #{map.get($colors, 'blue-500')};
+  --brand-hover: #{map.get($colors, 'blue-600')};
+  --brand-soft: #{map.get($colors, 'blue-500')};
+
+  /* Semantic Colors */
+  --success: #{map.get($colors, 'green-500')};
+  --success-hover: #{map.get($colors, 'green-600')};
+  --warning: #{map.get($colors, 'yellow-400')};
+  --danger: #{map.get($colors, 'red-500')};
+  --danger-hover: #{map.get($colors, 'red-600')};
+
+  /* Surfaces & Backgrounds */
+  --bg-main: #{map.get($colors, 'ide-900')};
+  --bg-surface: #{map.get($colors, 'ide-800')};
+  --bg-alt: #{map.get($colors, 'ide-850')};
+
+  /* Text Colors */
+  --text-main: #{map.get($colors, 'slate-50')};
+  --text-muted: #{map.get($colors, 'slate-400')};
+  --text-disabled: #{map.get($colors, 'slate-600')};
+
+  /* Interactive / Inputs */
+  --border: #{map.get($colors, 'slate-600')};
+  --input-focus: #{map.get($colors, 'blue-500')};
+  --input-hover: #{map.get($colors, 'slate-400')};
+  --state-disabled: #{map.get($colors, 'slate-700')};
+
+  /* Terminal */
+  --terminal-header: #{map.get($colors, 'terminal-header-dark')};
+  --terminal-body: #{map.get($colors, 'terminal-bg-dark')};
+
+  /* Container Specific */
+  --bg-app-container: #{map.get($colors, 'ide-850')};
+  --border-app-container: #{map.get($colors, 'slate-600')};
+}
+
+[data-theme='dim'] {
+  /* Brand / Active Colors */
+  --brand: #{map.get($colors, 'blue-500')};
+  --brand-hover: #{map.get($colors, 'blue-600')};
+  --brand-soft: #{map.get($colors, 'blue-500')};
+
+  /* Semantic Colors */
+  --success: #{map.get($colors, 'green-500')};
+  --success-hover: #{map.get($colors, 'green-600')};
+  --warning: #{map.get($colors, 'yellow-400')};
+  --danger: #{map.get($colors, 'red-500')};
+  --danger-hover: #{map.get($colors, 'red-600')};
+
+  /* Surfaces & Backgrounds */
+  --bg-main: #{map.get($colors, 'slate-800')};
+  --bg-surface: #{map.get($colors, 'slate-800')};
+  --bg-alt: #{map.get($colors, 'slate-900')};
+
+  /* Text Colors */
+  --text-main: #{map.get($colors, 'slate-100')};
+  --text-muted: #{map.get($colors, 'slate-400')};
+  --text-disabled: #{map.get($colors, 'slate-600')};
+
+  /* Interactive / Inputs */
+  --border: #{map.get($colors, 'slate-600')};
+  --input-focus: #{map.get($colors, 'blue-500')};
+  --input-hover: #{map.get($colors, 'slate-500')};
+  --state-disabled: #{map.get($colors, 'slate-700')};
+
+  /* Terminal */
+  --terminal-header: #{map.get($colors, 'slate-950')};
+  --terminal-body: #{map.get($colors, 'slate-900')};
+
+  /* Container Specific */
+  --bg-app-container: #{map.get($colors, 'slate-800')};
+  --border-app-container: #{map.get($colors, 'slate-700')};
+}
+
+[data-theme='amber'] {
+  /* Brand / Active Colors */
+  --brand: #{map.get($colors, 'yellow-500')};
+  --brand-hover: #{map.get($colors, 'yellow-400')};
+  --brand-soft: #{map.get($colors, 'yellow-400')};
+
+  /* Semantic Colors */
+  --success: #{map.get($colors, 'green-500')};
+  --success-hover: #{map.get($colors, 'green-600')};
+  --warning: #{map.get($colors, 'yellow-500')};
+  --danger: #{map.get($colors, 'red-500')};
+  --danger-hover: #{map.get($colors, 'red-600')};
+
+  /* Surfaces & Backgrounds */
+  --bg-main: #{map.get($colors, 'slate-50')};
+  --bg-surface: #{map.get($colors, 'white')};
+  --bg-alt: #{map.get($colors, 'slate-100')};
+
+  /* Text Colors */
+  --text-main: #{map.get($colors, 'slate-900')};
+  --text-muted: #{map.get($colors, 'slate-600')};
+  --text-disabled: #{map.get($colors, 'slate-400')};
+
+  /* Interactive / Inputs */
+  --border: #{map.get($colors, 'slate-200')};
+  --input-focus: #{map.get($colors, 'yellow-500')};
+  --input-hover: #{map.get($colors, 'slate-300')};
+  --state-disabled: #{map.get($colors, 'slate-200')};
+
+  /* Terminal */
+  --terminal-header: #{map.get($colors, 'slate-300')};
+  --terminal-body: #{map.get($colors, 'terminal-bg-light')};
+
+  /* Container Specific */
+  --bg-app-container: #{map.get($colors, 'slate-100')};
+  --border-app-container: #{map.get($colors, 'slate-200')};
+}
+
+[data-theme='green-dark'] {
+  /* Brand / Active Colors */
+  --brand: #{map.get($colors, 'green-500')};
+  --brand-hover: #{map.get($colors, 'green-600')};
+  --brand-soft: #{map.get($colors, 'green-500')};
+
+  /* Semantic Colors */
+  --success: #{map.get($colors, 'green-500')};
+  --success-hover: #{map.get($colors, 'green-600')};
+  --warning: #{map.get($colors, 'yellow-400')};
+  --danger: #{map.get($colors, 'red-500')};
+  --danger-hover: #{map.get($colors, 'red-600')};
+
+  /* Surfaces & Backgrounds */
+  --bg-main: #{map.get($colors, 'slate-900')};
+  --bg-surface: #{map.get($colors, 'slate-800')};
+  --bg-alt: #{map.get($colors, 'slate-900')};
+
+  /* Text Colors */
+  --text-main: #{map.get($colors, 'slate-50')};
+  --text-muted: #{map.get($colors, 'slate-400')};
+  --text-disabled: #{map.get($colors, 'slate-600')};
+
+  /* Interactive / Inputs */
+  --border: #{map.get($colors, 'slate-600')};
+  --input-focus: #{map.get($colors, 'green-500')};
+  --input-hover: #{map.get($colors, 'slate-400')};
+  --state-disabled: #{map.get($colors, 'slate-700')};
+
+  /* Terminal */
+  --terminal-header: #{map.get($colors, 'slate-800')};
+  --terminal-body: #{map.get($colors, 'terminal-bg-dark')};
+
+  /* Container Specific */
+  --bg-app-container: #{map.get($colors, 'slate-800')};
+  --border-app-container: #{map.get($colors, 'slate-600')};
+}
+
+[data-theme='slate'] {
+  /* Brand / Active Colors */
+  --brand: #{map.get($colors, 'slate-600')};
+  --brand-hover: #{map.get($colors, 'slate-800')};
+  --brand-soft: #{map.get($colors, 'slate-400')};
+
+  /* Semantic Colors */
+  --success: #{map.get($colors, 'green-500')};
+  --success-hover: #{map.get($colors, 'green-600')};
+  --warning: #{map.get($colors, 'yellow-500')};
+  --danger: #{map.get($colors, 'red-500')};
+  --danger-hover: #{map.get($colors, 'red-600')};
+
+  /* Surfaces & Backgrounds */
+  --bg-main: #{map.get($colors, 'slate-100')};
+  --bg-surface: #{map.get($colors, 'white')};
+  --bg-alt: #{map.get($colors, 'slate-200')};
+
+  /* Text Colors */
+  --text-main: #{map.get($colors, 'slate-900')};
+  --text-muted: #{map.get($colors, 'slate-600')};
+  --text-disabled: #{map.get($colors, 'slate-400')};
+
+  /* Interactive / Inputs */
+  --border: #{map.get($colors, 'slate-300')};
+  --input-focus: #{map.get($colors, 'slate-600')};
+  --input-hover: #{map.get($colors, 'slate-400')};
+  --state-disabled: #{map.get($colors, 'slate-300')};
+
+  /* Terminal */
+  --terminal-header: #{map.get($colors, 'slate-300')};
+  --terminal-body: #{map.get($colors, 'terminal-bg-light')};
+
+  /* Container Specific */
+  --bg-app-container: #{map.get($colors, 'slate-200')};
+  --border-app-container: #{map.get($colors, 'slate-300')};
+}
+
+body,
+a,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+span,
+div,
+button,
+input {
+  color: var(--text-main);
+}

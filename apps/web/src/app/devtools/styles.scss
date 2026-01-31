@@ -1,0 +1,22 @@
+.devtool {
+  display: flex;
+  flex-direction: column;
+  gap: map.get($spacing, '3xl');
+
+  &__section {
+    @include grid(1);
+    gap: map.get($spacing, 'xl');
+
+    @include screen-lg {
+      @include grid(2);
+    }
+
+    &--col {
+      @include grid(1);
+    }
+  }
+
+  &__example {
+    min-width: 0;
+  }
+}

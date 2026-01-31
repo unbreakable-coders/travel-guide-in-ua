@@ -16,6 +16,14 @@
     "skipLibCheck": true,
     "strict": true,
     "target": "es2022",
-    "customConditions": ["@org/source"]
+    "types": ["@testing-library/jest-dom", "jest", "node"],
+    "customConditions": ["@org/source"],
+    "paths": {
+      "@org/db": ["libs/db/src/index.ts"],
+      "@org/models": ["libs/models/src/index.ts"],
+      "@org/ui": ["libs/ui/src/index.ts"],
+      "@org/styles/*": ["libs/styles/src/*"],
+      "@org/assets": ["libs/assets/src/index.ts"]
+    }
   }
 }

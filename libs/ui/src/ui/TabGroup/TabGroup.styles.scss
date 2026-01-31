@@ -1,0 +1,5 @@
+.tab-group {
+  display: inline-flex;
+  align-items: center;
+  gap: map.get($spacing, 'xs');
+}

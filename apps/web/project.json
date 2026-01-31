@@ -1,0 +1,39 @@
+{
+  "name": "@org/web",
+  "tags": ["scope:@org/web"],
+  "sourceRoot": ".",
+  "projectType": "application",
+  "targets": {
+    "serve": {
+      "executor": "@nx/next:server",
+      "defaultConfiguration": "development",
+      "options": {
+        "buildTarget": "@org/web:build",
+        "port": 3000
+      },
+      "configurations": {
+        "development": {
+          "dev": true
+        },
+        "production": {
+          "dev": false
+        }
+      }
+    },
+    "build": {
+      "executor": "@nx/next:build",
+      "outputs": ["{options.outputPath}"],
+      "defaultConfiguration": "production",
+      "options": {
+        "outputPath": "dist/web"
+      },
+      "configurations": {
+        "development": {
+          "outputPath": ".",
+          "debug": true
+        },
+        "production": {}
+      }
+    }
+  }
+}

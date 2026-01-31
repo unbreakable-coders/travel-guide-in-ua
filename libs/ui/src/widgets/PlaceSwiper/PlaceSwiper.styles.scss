@@ -1,0 +1,66 @@
+.place-swiper {
+  width: 100%;
+  margin-bottom: map.get($spacing, 'xl');
+
+  &__header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: map.get($spacing, 'md');
+    margin-bottom: map.get($spacing, 'md');
+  }
+
+  &__label {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--text-main);
+    margin: 0;
+  }
+
+  &__controls {
+    display: flex;
+    align-items: center;
+    gap: map.get($spacing, 'sm');
+    flex-shrink: 0;
+  }
+
+  &__control {
+    border: 1px solid var(--border);
+    background-color: var(--bg-surface);
+    color: var(--text-muted);
+
+    svg {
+      transform: rotate(-90deg);
+      transition: transform $base-transition ease;
+    }
+
+    &--prev {
+      svg {
+        transform: rotate(90deg);
+      }
+    }
+
+    &:hover:not(:disabled) {
+      border-color: var(--input-hover);
+      color: var(--text-main);
+      background-color: var(--bg-alt);
+    }
+
+    &:active:not(:disabled) {
+      background-color: var(--state-disabled);
+    }
+  }
+
+  &__swiper {
+    width: 100%;
+  }
+
+  .swiper-wrapper {
+    align-items: stretch;
+  }
+
+  &__slide {
+    height: auto;
+    display: flex;
+  }
+}

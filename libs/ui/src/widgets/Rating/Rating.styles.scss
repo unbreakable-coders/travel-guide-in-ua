@@ -1,0 +1,28 @@
+.rating {
+  display: inline-flex;
+  align-items: center;
+  gap: map.get($spacing, 'xs');
+
+  &__icon {
+    width: 18px;
+    height: 18px;
+    color: var(--color-stars);
+    display: block;
+    flex-shrink: 0;
+
+    &--empty {
+      color: var(--text-disabled);
+    }
+
+    path {
+      fill: map.get($colors, 'yellow-400');
+    }
+  }
+
+  &__value {
+    font-weight: 600;
+    color: var(--text-main);
+    font-size: 0.875rem;
+    line-height: 1;
+  }
+}

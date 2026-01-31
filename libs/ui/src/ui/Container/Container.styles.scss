@@ -1,0 +1,21 @@
+.app-container {
+  width: 100%;
+  max-width: $max-body-width;
+  margin-left: auto;
+  margin-right: auto;
+  overflow: hidden;
+
+  padding: map.get($spacing, 'md');
+  border-radius: $base-radius;
+
+  background-color: var(--bg-app-container);
+  border: 1px solid var(--border-app-container);
+  color: var(--text-main);
+
+  transition: background-color $base-transition ease,
+    color $base-transition ease, border-color $base-transition ease;
+
+  @media (min-width: map.get($breakpoints, 'md')) {
+    padding: map.get($spacing, 'xl');
+  }
+}

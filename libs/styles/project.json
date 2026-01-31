@@ -1,0 +1,19 @@
+{
+  "name": "@org/styles",
+  "tags": ["scope:@org/styles"],
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "libs/styles/src",
+  "projectType": "library",
+  "targets": {
+    "lint": {
+      "executor": "@nx/eslint:lint"
+    },
+    "typecheck": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "tsc --build --emitDeclarationOnly",
+        "cwd": "libs/styles"
+      }
+    }
+  }
+}

@@ -1,0 +1,6 @@
+{
+  "name": "@org/models",
+  "tags": ["scope:@org/models"],
+  "root": "libs/models",
+  "projectType": "library"
+}

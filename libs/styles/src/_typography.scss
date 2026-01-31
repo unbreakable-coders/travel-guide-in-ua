@@ -1,0 +1,294 @@
+@use 'sass:map';
+@use './vars' as *;
+@use './mixins' as *;
+
+$font-inter: 'Inter', system-ui, sans-serif;
+$font-roboto: 'Roboto', system-ui, sans-serif;
+$font-arial: Arial, Helvetica, sans-serif;
+
+$typography: (
+  'h1': (
+    'font-size-mobile': 2rem,
+    'font-size-tablet': 2.5rem,
+    'font-size-desktop': 3rem,
+
+    'line-height-mobile': 1.1,
+    'line-height-tablet': 1.1,
+    'line-height-desktop': 1.05,
+
+    'letter-spacing-mobile': -0.01em,
+    'letter-spacing-tablet': -0.02em,
+    'letter-spacing-desktop': -0.02em,
+
+    'font-weight-mobile': 700,
+    'font-weight-tablet': 700,
+    'font-weight-desktop': 800,
+
+    'font-family': $font-inter,
+  ),
+  'h2': (
+    'font-size-mobile': 1.75rem,
+    'font-size-tablet': 2rem,
+    'font-size-desktop': 2.25rem,
+
+    'line-height-mobile': 1.15,
+    'line-height-tablet': 1.15,
+    'line-height-desktop': 1.15,
+
+    'letter-spacing-mobile': -0.01em,
+    'letter-spacing-tablet': -0.01em,
+    'letter-spacing-desktop': -0.01em,
+
+    'font-weight-mobile': 600,
+    'font-weight-tablet': 700,
+    'font-weight-desktop': 700,
+
+    'font-family': $font-inter,
+  ),
+  'h3': (
+    'font-size-mobile': 1.5rem,
+    'font-size-tablet': 1.75rem,
+    'font-size-desktop': 1.875rem,
+
+    'line-height-mobile': 1.2,
+    'line-height-tablet': 1.2,
+    'line-height-desktop': 1.2,
+
+    'letter-spacing-mobile': 0,
+    'letter-spacing-tablet': 0,
+    'letter-spacing-desktop': 0,
+
+    'font-weight-mobile': 600,
+    'font-weight-tablet': 600,
+    'font-weight-desktop': 600,
+
+    'font-family': $font-inter,
+  ),
+  'h4': (
+    'font-size-mobile': 1.25rem,
+    'font-size-tablet': 1.375rem,
+    'font-size-desktop': 1.5rem,
+
+    'line-height-mobile': 1.3,
+    'line-height-tablet': 1.3,
+    'line-height-desktop': 1.3,
+
+    'letter-spacing-mobile': 0,
+    'letter-spacing-tablet': 0,
+    'letter-spacing-desktop': 0,
+
+    'font-weight-mobile': 600,
+    'font-weight-tablet': 600,
+    'font-weight-desktop': 600,
+
+    'font-family': $font-inter,
+  ),
+  'h5': (
+    'font-size-mobile': 0.9rem,
+    'font-size-tablet': 0.95rem,
+    'font-size-desktop': 1rem,
+
+    'line-height-mobile': 1.3,
+    'line-height-tablet': 1.3,
+    'line-height-desktop': 1.3,
+
+    'letter-spacing-mobile': 0,
+    'letter-spacing-tablet': 0,
+    'letter-spacing-desktop': 0,
+
+    'font-weight-mobile': 600,
+    'font-weight-tablet': 600,
+    'font-weight-desktop': 600,
+
+    'font-family': $font-inter,
+  ),
+
+  'p': (
+    'font-size-mobile': 0.875rem,
+    'font-size-tablet': 1rem,
+    'font-size-desktop': 1rem,
+
+    'line-height-mobile': 1.4,
+    'line-height-tablet': 1.45,
+    'line-height-desktop': 1.45,
+
+    'letter-spacing-mobile': 0,
+    'letter-spacing-tablet': 0,
+    'letter-spacing-desktop': 0,
+
+    'font-weight-mobile': 400,
+    'font-weight-tablet': 400,
+    'font-weight-desktop': 400,
+
+    'font-family': $font-roboto,
+  ),
+  'span': (
+    'font-size-mobile': 0.85rem,
+    'font-size-tablet': 0.9rem,
+    'font-size-desktop': 0.9rem,
+
+    'line-height-mobile': 1.4,
+    'line-height-tablet': 1.45,
+    'line-height-desktop': 1.45,
+
+    'letter-spacing-mobile': 0,
+    'letter-spacing-tablet': 0,
+    'letter-spacing-desktop': 0,
+
+    'font-weight-mobile': 400,
+    'font-weight-tablet': 400,
+    'font-weight-desktop': 400,
+
+    'font-family': $font-roboto,
+  ),
+  'body': (
+    'font-size-mobile': 0.875rem,
+    'font-size-tablet': 1rem,
+    'font-size-desktop': 1rem,
+
+    'line-height-mobile': 1.4,
+    'line-height-tablet': 1.45,
+    'line-height-desktop': 1.45,
+
+    'letter-spacing-mobile': 0,
+    'letter-spacing-tablet': 0,
+    'letter-spacing-desktop': 0,
+
+    'font-weight-mobile': 400,
+    'font-weight-tablet': 400,
+    'font-weight-desktop': 400,
+
+    'font-family': $font-roboto,
+  ),
+  'button': (
+    'font-size-mobile': 0.875rem,
+    'font-size-tablet': 1rem,
+    'font-size-desktop': 1rem,
+
+    'line-height-mobile': 1.4,
+    'line-height-tablet': 1.45,
+    'line-height-desktop': 1.45,
+
+    'letter-spacing-mobile': 0,
+    'letter-spacing-tablet': 0,
+    'letter-spacing-desktop': 0,
+
+    'font-weight-mobile': 400,
+    'font-weight-tablet': 400,
+    'font-weight-desktop': 400,
+
+    'font-family': $font-roboto,
+  ),
+  'a': (
+    'font-size-mobile': 0.875rem,
+    'font-size-tablet': 1rem,
+    'font-size-desktop': 1rem,
+
+    'line-height-mobile': 1.4,
+    'line-height-tablet': 1.4,
+    'line-height-desktop': 1.4,
+
+    'letter-spacing-mobile': 0,
+    'letter-spacing-tablet': 0,
+    'letter-spacing-desktop': 0,
+
+    'font-weight-mobile': 500,
+    'font-weight-tablet': 500,
+    'font-weight-desktop': 600,
+
+    'font-family': $font-roboto,
+  ),
+  'label': (
+    'font-size-mobile': 1.05rem,
+    'font-size-tablet': 1.05rem,
+    'font-size-desktop': 1.05rem,
+
+    'line-height-mobile': 1.4,
+    'line-height-tablet': 1.4,
+    'line-height-desktop': 1.4,
+
+    'letter-spacing-mobile': 0,
+    'letter-spacing-tablet': 0,
+    'letter-spacing-desktop': 0,
+
+    'font-weight-mobile': 500,
+    'font-weight-tablet': 500,
+    'font-weight-desktop': 500,
+
+    'font-family': $font-roboto,
+  ),
+  'input': (
+    'font-size-mobile': 1rem,
+    'font-size-tablet': 1rem,
+    'font-size-desktop': 1rem,
+
+    'line-height-mobile': 1.4,
+    'line-height-tablet': 1.4,
+    'line-height-desktop': 1.4,
+
+    'letter-spacing-mobile': 0,
+    'letter-spacing-tablet': 0,
+    'letter-spacing-desktop': 0,
+
+    'font-weight-mobile': 400,
+    'font-weight-tablet': 400,
+    'font-weight-desktop': 400,
+
+    'font-family': $font-roboto,
+  ),
+);
+
+@each $tag, $values in $typography {
+  #{$tag} {
+    font-family: map.get($values, 'font-family');
+    font-size: map.get($values, 'font-size-mobile');
+    line-height: map.get($values, 'line-height-mobile');
+    letter-spacing: map.get($values, 'letter-spacing-mobile');
+    font-weight: map.get($values, 'font-weight-mobile');
+
+    @include screen-md {
+      font-size: map.get($values, 'font-size-tablet');
+      line-height: map.get($values, 'line-height-tablet');
+      letter-spacing: map.get($values, 'letter-spacing-tablet');
+      font-weight: map.get($values, 'font-weight-tablet');
+    }
+
+    @include screen-lg {
+      font-size: map.get($values, 'font-size-desktop');
+      line-height: map.get($values, 'line-height-desktop');
+      letter-spacing: map.get($values, 'letter-spacing-desktop');
+      font-weight: map.get($values, 'font-weight-desktop');
+    }
+  }
+}
+
+@mixin label {
+  font-family: map.get(map.get($typography, 'label'), 'font-family');
+  font-size: map.get(map.get($typography, 'label'), 'font-size-mobile');
+  line-height: map.get(map.get($typography, 'label'), 'line-height-mobile');
+  letter-spacing: map.get(
+    map.get($typography, 'label'),
+    'letter-spacing-mobile'
+  );
+  font-weight: map.get(map.get($typography, 'label'), 'font-weight-mobile');
+
+  @include screen-md {
+    font-size: map.get(map.get($typography, 'label'), 'font-size-tablet');
+    line-height: map.get(map.get($typography, 'label'), 'line-height-tablet');
+    letter-spacing: map.get(
+      map.get($typography, 'label'),
+      'letter-spacing-tablet'
+    );
+    font-weight: map.get(map.get($typography, 'label'), 'font-weight-tablet');
+  }
+
+  @include screen-lg {
+    font-size: map.get(map.get($typography, 'label'), 'font-size-desktop');
+    line-height: map.get(map.get($typography, 'label'), 'line-height-desktop');
+    letter-spacing: map.get(
+      map.get($typography, 'label'),
+      'letter-spacing-desktop'
+    );
+    font-weight: map.get(map.get($typography, 'label'), 'font-weight-desktop');
+  }
+}

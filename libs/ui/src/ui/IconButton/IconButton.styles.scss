@@ -1,0 +1,38 @@
+.icon-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: $small-radius;
+  border: 1px solid var(--border);
+  background-color: transparent;
+  color: var(--text-muted);
+  cursor: pointer;
+  transition: all $base-transition ease;
+  padding: map.get($spacing, 'xs');
+
+  svg {
+    width: 1rem;
+    height: 1rem;
+    display: block;
+    fill: currentColor;
+  }
+
+  &:hover:not(:disabled) {
+    background-color: var(--bg-alt);
+    border-color: var(--input-hover);
+    color: var(--text-main);
+  }
+
+  &:active:not(:disabled) {
+    background-color: var(--state-disabled);
+    color: var(--text-main);
+  }
+
+  &:disabled {
+    cursor: not-allowed;
+    opacity: 0.5;
+    border-color: var(--state-disabled);
+    color: var(--text-disabled);
+    background-color: var(--bg-alt);
+  }
+}

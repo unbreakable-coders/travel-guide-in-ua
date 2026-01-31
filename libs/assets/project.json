@@ -1,0 +1,6 @@
+{
+  "name": "@org/assets",
+  "tags": ["scope:@org/assets"],
+  "root": "libs/assets",
+  "projectType": "library"
+}

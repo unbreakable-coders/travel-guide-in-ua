@@ -1,0 +1,69 @@
+$base-transition: 300ms;
+$max-body-width: 1400px;
+$base-radius: 12px;
+$small-radius: 6px;
+
+$nav-height: 80px;
+$calendar-cell-height: 50px;
+
+$colors: (
+  'white': #ffffff,
+  'black': #0f172a,
+
+  'slate-50': #f8fafc,
+  'slate-100': #f1f5f9,
+  'slate-200': #e2e8f0,
+  'slate-300': #cbd5e1,
+  'slate-400': #94a3b8,
+  'slate-600': #475569,
+  'slate-800': #1e293b,
+  'slate-900': #0f172a,
+  'slate-950': #020617,
+  'slate-975': #01030a,
+
+  'ide-50': #fcfcfc,
+  'ide-75': #f4f4f4,
+  'ide-100': #f3f3f3,
+  'ide-900': #141414,
+  'ide-850': #181818,
+  'ide-800': #1f1f1f,
+
+  'blue-500': #3b82f6,
+  'blue-600': #2563eb,
+  'blue-700': #1d4ed8,
+
+  'green-500': #22c55e,
+  'green-600': #16a34a,
+
+  'yellow-400': #fbbf24,
+  // This is used for star icon
+  'yellow-500': #f59e0b,
+
+  'red-500': #ef4444,
+  'red-600': #dc2626,
+
+  'terminal-header-light': #f3f3f3,
+  'terminal-header-dark': #141414,
+  'terminal-bg-light': #f4f4f4,
+  'terminal-bg-dark': #181818,
+);
+
+$spacing: (
+  '2xs': 0.25rem,
+  'xs': 0.5rem,
+  'sm': 0.75rem,
+  'md': 1rem,
+  'lg': 1.5rem,
+  'xl': 2rem,
+  '2xl': 3rem,
+  '3xl': 4rem,
+  '4xl': 6rem,
+);
+
+$breakpoints: (
+  'xs': 480px,
+  'sm': 640px,
+  'md': 768px,
+  'lg': 1024px,
+  'xl': 1280px,
+);
